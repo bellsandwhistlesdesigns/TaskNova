@@ -26,7 +26,7 @@ export async function POST(req: Request) {
   } catch (error) {
     console.error("Email sending failed:", error);
     return NextResponse.json(
-      { error: "Failed to submit interest." },
+      { error: "Noted SMTP Issues, working on fix." },
       { status: 500 }
     );
   }
