@@ -1,6 +1,6 @@
 # TaskNova
 
-TaskNova is a new web app that I have been creating that intends to help Project Managers organize projects and tasks efficiently. The application is now live and fully functional at:  
+TaskNova is a new web app that I have been creating that intends to help Project Managers organize projects and tasks efficiently. The application is now live and under construction at:  
 **[https://www.tasknova.ca](https://www.tasknova.ca)**
 **[https://tasknova.ca](https://tasknova.ca)**
 
@@ -9,7 +9,7 @@ TaskNova is a new web app that I have been creating that intends to help Project
 ## Features
 
 - Visually Appealing Landing Page
-- Magic link login via email   
+- Magic link login via email 
 - Create projects and manage tasks under each project  
 - User-friendly dashboard with real-time updates  
 - Sign out functionality that securely returns to login page  

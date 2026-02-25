@@ -6,7 +6,7 @@ export default function TermsPage() {
       <Hero
         title="TaskNova"
         subtitle="Our Terms of Service"
-        showButtons={false}
+        //show button go here
         heightClass="min-h-[22vh]"
         bgGradient="from-blue-100 to-blue-200"
       />

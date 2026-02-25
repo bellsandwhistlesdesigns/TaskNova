@@ -27,6 +27,7 @@ export default function MarketingPage() {
           </div>
         </div>
       </section>
+      {/* remember the Testimonials in Notepad */}
 
       {/* ===== CTA BANNER ===== */}
       <section className="py-20 px-6 md:px-20 bg-blue-600 text-white text-center">

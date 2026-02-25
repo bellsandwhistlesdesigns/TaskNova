@@ -6,7 +6,7 @@ import { useState } from "react";
 const MAINTENANCE_MODE = true; 
 // Later: process.env.NEXT_PUBLIC_MAINTENANCE_MODE === "true";
 // Change the MAINTENANCE_MODE TO false;
-//when changing to false, need to add notepoad++ show buttons
+//when changing to false, need to add notepoad++ show buttons to all pages
 
 interface HeroProps {
   title?: string;
