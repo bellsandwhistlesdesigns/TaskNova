@@ -27,7 +27,15 @@ TaskNova is a new web app that I have been creating that intends to help Project
 
 ---
 
+## Roadmap 
+
+- Continued feature iteration and UX refinement
+
+---
+
 ## License and Usage
+
+---
 
 © 2026 Douglas Moth - TaskNova. All rights reserved.
 
