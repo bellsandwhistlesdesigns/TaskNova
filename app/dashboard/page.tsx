@@ -189,7 +189,7 @@ export default function Dashboard() {
       <Hero
         title={organization?.name || "Your Dashboard"}
         subtitle={`Welcome back, ${user?.user_metadata?.first_name || user?.email}!`}
-        showButtons={false}
+      
         heightClass="min-h-[22vh]"
         bgGradient="from-blue-100 to-blue-200"
       />
