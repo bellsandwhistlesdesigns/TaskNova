@@ -6,7 +6,7 @@ export default function CookiePolicyPage() {
           <Hero title="TaskNova"
             subtitle="Our Cookie Policy"
             heightClass="min-h-[22vh]"
-            // show buttons go here
+            showButtons={false}// show buttons go here
             bgGradient="from-blue-100 to-blue-200"
       />
     <section className="max-w-4xl mx-auto px-6 py-16">

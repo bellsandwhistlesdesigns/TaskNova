@@ -58,7 +58,7 @@ export default function RegisterPage() {
       <Hero
         title="Join TaskNova"
         subtitle="Start talking to an advisor about managing your projects effortlessly."
-        // show buttons go here
+        showButtons={false}// show buttons go here
         heightClass="min-h-[30vh]"
         bgGradient="from-blue-100 to-blue-200"
       />

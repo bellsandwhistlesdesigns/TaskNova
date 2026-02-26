@@ -27,7 +27,25 @@ export default function MarketingPage() {
           </div>
         </div>
       </section>
-      {/* remember the Testimonials in Notepad */}
+      
+      {/* ===== TESTIMONIALS ===== */}
+      <section className="py-20 px-6 md:px-20 bg-blue-50">
+        <h2 className="text-4xl font-bold text-center text-blue-900 mb-12">Loved by Teams Everywhere</h2>
+        <div className="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
+          <div className="p-6 bg-white rounded-xl shadow hover:shadow-lg transition">
+            <p className="text-blue-700 italic mb-4">TaskNova transformed our team workflow. It's intuitive and powerful!”</p>
+            <span className="text-blue-800 font-semibold">— Sarah L., Product Manager</span>
+          </div>
+          <div className="p-6 bg-white rounded-xl shadow hover:shadow-lg transition">
+            <p className="text-blue-700 italic mb-4">“We finally have a clear view of all tasks and deadlines. Love it!”</p>
+            <span className="text-blue-800 font-semibold">— Mark T., Team Lead</span>
+          </div>
+          <div className="p-6 bg-white rounded-xl shadow hover:shadow-lg transition">
+            <p className="text-blue-700 italic mb-4">“Simple, clean, and efficient. TaskNova makes managing projects fun!”</p>
+            <span className="text-blue-800 font-semibold">— Emily R., Designer</span>
+          </div>
+        </div>
+      </section>
 
       {/* ===== CTA BANNER ===== */}
       <section className="py-20 px-6 md:px-20 bg-blue-600 text-white text-center">

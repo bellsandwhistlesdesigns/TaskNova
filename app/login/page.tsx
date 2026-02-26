@@ -39,7 +39,7 @@ export default function LoginPage() {
       <Hero
         title="Welcome Back to TaskNova"
         subtitle="Sign in with your email and continue managing your workflow."
-        // show buttons goes here 
+        showButtons={false}// show buttons goes here 
         bgGradient="from-blue-100 to-blue-200"
         heightClass="min-h-[50vh]"
       />

@@ -6,7 +6,7 @@ export default function PrivacyPage() {
       <Hero
         title="TaskNova"
         subtitle="Our Privacy Policy"
-        //show button go here
+        showButtons={false}//show button go here
         heightClass="min-h-[22vh]"
         bgGradient="from-blue-100 to-blue-200"
       />
