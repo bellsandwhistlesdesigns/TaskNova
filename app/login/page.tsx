@@ -19,7 +19,7 @@ export default function LoginPage() {
       const { error } = await supabase.auth.signInWithOtp({
         email,
         options: {
-          emailRedirectTo: `${window.location.origin}/dashboard`,
+          emailRedirectTo: `${window.location.origin}/auth/callback`,
         },
       });
 
@@ -92,7 +92,7 @@ export default function LoginPage() {
 
       {/* FOOTER SECTION */}
       <section className="py-20 px-6 md:px-20 bg-blue-600 text-white text-center">
-        <h2 className="text-3xl md:text-4xl font-bold mb-6">Always simplifying your workflow</h2>
+        <h2 className="text-3xl md:text-4xl font-bold mb-6">Simplifying your workflow</h2>
         <p className="mb-8 max-w-xl mx-auto">Thanks for choosing TaskNova.</p>
         <a
           href="/register"

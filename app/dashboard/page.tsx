@@ -8,7 +8,6 @@ import Hero from "@/components/Hero";
 export default function Dashboard() {
   const router = useRouter();
 
-  // States
   const [loading, setLoading] = useState(true);
   const [user, setUser] = useState<any>(null);
   const [organization, setOrganization] = useState<any>(null);
@@ -18,75 +17,39 @@ export default function Dashboard() {
   const [newProjectName, setNewProjectName] = useState("");
   const [newTaskTitle, setNewTaskTitle] = useState("");
 
-  // Initialize dashboard
+  // ======================
+  // INITIAL LOAD
+  // ======================
   useEffect(() => {
     const initDashboard = async () => {
-      const { data: { session } } = await supabase.auth.getSession();
+      const { data: { user }, error } = await supabase.auth.getUser();
 
-      if (!session) {
+      if (error || !user) {
         router.push("/login");
         return;
       }
 
-      setUser(session.user);
+      setUser(user);
 
-      // 1️⃣ Get or create organization
-      let { data: orgData, error: orgError } = await supabase
-        .from("organizations")
-        .select("id, name, owner_id, created_at")
-        .eq("owner_id", session.user.id)
-        .maybeSingle();
+      // Fetch user's organization from membership
+      const { data: membership } = await supabase
+        .from("organization_members")
+        .select("role, organization_id, organizations(id, name)")
+        .eq("user_id", user.id)
+        .single();
 
-      if (orgError && orgError.code !== "PGRST116") { // ignore "no rows" error
-        console.log("Error fetching organization:", orgError);
-        setLoading(false);
+      if (!membership) {
+        router.push("/setup"); // first-time signup
         return;
       }
 
-      if (!orgData) {
-        // Create default organization
-        const orgName = `${session.user.user_metadata?.first_name || "My"} Organization`;
-        const { data: newOrg, error: createOrgError } = await supabase
-          .from("organizations")
-          .insert([{ name: orgName, owner_id: session.user.id }])
-          .select("id, name, owner_id, created_at")
-          .single();
+      setOrganization(membership.organizations);
 
-        if (createOrgError) {
-          console.log("Error creating organization:", createOrgError);
-          setLoading(false);
-          return;
-        }
-
-        orgData = newOrg;
-
-        // Add user to organization_members as Admin
-        await supabase
-          .from("organization_members")
-          .insert([{ user_id: session.user.id, organization_id: orgData.id, role: "admin" }]);
-      } else {
-        // Ensure user is in organization_members
-        const { data: memberData } = await supabase
-          .from("organization_members")
-          .select("id, user_id, organization_id, role, created_at")
-          .eq("organization_id", orgData.id)
-          .eq("user_id", session.user.id)
-          .single();
-
-        if (!memberData) {
-          await supabase
-            .from("organization_members")
-            .insert([{ user_id: session.user.id, organization_id: orgData.id, role: "admin" }]);
-        }
-      }
-
-      setOrganization(orgData);
-
-      // 2️⃣ Fetch projects for organization
+      // Fetch projects for this organization
       const { data: projectsData, error: projectsError } = await supabase
         .from("projects")
         .select("id, name, organization_id, created_at")
-        .eq("organization_id", orgData.id)
+        .eq("organization_id", membership.organization_id)
         .order("created_at", { ascending: true });
 
       if (projectsError) console.log("Projects fetch error:", projectsError);
@@ -106,15 +69,28 @@ export default function Dashboard() {
     return () => authListener.subscription.unsubscribe();
   }, [router]);
 
-  // Fetch tasks when project changes
+  // ======================
+  // FETCH TASKS WHEN PROJECT SELECTED
+  // ======================
   useEffect(() => {
     if (selectedProjectId) fetchTasks(selectedProjectId);
     else setTasks([]);
   }, [selectedProjectId]);
 
-  if (loading) return <p>Loading...</p>;
+  const fetchTasks = async (projectId: string) => {
+    const { data, error } = await supabase
+      .from("tasks")
+      .select("id, title, project_id, organization_id, assigned_to, is_complete, created_at")
+      .eq("project_id", projectId)
+      .order("created_at", { ascending: false });
 
-  // Handlers
+    if (error) console.log("Error fetching tasks:", error);
+    else setTasks(data || []);
+  };
+
+  // ======================
+  // HANDLERS
+  // ======================
   const handleAddProject = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!newProjectName || !organization) return;
@@ -126,9 +102,8 @@ export default function Dashboard() {
 
     if (error) return console.log("Error adding project:", error);
 
-    const createdProject = data[0];
-    setProjects([...projects, createdProject]);
-    setSelectedProjectId(createdProject.id);
+    setProjects([...projects, data[0]]);
+    setSelectedProjectId(data[0].id);
     setNewProjectName("");
   };
 
@@ -136,7 +111,7 @@ export default function Dashboard() {
     const { error } = await supabase.from("projects").delete().eq("id", projectId);
     if (error) return console.log("Error deleting project:", error);
 
-    setProjects(projects.filter(p => p.id !== projectId));
+    setProjects(projects.filter((p) => p.id !== projectId));
     if (selectedProjectId === projectId) setSelectedProjectId(null);
     setTasks([]);
   };
@@ -163,33 +138,28 @@ export default function Dashboard() {
       .eq("id", taskId);
 
     if (error) return console.log("Error updating task:", error);
-    setTasks(tasks.map(t => t.id === taskId ? { ...t, is_complete: !currentValue } : t));
+
+    setTasks(tasks.map((t) => (t.id === taskId ? { ...t, is_complete: !currentValue } : t)));
   };
 
   const deleteTask = async (taskId: string) => {
     const { error } = await supabase.from("tasks").delete().eq("id", taskId);
     if (error) return console.log("Error deleting task:", error);
-    setTasks(tasks.filter(t => t.id !== taskId));
+
+    setTasks(tasks.filter((t) => t.id !== taskId));
   };
 
-  const fetchTasks = async (projectId: string) => {
-    const { data, error } = await supabase
-      .from("tasks")
-      .select("id, title, project_id, organization_id, assigned_to, is_complete, created_at")
-      .eq("project_id", projectId)
-      .order("created_at", { ascending: false });
+  if (loading) return <p className="text-center mt-20">Loading…</p>;
 
-    if (error) return console.log("Error fetching tasks:", error);
-    setTasks(data || []);
-  };
-
-  // Render
+  // ======================
+  // RENDER
+  // ======================
   return (
     <>
       <Hero
-        title={organization?.name || "Your Dashboard"}
+        title={organization?.name || "Dashboard"}
         subtitle={`Welcome back, ${user?.user_metadata?.first_name || user?.email}!`}
-        showButtons={false} //show buttons go here 
+        showButtons={false}
         heightClass="min-h-[22vh]"
         bgGradient="from-blue-100 to-blue-200"
       />
@@ -208,7 +178,7 @@ export default function Dashboard() {
             </div>
             <div className="bg-white p-6 rounded-2xl shadow-sm">
               <h3 className="text-sm text-gray-500">Completed Tasks</h3>
-              <p className="text-3xl font-bold">{tasks.filter(t => t.is_complete).length}</p>
+              <p className="text-3xl font-bold">{tasks.filter((t) => t.is_complete).length}</p>
             </div>
           </div>
 
@@ -225,11 +195,16 @@ export default function Dashboard() {
                   placeholder="New project name"
                   className="border p-2 rounded flex-1"
                 />
-                <button type="submit" className="bg-blue-600 text-white px-3 py-2 rounded hover:bg-blue-700 transition">+</button>
+                <button
+                  type="submit"
+                  className="bg-blue-600 text-white px-3 py-2 rounded hover:bg-blue-700 transition"
+                >
+                  +
+                </button>
               </form>
 
               <ul className="space-y-2">
-                {projects.map(p => (
+                {projects.map((p) => (
                   <li
                     key={p.id}
                     onClick={() => setSelectedProjectId(p.id)}
@@ -242,7 +217,9 @@ export default function Dashboard() {
 
               {selectedProjectId && (
                 <button
-                  onClick={() => { if (confirm("Delete this project and all its tasks?")) deleteProject(selectedProjectId); }}
+                  onClick={() => {
+                    if (confirm("Delete this project and all its tasks?")) deleteProject(selectedProjectId);
+                  }}
                   className="mt-6 w-full bg-red-500 text-white py-2 rounded hover:bg-red-600 transition"
                 >
                   Delete Project
@@ -262,11 +239,16 @@ export default function Dashboard() {
                   placeholder="New task title"
                   className="border p-2 rounded flex-1"
                 />
-                <button type="submit" className="bg-green-600 text-white px-4 py-2 rounded hover:bg-green-700 transition">Add</button>
+                <button
+                  type="submit"
+                  className="bg-green-600 text-white px-4 py-2 rounded hover:bg-green-700 transition"
+                >
+                  Add
+                </button>
               </form>
 
               <ul className="space-y-3">
-                {tasks.map(task => (
+                {tasks.map((task) => (
                   <li key={task.id} className="flex items-center justify-between p-4 rounded-xl border hover:shadow-sm transition">
                     <div className="flex items-center gap-3">
                       <input
@@ -276,7 +258,10 @@ export default function Dashboard() {
                       />
                       <span className={task.is_complete ? "line-through text-gray-400" : ""}>{task.title}</span>
                     </div>
-                    <button onClick={() => { if (confirm("Delete this task?")) deleteTask(task.id); }} className="text-red-500 hover:text-red-700 text-sm">
+                    <button
+                      onClick={() => { if (confirm("Delete this task?")) deleteTask(task.id); }}
+                      className="text-red-500 hover:text-red-700 text-sm"
+                    >
                       Delete
                     </button>
                   </li>
