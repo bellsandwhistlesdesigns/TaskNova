@@ -1,3 +1,5 @@
+"use client";
+
 import Hero from "@/components/Hero";
 
 export default function TermsPage() {
@@ -8,7 +10,7 @@ export default function TermsPage() {
         subtitle="Our Terms of Service"
         showButtons={false}//show button go here
         heightClass="min-h-[22vh]"
-        bgGradient="from-blue-100 to-blue-200"
+        
       />
 
       <section className="max-w-3xl mx-auto py-16 px-6 space-y-8">

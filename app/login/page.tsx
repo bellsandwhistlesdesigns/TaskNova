@@ -34,73 +34,102 @@ export default function LoginPage() {
   };
 
   return (
-    <main className="bg-gray-50 min-h-screen">
-      {/* HERO SECTION */}
-      <Hero
-        title="Welcome Back to TaskNova"
-        subtitle="Sign in with your email and continue managing your workflow."
-        showButtons={false}// show buttons goes here 
-        bgGradient="from-blue-100 to-blue-200"
-        heightClass="min-h-[50vh]"
+  <main className="bg-black text-white min-h-screen">
+
+    {/* ===== HERO SECTION ===== */}
+    <Hero
+      title="Welcome Back to TaskNova"
+      showButtons={false}
+      heightClass="min-h-[50vh]"
+    />
+
+    {/* ===== LOGIN CARD ===== */}
+    <section className="flex justify-center px-6 pb-24 -mt-20 relative z-10">
+  <div
+    className="w-full max-w-md p-10 rounded-3xl
+               bg-white/5 backdrop-blur-xl
+               border border-white/10
+               shadow-[0_0_40px_rgba(255,215,0,0.15)]"
+  >
+    {/* Subtitle centered above form */}
+    <div className="text-center mb-8">
+      <h2 className="text-xl md:text-2xl text-yellow-400 font-semibold">
+       
+        Sign in with your email and continue managing your workflow.
+      </h2>
+    </div>
+
+    <form onSubmit={handleLogin} className="flex flex-col gap-5">
+      <input
+        type="email"
+        placeholder="Email address"
+        value={email}
+        onChange={(e) => setEmail(e.target.value)}
+        required
+        className="bg-black/40 border border-white/20 text-white
+                   p-4 rounded-xl
+                   focus:outline-none focus:ring-2
+                   focus:ring-yellow-400 focus:border-transparent
+                   transition"
       />
 
-      {/* LOGIN CARD */}
-      <section className="flex justify-center px-6 pb-20 -mt-6 md:-mt-10">
-        <div className="bg-white p-10 rounded-3xl shadow-xl w-full max-w-md border border-gray-100">
+      <button
+        type="submit"
+        disabled={isSubmitting}
+        className={`py-4 rounded-xl font-semibold transition mt-2 ${
+          isSubmitting
+            ? "bg-gray-500 text-white cursor-not-allowed"
+            : "bg-yellow-500 text-black hover:shadow-[0_0_30px_white] hover:scale-105"
+        }`}
+      >
+        {isSubmitting ? "Sending..." : "Send Magic Link"}
+      </button>
+    </form>
 
-          <form onSubmit={handleLogin} className="flex flex-col gap-5">
-            <input
-              type="email"
-              placeholder="Email address"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-              required
-              className="border border-gray-300 p-4 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition"
-            />
+        {message && (
+          <p
+            className={`mt-6 text-center text-sm ${
+              message.includes("Check your email")
+                ? "text-green-400"
+                : "text-red-400"
+            }`}
+          >
+            {message}
+          </p>
+        )}
 
-            <button
-              type="submit"
-              disabled={isSubmitting}
-              className={`py-4 rounded-xl font-semibold transition shadow-md mt-2 ${
-                isSubmitting
-                  ? "bg-gray-400 text-white cursor-not-allowed"
-                  : "bg-blue-600 text-white hover:bg-blue-700"
-              }`}
-            >
-              {isSubmitting ? "Sending..." : "Send Magic Link"}
-            </button>
-          </form>
-
-          {message && (
-            <p
-              className={`mt-6 text-center text-sm ${
-                message.includes("Check your email") ? "text-green-600" : "text-red-500"
-              }`}
-            >
-              {message}
-            </p>
-          )}
-
-          <div className="mt-8 text-center text-gray-400 text-sm">
-            Don’t have an account?{" "}
-            <a href="/register" className="text-blue-600 hover:underline">
-              Find out More
-            </a>
-          </div>
+        <div className="mt-8 text-center text-gray-400 text-sm">
+          Don’t have an account?{" "}
+          <a
+            href="/register"
+            className="text-yellow-400 hover:text-yellow-300 transition"
+          >
+            Find out More
+          </a>
         </div>
-      </section>
+      </div>
+    </section>
 
-      {/* FOOTER SECTION */}
-      <section className="py-20 px-6 md:px-20 bg-blue-600 text-white text-center">
-        <h2 className="text-3xl md:text-4xl font-bold mb-6">Simplifying your workflow</h2>
-        <p className="mb-8 max-w-xl mx-auto">Thanks for choosing TaskNova.</p>
-        <a
-          href="/register"
-          className="bg-white text-blue-600 px-8 py-4 rounded-lg shadow hover:bg-blue-50 transition font-semibold"
-        >
-          Find out More
-        </a>
-      </section>
-    </main>
-  );
+    {/* ===== FOOTER SECTION ===== */}
+    <section className="py-20 px-6 md:px-20 text-center border-t border-white/10">
+      <h2 className="text-3xl md:text-4xl font-bold mb-6">
+        Simplifying your workflow
+      </h2>
+
+      <p className="mb-8 max-w-xl mx-auto text-gray-400">
+        Thanks for choosing TaskNova.
+      </p>
+
+      <a
+        href="/register"
+        className="bg-yellow-500 text-black px-8 py-4 rounded-2xl
+                   hover:shadow-[0_0_35px_white]
+                   hover:scale-105 transition font-semibold"
+      >
+        Find out More
+      </a>
+    </section>
+
+  </main>
+);
 }

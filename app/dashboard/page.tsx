@@ -62,7 +62,7 @@ export default function Dashboard() {
 
     // Auth listener
     const { data: authListener } = supabase.auth.onAuthStateChange((_event, session) => {
-      if (!session) router.push("/login");
+      if (!session) router.push("/dashboard");
       else setUser(session.user);
     });
 
@@ -161,7 +161,7 @@ export default function Dashboard() {
         subtitle={`Welcome back, ${user?.user_metadata?.first_name || user?.email}!`}
         showButtons={false}
         heightClass="min-h-[22vh]"
-        bgGradient="from-blue-100 to-blue-200"
+        
       />
 
       <main className="bg-gray-50 min-h-screen px-6 py-10">

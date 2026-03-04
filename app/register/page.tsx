@@ -60,7 +60,7 @@ export default function RegisterPage() {
         subtitle="Start talking to an advisor about managing your projects effortlessly."
         showButtons={false}// show buttons go here
         heightClass="min-h-[30vh]"
-        bgGradient="from-blue-100 to-blue-200"
+        
       />
 
       {/* Registration Card */}

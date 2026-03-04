@@ -1,64 +1,148 @@
+"use client";
+
 import Hero from "@/components/Hero";
+
 
 export default function MarketingPage() {
   return (
-    <main>
-      <Hero /> {/* default marketing hero */}
+    <main className="bg-black text-white">
+      
+      {/* ===== HERO ===== */}
+      <Hero />
 
       {/* ===== FEATURES SECTION ===== */}
-      <section id="features" className="py-20 px-6 md:px-20 bg-white">
-        <h2 className="text-4xl font-bold text-center text-blue-900 mb-12">Why Choose TaskNova?</h2>
+      <section
+        id="features"
+        className="py-24 px-6 md:px-20 bg-black"
+      >
+        <h2 className="text-4xl font-bold text-center mb-16">
+          Why Choose <span className="text-yellow-400">TaskNova?</span>
+        </h2>
+
         <div className="grid md:grid-cols-4 gap-8 max-w-6xl mx-auto">
-          <div className="p-6 bg-blue-50 rounded-xl shadow hover:shadow-lg transition">
-            <h3 className="text-xl font-semibold mb-2 text-blue-800">Easy Task Tracking</h3>
-            <p className="text-blue-700">Create, assign, and manage tasks effortlessly with a simple interface.</p>
+          
+          <div className="p-8 bg-gray-900 rounded-2xl border border-yellow-500/30 
+                          hover:shadow-[0_0_25px_white] transition duration-300">
+            <h3 className="text-xl font-semibold mb-3 text-yellow-400">
+              Easy Task Tracking
+            </h3>
+            <p className="text-gray-300">
+              Create, assign, and manage tasks effortlessly with a clean and intuitive interface.
+            </p>
           </div>
-          <div className="p-6 bg-blue-50 rounded-xl shadow hover:shadow-lg transition">
-            <h3 className="text-xl font-semibold mb-2 text-blue-800">Team Collaboration</h3>
-            <p className="text-blue-700">Keep your team in sync with shared boards, comments, and real-time updates.</p>
+
+          <div className="p-8 bg-gray-900 rounded-2xl border border-yellow-500/30 
+                          hover:shadow-[0_0_25px_white] transition duration-300">
+            <h3 className="text-xl font-semibold mb-3 text-yellow-400">
+              Team Collaboration
+            </h3>
+            <p className="text-gray-300">
+              Keep your team in sync with shared boards, comments, and real-time updates.
+            </p>
           </div>
-          <div className="p-6 bg-blue-50 rounded-xl shadow hover:shadow-lg transition">
-            <h3 className="text-xl font-semibold mb-2 text-blue-800">Timeline & Kanban View</h3>
-            <p className="text-blue-700">Visualize your workflow with flexible views that match your style.</p>
+
+          <div className="p-8 bg-gray-900 rounded-2xl border border-yellow-500/30 
+                          hover:shadow-[0_0_25px_white] transition duration-300">
+            <h3 className="text-xl font-semibold mb-3 text-yellow-400">
+              Timeline & Kanban View
+            </h3>
+            <p className="text-gray-300">
+              Visualize your workflow with flexible views that match your process.
+            </p>
           </div>
-          <div className="p-6 bg-blue-50 rounded-xl shadow hover:shadow-lg transition">
-            <h3 className="text-xl font-semibold mb-2 text-blue-800">Insights & Reporting</h3>
-            <p className="text-blue-700">Track progress, identify bottlenecks, and make smarter decisions with analytics.</p>
+
+          <div className="p-8 bg-gray-900 rounded-2xl border border-yellow-500/30 
+                          hover:shadow-[0_0_25px_white] transition duration-300">
+            <h3 className="text-xl font-semibold mb-3 text-yellow-400">
+              Insights & Reporting
+            </h3>
+            <p className="text-gray-300">
+              Track progress, identify bottlenecks, and make smarter decisions with analytics.
+            </p>
           </div>
+
         </div>
       </section>
       
+      <section>
+        <div className="relative z-10 flex justify-center">
+          <div className="w-24 h-1 bg-yellow-400 rounded-full shadow-[0_0_15px_#FFD700]"></div>
+        </div>
+      </section>
+                  
       {/* ===== TESTIMONIALS ===== */}
-      <section className="py-20 px-6 md:px-20 bg-blue-50">
-        <h2 className="text-4xl font-bold text-center text-blue-900 mb-12">Loved by Teams Everywhere</h2>
+      <section className="py-24 px-6 md:px-20 bg-black border-t border-yellow-500/20">
+        <h2 className="text-4xl font-bold text-center mb-16">
+          Loved by Teams Everywhere
+        </h2>
+
         <div className="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
-          <div className="p-6 bg-white rounded-xl shadow hover:shadow-lg transition">
-            <p className="text-blue-700 italic mb-4">TaskNova transformed our team workflow. It's intuitive and powerful!”</p>
-            <span className="text-blue-800 font-semibold">— Sarah L., Product Manager</span>
+
+          <div className="p-8 bg-gray-900 rounded-2xl border border-yellow-500/30 
+                          hover:shadow-[0_0_25px_white] transition duration-300">
+            <p className="text-gray-300 italic mb-6">
+              “TaskNova transformed our team workflow. It's intuitive and powerful!”
+            </p>
+            <span className="text-yellow-400 font-semibold">
+              — Sarah L., Product Manager
+            </span>
           </div>
-          <div className="p-6 bg-white rounded-xl shadow hover:shadow-lg transition">
-            <p className="text-blue-700 italic mb-4">“We finally have a clear view of all tasks and deadlines. Love it!”</p>
-            <span className="text-blue-800 font-semibold">— Mark T., Team Lead</span>
+
+          <div className="p-8 bg-gray-900 rounded-2xl border border-yellow-500/30 
+                          hover:shadow-[0_0_25px_white] transition duration-300">
+            <p className="text-gray-300 italic mb-6">
+              “We finally have a clear view of all tasks and deadlines. Love it!”
+            </p>
+            <span className="text-yellow-400 font-semibold">
+              — Mark T., Team Lead
+            </span>
           </div>
-          <div className="p-6 bg-white rounded-xl shadow hover:shadow-lg transition">
-            <p className="text-blue-700 italic mb-4">“Simple, clean, and efficient. TaskNova makes managing projects fun!”</p>
-            <span className="text-blue-800 font-semibold">— Emily R., Designer</span>
+
+          <div className="p-8 bg-gray-900 rounded-2xl border border-yellow-500/30 
+                          hover:shadow-[0_0_25px_white] transition duration-300">
+            <p className="text-gray-300 italic mb-6">
+              “Simple, clean, and efficient. TaskNova makes managing projects fun!”
+            </p>
+            <span className="text-yellow-400 font-semibold">
+              — Emily R., Designer
+            </span>
           </div>
+
         </div>
       </section>
 
+      
+
+      {/* Center gold line for bling */}
+		<section>
+        <div className="relative z-10 flex justify-center">
+          <div className="w-24 h-1 bg-yellow-400 rounded-full shadow-[0_0_15px_#FFD700]"></div>
+        </div>
+      </section>
+      
       {/* ===== CTA BANNER ===== */}
-      <section className="py-20 px-6 md:px-20 bg-blue-600 text-white text-center">
-        <h2 className="text-3xl md:text-4xl font-bold mb-6">Ready to simplify your workflow?</h2>
-        <p className="mb-8 max-w-xl mx-auto">Get touch with an advisor, and start organizing your projects today.</p>
+      <section className="py-24 px-6 md:px-20 bg-black text-center border-t border-yellow-500/20">
+        <h2 className="text-3xl md:text-4xl font-bold mb-6">
+          Ready to simplify your workflow?
+        </h2>
+
+        <p className="mb-10 max-w-xl mx-auto bg-black text-gray-300">
+          Get in touch with an advisor and start organizing your projects today.
+        </p>
+
         <a
           href="/register"
-          className="bg-white text-blue-600 px-8 py-4 rounded-lg shadow hover:bg-blue-50 transition font-semibold"
+          className="inline-block px-10 py-4 rounded-2xl font-semibold
+                     bg-yellow-500 text-black
+                     border-2 border-white
+                     hover:shadow-[0_0_30px_white]
+                     hover:scale-105
+                     transition-all duration-300"
         >
           Find out More
         </a>
       </section>
-      
+
     </main>
   );
 }

@@ -17,7 +17,7 @@ export async function POST(req: Request) {
 
     await transporter.sendMail({
       from: `"TaskNova Interest" <${process.env.OUTLOOK_USER}>`,
-      to: "douglasmoth@outlook.com", // temporary destination
+      to: "tasknova2026@outlook.com", // temporary destination
       subject: "New TaskNova Interest Submission",
       text: `New submission from TaskNova:\n\nName: ${firstName} ${lastName}\nEmail: ${email}`,
     });

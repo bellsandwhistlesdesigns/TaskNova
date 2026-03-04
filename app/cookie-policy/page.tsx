@@ -1,3 +1,5 @@
+"use client";
+
 import Hero from "@/components/Hero";
 
 export default function CookiePolicyPage() {
@@ -7,7 +9,7 @@ export default function CookiePolicyPage() {
             subtitle="Our Cookie Policy"
             heightClass="min-h-[22vh]"
             showButtons={false}// show buttons go here
-            bgGradient="from-blue-100 to-blue-200"
+            
       />
     <section className="max-w-4xl mx-auto px-6 py-16">
       <h1 className="text-4xl font-bold mb-8">Cookie Policy</h1>

@@ -7,7 +7,7 @@ import Hero from "@/components/Hero";
 
 const roles = ["admin", "pm", "tech", "staff"];
 
-export default function CompanyAdmin() {
+export default function CompanyPage() {
   const router = useRouter();
   const [loading, setLoading] = useState(true);
   const [user, setUser] = useState<any>(null);
@@ -15,141 +15,90 @@ export default function CompanyAdmin() {
   const [employees, setEmployees] = useState<any[]>([]);
   const [newEmail, setNewEmail] = useState("");
   const [newRole, setNewRole] = useState("staff");
-  const [logoFile, setLogoFile] = useState<File | null>(null);
+  const [membership, setMembership] = useState<any>(null);
 
-  // ======================
-  // INITIAL LOAD
-  // ======================
-  useEffect(() => {
-    const init = async () => {
-      const { data: { user }, error } = await supabase.auth.getUser();
-      if (error || !user) {
-        router.push("/login");
-        return;
-      }
-      setUser(user);
+  // Load user, membership, org, employees
+useEffect(() => {
+  const init = async () => {
+    const { data: { user } } = await supabase.auth.getUser();
+    if (!user) {
+      router.push("/login");
+      return;
+    }
+    setUser(user);
 
-      // Check membership
-      const { data: membership } = await supabase
-        .from("organization_members")
-        .select("role, organizations(id, name, logo_url)")
-        .eq("user_id", user.id)
-        .single();
+    const { data: membershipData, error } = await supabase
+      .from("organization_members")
+      .select("role, organizations(id, name)")
+      .eq("user_id", user.id)
+      .single();
 
-      if (!membership) {
-        router.push("/setup");
-        return;
-      }
-
-      if (membership.role !== "admin") {
-        router.push("/dashboard"); // employees go to dashboard
-        return;
-      }
-
-      setOrganization(membership.organizations);
-
-      // Fetch employees
-      const { data: employeesData } = await supabase
-        .from("organization_members")
-        .select("id, user_id, role, users(email)")
-        .eq("organization_id", membership.organizations.id)
-        .order("created_at", { ascending: true });
-
-      setEmployees(employeesData || []);
-      setLoading(false);
-    };
-
-    init();
-  }, [router]);
-
-  // ======================
-  // LOGO UPLOAD
-  // ======================
-  const handleLogoUpload = async () => {
-    if (!logoFile || !organization) return;
-    const fileName = `organization-logos/${organization.id}-${logoFile.name}`;
-    const { data, error } = await supabase.storage
-      .from("organization-logos")
-      .upload(fileName, logoFile, { upsert: true });
-
-    if (error) {
-      console.log("Error uploading logo:", error);
+    if (error || !membershipData?.organizations?.length) {
+      router.push("/setup");
       return;
     }
 
-    const { publicUrl } = supabase.storage
-      .from("organization-logos")
-      .getPublicUrl(fileName);
+    setMembership(membershipData);
 
-    // Save URL to organization
-    const { error: updateError } = await supabase
-      .from("organizations")
-      .update({ logo_url: publicUrl })
-      .eq("id", organization.id);
+    if (membershipData.role !== "admin") {
+      router.push("/dashboard");
+      return;
+    }
 
-    if (!updateError) setOrganization({ ...organization, logo_url: publicUrl });
-    else console.log("Error saving logo URL:", updateError);
+    const org = membershipData.organizations[0];
+    setOrganization(org);
+
+    const { data: employeesData } = await supabase
+      .from("organization_members")
+      .select("id, user_id, role, users(email)")
+      .eq("organization_id", org.id)
+      .order("created_at", { ascending: true });
+
+    setEmployees(employeesData || []);
+    setLoading(false);
   };
 
-  // ======================
-  // ADD / INVITE EMPLOYEE
-  // ======================
+  init();
+}, [router]);
+
+  // Preserve partial setup info in localStorage
+  const handleBackToSetup = () => {
+  if (organization) {
+    // Save current org info as draft
+    localStorage.setItem("draftOrganization", JSON.stringify(organization));
+  }
+  // Navigate to setup page
+  router.push("/setup");
+};
+
   const handleAddEmployee = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!newEmail || !organization) return;
 
-    try {
-      // Invite user via Magic Link
-      const { data: inviteData, error: inviteError } =
-        await supabase.auth.admin.inviteUserByEmail(newEmail);
+    const { data: inviteData, error: inviteError } = await supabase.auth.admin.inviteUserByEmail(newEmail);
+    if (inviteError) return console.log("Error inviting user:", inviteError);
 
-      if (inviteError) {
-        console.log("Error inviting user:", inviteError);
-        return;
-      }
+    const { data: memberData, error: memberError } = await supabase
+      .from("organization_members")
+      .insert([{ user_id: inviteData.user?.id, organization_id: organization.id, role: newRole }])
+      .select("id, user_id, role, users(email)")
+      .single();
 
-      // Add to organization_members
-      const { data: memberData, error: memberError } = await supabase
-        .from("organization_members")
-        .insert([
-          {
-            user_id: inviteData.user?.id,
-            organization_id: organization.id,
-            role: newRole,
-          },
-        ])
-        .select("id, user_id, role, users(email)")
-        .single();
+    if (memberError) return console.log("Error adding employee:", memberError);
 
-      if (memberError) {
-        console.log("Error adding employee:", memberError);
-        return;
-      }
-
-      setEmployees([...employees, memberData]);
-      setNewEmail("");
-      setNewRole("staff");
-    } catch (err) {
-      console.log("Error adding employee:", err);
-    }
+    setEmployees([...employees, memberData]);
+    setNewEmail("");
+    setNewRole("staff");
   };
 
-  // ======================
-  // REMOVE EMPLOYEE
-  // ======================
   const removeEmployee = async (id: string) => {
     if (!confirm("Remove this employee?")) return;
-
-    const { error } = await supabase
-      .from("organization_members")
-      .delete()
-      .eq("id", id);
-
-    if (!error) setEmployees(employees.filter((e) => e.id !== id));
-    else console.log("Error removing employee:", error);
+    const { error } = await supabase.from("organization_members").delete().eq("id", id);
+    if (error) return console.log("Error removing employee:", error);
+    setEmployees(employees.filter((e) => e.id !== id));
   };
 
-  if (loading) return <p className="text-center mt-20">Loading…</p>;
+  if (loading) return <p>Loading...</p>;
 
   return (
     <>
@@ -158,59 +107,44 @@ export default function CompanyAdmin() {
         subtitle={`Welcome back, ${user?.user_metadata?.first_name || user?.email}!`}
         showButtons={false}
         heightClass="min-h-[22vh]"
-        bgGradient="from-purple-100 to-purple-200"
       />
-
+	{/* Back Button for Admins */}
+      {membership?.role === "admin" && (
+        <div className="max-w-6xl mx-auto mb-6 flex items-center">
+          <button
+            onClick={handleBackToSetup}
+            className="bg-gray-200 text-gray-800 px-4 py-2 rounded hover:bg-gray-300"
+          >
+            ← Back to Setup
+          </button>
+        </div>
+      )}
       <main className="bg-gray-50 min-h-screen px-6 py-10">
         <div className="max-w-6xl mx-auto">
-
-          {/* Logo Upload */}
-          <div className="bg-white p-6 rounded-2xl shadow-sm mb-10">
-            <h2 className="text-xl font-semibold mb-4">Company Logo</h2>
-            {organization.logo_url && (
-              <img src={organization.logo_url} alt="Logo" className="h-24 mb-4" />
-            )}
-            <input
-              type="file"
-              accept="image/*"
-              onChange={(e) => setLogoFile(e.target.files?.[0] || null)}
-              className="mb-2"
-            />
-            <button
-              onClick={handleLogoUpload}
-              className="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700 transition"
-            >
-              Upload Logo
-            </button>
-          </div>
-
-          {/* Add Employee */}
+          {/* Add Employee Section */}
           <div className="bg-white p-6 rounded-2xl shadow-sm mb-10">
             <h2 className="text-xl font-semibold mb-4">Add Employee</h2>
             <form onSubmit={handleAddEmployee} className="flex gap-2 flex-wrap">
               <input
                 type="email"
+                placeholder="Employee email"
                 value={newEmail}
                 onChange={(e) => setNewEmail(e.target.value)}
-                placeholder="Employee email"
                 className="border p-2 rounded flex-1 min-w-[200px]"
+                required
               />
-              <select
-                value={newRole}
-                onChange={(e) => setNewRole(e.target.value)}
-                className="border p-2 rounded"
-              >
+              <select value={newRole} onChange={(e) => setNewRole(e.target.value)} className="border p-2 rounded">
                 {roles.map((r) => (
                   <option key={r} value={r}>{r}</option>
                 ))}
               </select>
-              <button type="submit" className="bg-green-600 text-white px-4 py-2 rounded hover:bg-green-700 transition">
+              <button type="submit" className="bg-green-600 text-white px-4 py-2 rounded hover:bg-green-700">
                 Add
               </button>
             </form>
           </div>
 
-          {/* Employee List */}
+          {/* Employees Table */}
           <div className="bg-white p-6 rounded-2xl shadow-sm">
             <h2 className="text-xl font-semibold mb-4">Employees</h2>
             <table className="w-full table-auto border-collapse">
@@ -227,10 +161,7 @@ export default function CompanyAdmin() {
                     <td className="p-2">{e.users?.email || "Pending Invite"}</td>
                     <td className="p-2">{e.role}</td>
                     <td className="p-2">
-                      <button
-                        onClick={() => removeEmployee(e.id)}
-                        className="text-red-500 hover:text-red-700"
-                      >
+                      <button onClick={() => removeEmployee(e.id)} className="text-red-500 hover:text-red-700">
                         Remove
                       </button>
                     </td>
@@ -239,7 +170,18 @@ export default function CompanyAdmin() {
               </tbody>
             </table>
           </div>
-
+		  {/* Logout */}
+          <div className="flex justify-end mt-10">
+            <button
+              className="bg-red-600 text-white px-5 py-2 rounded hover:bg-red-700 transition"
+              onClick={async () => {
+                await supabase.auth.signOut();
+                router.push("/login");
+              }}
+            >
+              Logout
+            </button>
+          </div>
         </div>
       </main>
     </>
