@@ -116,19 +116,18 @@ export default function Hero({
       >
         {/* ===== SUPERNOVA SUN ===== */}
         <div
-          className="absolute z-20 top-[2.5%] right-[25%] sm:right-[15%] w-[180px] h-[180px] sm:w-[220px] sm:h-[220px] md:w-[320px] md:h-[320px]"
-        >
+          className="absolute z-20 top-[5%] sm:top-[2.5%] right-[25%] sm:right-[15%] w-[180px] h-[180px] sm:w-[220px] sm:h-[220px] md:w-[320px] md:h-[320px]"        >
           {/* OUTER GLOW + SUBTLE FLARES */}
-<motion.div
-  className="absolute rounded-full"
-  style={{
-    top: "50%",
-    left: "50%",
-    transform: "translate(-50%, -50%)",
-    background:
+      <motion.div
+      className="absolute rounded-full"
+      style={{
+      top: "50%",
+      left: "50%",
+      transform: "translate(-50%, -50%)",
+      background:
       "radial-gradient(circle, rgba(255,200,120,0.6) 0%, rgba(255,120,40,0.3) 40%, transparent 70%)",
-    filter: "blur(40px)",
-  }}
+      filter: "blur(40px)",
+    }}
   animate={{ scale: [1, 1.05, 1] }}
   transition={{ duration: 10, repeat: Infinity }}
 >
