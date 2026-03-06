@@ -56,13 +56,13 @@ export default function Hero({
   showButtons = false,
   heightClass = "min-h-screen",
 }: HeroProps) {
-  const [mounted, setMounted] = useState(false); // NEW: only render after mount
+  const [mounted, setMounted] = useState(false);
   const [particles, setParticles] = useState<Particle[]>([]);
   const [shootingStars, setShootingStars] = useState<Star[]>([]);
   const [explodingParticles, setExplodingParticles] = useState<ExplosionParticle[]>([]);
 
   useEffect(() => {
-    setMounted(true); // mark as mounted
+    setMounted(true);
 
     const width = window.innerWidth;
     const height = window.innerHeight;
@@ -107,7 +107,7 @@ export default function Hero({
     setExplodingParticles(generatedExplosions);
   }, []);
 
-  if (!mounted) return null; // Don't render anything until client-side
+  if (!mounted) return null;
 
   return (
     <main>
@@ -116,34 +116,51 @@ export default function Hero({
       >
         {/* ===== SUPERNOVA SUN ===== */}
         <div
-          className="absolute z-20 top-[2.5%] right-[25%] sm:right-[25%] w-[180px] h-[180px] sm:w-[220px] sm:h-[220px] md:w-[320px] md:h-[320px]"
+          className="absolute z-20 top-[2.5%] right-[25%] sm:right-[15%] w-[180px] h-[180px] sm:w-[220px] sm:h-[220px] md:w-[320px] md:h-[320px]"
         >
-          {/* OUTER GLOW */}
-          <motion.div
-            className="absolute rounded-full"
-            style={{
-              top: "50%",
-              left: "50%",
-              transform: "translate(-50%, -50%)",
-              background:
-                "radial-gradient(circle, rgba(255,200,120,0.6) 0%, rgba(255,120,40,0.3) 40%, transparent 70%)",
-              filter: "blur(40px)",
-            }}
-            animate={{ scale: [1, 1.05, 1] }}
-            transition={{ duration: 10, repeat: Infinity }}
-          />
+          {/* OUTER GLOW + SUBTLE FLARES */}
+<motion.div
+  className="absolute rounded-full"
+  style={{
+    top: "50%",
+    left: "50%",
+    transform: "translate(-50%, -50%)",
+    background:
+      "radial-gradient(circle, rgba(255,200,120,0.6) 0%, rgba(255,120,40,0.3) 40%, transparent 70%)",
+    filter: "blur(40px)",
+  }}
+  animate={{ scale: [1, 1.05, 1] }}
+  transition={{ duration: 10, repeat: Infinity }}
+>
+  {/* subtle rotating + pulsing flares on outer glow */}
+  <motion.div
+    className="absolute inset-0 rounded-full"
+    style={{
+      background:
+        "conic-gradient(rgba(255,255,255,0.1), rgba(255,255,255,0.05), transparent)",
+      mixBlendMode: "screen",
+      filter: "blur(12px)",
+    }}
+    animate={{
+      rotate: [0, 360],
+      opacity: [0.6, 1, 0.6], // pulse opacity
+    }}
+    transition={{
+      duration: 60,
+      repeat: Infinity,
+      ease: "linear",
+    }}
+  />
+</motion.div>
 
           {/* SUN CORE */}
           <motion.div
-            className="absolute rounded-full overflow-hidden"
+            className="absolute rounded-full overflow-hidden w-full h-full"
             style={{
-              width: "100%",
-              height: "100%",
               top: "50%",
               left: "50%",
               transform: "translate(-50%, -50%)",
-              background:
-                "radial-gradient(circle, #fff6c2 0%, #ffb347 25%, #ff5e3a 55%, #b31217 90%)",
+              background: "radial-gradient(circle, #fff6c2 0%, #ffb347 25%, #ff5e3a 55%, #b31217 90%)",
               boxShadow: "0 0 70px rgba(255,140,60,0.9), 0 0 140px rgba(255,60,30,0.6)",
             }}
             animate={{ scale: [1, 1.03, 0.99, 1.04, 1] }}
@@ -157,8 +174,8 @@ export default function Hero({
                 style={{
                   width: p.size,
                   height: p.size,
-                  top: "50%",
-                  left: "50%",
+                  top: "53%",
+                  left: "53%",
                   backgroundColor: p.color,
                   boxShadow: `0 0 10px ${p.color}, 0 0 20px ${p.color}`,
                 }}
@@ -181,8 +198,7 @@ export default function Hero({
             <motion.div
               className="absolute inset-0"
               style={{
-                background:
-                  "radial-gradient(circle at 30% 30%, rgba(255,255,255,0.25), transparent 40%), radial-gradient(circle at 70% 60%, rgba(255,120,40,0.35), transparent 50%)",
+                background: "radial-gradient(circle at 30% 30%, rgba(255,255,255,0.25), transparent 40%), radial-gradient(circle at 70% 60%, rgba(255,120,40,0.35), transparent 50%)",
                 mixBlendMode: "overlay",
                 filter: "blur(8px)",
               }}
@@ -192,7 +208,7 @@ export default function Hero({
           </motion.div>
         </div>
 
-        {/* ===== FLOATING PARTICLES ===== */}
+        {/* FLOATING PARTICLES */}
         <div className="absolute inset-0 z-0">
           {particles.map((p, i) => (
             <motion.div
@@ -220,7 +236,7 @@ export default function Hero({
           ))}
         </div>
 
-        {/* ===== SHOOTING STARS ===== */}
+        {/* SHOOTING STARS */}
         <div className="absolute inset-0 z-0">
           {shootingStars.map((s, i) => (
             <motion.div
@@ -233,7 +249,7 @@ export default function Hero({
           ))}
         </div>
 
-        {/* ===== CONTENT ===== */}
+        {/* CONTENT */}
         <div className="relative z-10">
           <motion.h1
             initial={{ opacity: 0, y: -20 }}
