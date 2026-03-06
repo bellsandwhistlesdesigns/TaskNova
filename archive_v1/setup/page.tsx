@@ -2,9 +2,24 @@
 
 import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
-import { supabase } from "@/lib/supabase";
+import { createClient } from "@/lib/supabase/client";
 import Hero from "@/components/Hero";
 
+const supabase = createClient();
+
+// ------------------ Types ------------------
+interface Organization {
+  id: string;
+  name: string;
+  logo_url?: string;
+}
+
+interface Membership {
+  role: "admin" | "pm" | "tech" | "staff";
+  organizations: Organization;
+}
+
+// ------------------ Component ------------------
 export default function SetupPage() {
   const router = useRouter();
   const [user, setUser] = useState<any>(null);
@@ -12,9 +27,9 @@ export default function SetupPage() {
   const [orgName, setOrgName] = useState("");
   const [logoFile, setLogoFile] = useState<File | null>(null);
 
-  // Load user and check existing org
   useEffect(() => {
     const init = async () => {
+      // 1️⃣ Get current user
       const { data: { user } } = await supabase.auth.getUser();
       if (!user) {
         router.push("/login");
@@ -22,24 +37,26 @@ export default function SetupPage() {
       }
       setUser(user);
 
-      // Check for existing org in DB
-      const { data: membership } = await supabase
-        .from("organization_members")
+      // 2️⃣ Check for existing org membership
+      const { data: membership, error } = await supabase
+        .from<Membership>("organization_members")
         .select("organizations(id, name, logo_url)")
         .eq("user_id", user.id)
         .single();
+
+      if (error && error.code !== "PGRST116") console.error(error);
 
       if (membership?.organizations) {
         router.push("/company");
         return;
       }
 
-      // Load draft from localStorage if exists
+      // 3️⃣ Load draft from localStorage if exists
       const draft = localStorage.getItem("draftOrganization");
       if (draft) {
         const draftOrg = JSON.parse(draft);
         if (draftOrg.name) setOrgName(draftOrg.name);
-        // Note: File objects cannot be stored in localStorage, so logo will need re-upload
+        // Logo will need re-upload if present
       }
 
       setLoading(false);
@@ -48,6 +65,7 @@ export default function SetupPage() {
     init();
   }, [router]);
 
+  // ------------------ Create Organization ------------------
   const handleCreateOrg = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!user || !orgName) return;
@@ -61,38 +79,34 @@ export default function SetupPage() {
         .upload(fileName, logoFile, { upsert: true });
 
       if (uploadError) {
-        console.log("Logo upload error:", uploadError);
+        console.error("Logo upload error:", uploadError);
       } else {
-        const { data } = supabase.storage
-        .from("organization-logos")
-        .getPublicUrl(fileName);
-
+        const { data } = supabase.storage.from("organization-logos").getPublicUrl(fileName);
         logoUrl = data.publicUrl;
+      }
     }
-  }
 
-    // Create organization
     const { data: newOrg, error: orgError } = await supabase
-      .from("organizations")
+      .from<Organization>("organizations")
       .insert([{ name: orgName, owner_id: user.id, logo_url: logoUrl }])
       .select("id, name, logo_url")
       .single();
 
-    if (orgError) return console.log("Error creating organization:", orgError);
+    if (orgError || !newOrg) {
+      console.error("Error creating organization:", orgError);
+      return;
+    }
 
-    // Add self to organization_members as admin
+    // Add self as admin
     await supabase
       .from("organization_members")
       .insert([{ user_id: user.id, organization_id: newOrg.id, role: "admin" }]);
 
-    // Clear draft after successful creation
     localStorage.removeItem("draftOrganization");
-
     router.push("/company");
   };
 
   const handleBackToCompany = () => {
-    // Save draft before navigating back
     if (orgName) {
       localStorage.setItem("draftOrganization", JSON.stringify({ name: orgName }));
     }
@@ -103,64 +117,31 @@ export default function SetupPage() {
 
   return (
     <>
-      <Hero
-        title="Setup Your Company"
-        subtitle={`Welcome, ${user?.user_metadata?.first_name || user?.email}!`}
-        showButtons={false}
-        heightClass="min-h-[22vh]"
-      />
+      <Hero title="Setup Your Organization" subtitle={`Welcome, ${user?.user_metadata?.first_name || user?.email}`} showButtons={false} heightClass="min-h-[22vh]" />
 
       <main className="bg-gray-50 min-h-screen px-6 py-10">
-        <div className="max-w-2xl mx-auto bg-white p-6 rounded-2xl shadow">
-          {/* Back Button */}
-          <div className="mb-4">
-            <button
-              onClick={handleBackToCompany}
-              className="bg-gray-200 text-gray-800 px-4 py-2 rounded hover:bg-gray-300"
-            >
-              ← Back to Company
-            </button>
-          </div>
-
-          <h2 className="text-xl font-semibold mb-4">Create Your Company</h2>
-
-          <form onSubmit={handleCreateOrg} className="flex flex-col gap-4">
+        <div className="max-w-4xl mx-auto">
+          <form onSubmit={handleCreateOrg} className="bg-white p-6 rounded-2xl shadow-sm">
+            <h2 className="text-xl font-semibold mb-4">Create Organization</h2>
             <input
               type="text"
-              placeholder="Company Name"
+              placeholder="Organization Name"
               value={orgName}
               onChange={(e) => setOrgName(e.target.value)}
-              className="border p-2 rounded"
+              className="border p-2 rounded w-full mb-4"
               required
             />
-
             <input
               type="file"
               accept="image/*"
               onChange={(e) => setLogoFile(e.target.files?.[0] || null)}
-              className="border p-2 rounded"
+              className="mb-4"
             />
-
-            <button
-              type="submit"
-              className="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700"
-            >
-              Create Company
-            </button>
+            <div className="flex gap-2">
+              <button type="submit" className="bg-green-600 text-white px-4 py-2 rounded hover:bg-green-700">Create</button>
+              <button type="button" onClick={handleBackToCompany} className="bg-gray-200 text-gray-800 px-4 py-2 rounded hover:bg-gray-300">Back</button>
+            </div>
           </form>
-        </div>
-
-        {/* Logout */}
-        <div className="flex justify-end mt-10">
-          <button
-            className="bg-red-600 text-white px-5 py-2 rounded hover:bg-red-700 transition"
-            onClick={async () => {
-              await supabase.auth.signOut();
-              router.push("/login");
-            }}
-          >
-            Logout
-          </button>
         </div>
       </main>
     </>

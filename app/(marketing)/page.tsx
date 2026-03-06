@@ -8,7 +8,13 @@ export default function MarketingPage() {
     <main className="bg-black text-white">
       
       {/* ===== HERO ===== */}
-      <Hero />
+      <Hero
+  title={
+    <>
+      <span className="text-yellow-400">Task</span>Nova
+    </>
+  }
+/>
 
       {/* ===== FEATURES SECTION ===== */}
       <section
@@ -16,7 +22,7 @@ export default function MarketingPage() {
         className="py-24 px-6 md:px-20 bg-black"
       >
         <h2 className="text-4xl font-bold text-center mb-16">
-          Why Choose <span className="text-yellow-400">TaskNova?</span>
+          Why Choose <span className="text-yellow-400">Task</span>Nova?
         </h2>
 
         <div className="grid md:grid-cols-4 gap-8 max-w-6xl mx-auto">
@@ -70,51 +76,8 @@ export default function MarketingPage() {
         </div>
       </section>
                   
-      {/* ===== TESTIMONIALS ===== */}
-      <section className="py-24 px-6 md:px-20 bg-black border-t border-yellow-500/20">
-        <h2 className="text-4xl font-bold text-center mb-16">
-          Loved by Teams Everywhere
-        </h2>
-
-        <div className="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
-
-          <div className="p-8 bg-gray-900 rounded-2xl border border-yellow-500/30 
-                          hover:shadow-[0_0_25px_white] transition duration-300">
-            <p className="text-gray-300 italic mb-6">
-              “TaskNova transformed our team workflow. It's intuitive and powerful!”
-            </p>
-            <span className="text-yellow-400 font-semibold">
-              — Sarah L., Product Manager
-            </span>
-          </div>
-
-          <div className="p-8 bg-gray-900 rounded-2xl border border-yellow-500/30 
-                          hover:shadow-[0_0_25px_white] transition duration-300">
-            <p className="text-gray-300 italic mb-6">
-              “We finally have a clear view of all tasks and deadlines. Love it!”
-            </p>
-            <span className="text-yellow-400 font-semibold">
-              — Mark T., Team Lead
-            </span>
-          </div>
-
-          <div className="p-8 bg-gray-900 rounded-2xl border border-yellow-500/30 
-                          hover:shadow-[0_0_25px_white] transition duration-300">
-            <p className="text-gray-300 italic mb-6">
-              “Simple, clean, and efficient. TaskNova makes managing projects fun!”
-            </p>
-            <span className="text-yellow-400 font-semibold">
-              — Emily R., Designer
-            </span>
-          </div>
-
-        </div>
-      </section>
-
-      
-
       {/* Center gold line for bling */}
-		<section>
+		  <section>
         <div className="relative z-10 flex justify-center">
           <div className="w-24 h-1 bg-yellow-400 rounded-full shadow-[0_0_15px_#FFD700]"></div>
         </div>

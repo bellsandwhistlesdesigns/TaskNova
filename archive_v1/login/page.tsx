@@ -1,8 +1,10 @@
 "use client";
 
 import { useState } from "react";
-import { supabase } from "@/lib/supabase";
+import { createClient } from "@/lib/supabase/client";
 import Hero from "@/components/Hero";
+
+const supabase = createClient();
 
 export default function LoginPage() {
   const [email, setEmail] = useState("");

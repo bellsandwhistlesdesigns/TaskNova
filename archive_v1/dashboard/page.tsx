@@ -2,17 +2,49 @@
 
 import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
-import { supabase } from "@/lib/supabase";
+import { createClient } from "@/lib/supabase/client";
 import Hero from "@/components/Hero";
+
+const supabase = createClient();
+
+interface Organization {
+  id: string;
+  name: string;
+}
+
+interface Membership {
+  role: "admin" | "pm" | "tech" | "staff";
+  organization_id: string;
+  organizations: Organization;
+}
+
+interface Project {
+  id: string;
+  name: string;
+  organization_id: string;
+  created_at: string;
+}
+
+interface Task {
+  id: string;
+  title: string;
+  project_id: string;
+  organization_id: string;
+  assigned_to?: string;
+  is_complete: boolean;
+  created_at: string;
+}
 
 export default function Dashboard() {
   const router = useRouter();
 
+  // States
   const [loading, setLoading] = useState(true);
   const [user, setUser] = useState<any>(null);
-  const [organization, setOrganization] = useState<any>(null);
-  const [projects, setProjects] = useState<any[]>([]);
-  const [tasks, setTasks] = useState<any[]>([]);
+  const [organization, setOrganization] = useState<Organization | null>(null);
+  const [membership, setMembership] = useState<Membership | null>(null);
+  const [projects, setProjects] = useState<Project[]>([]);
+  const [tasks, setTasks] = useState<Task[]>([]);
   const [selectedProjectId, setSelectedProjectId] = useState<string | null>(null);
   const [newProjectName, setNewProjectName] = useState("");
   const [newTaskTitle, setNewTaskTitle] = useState("");
@@ -22,71 +54,66 @@ export default function Dashboard() {
   // ======================
   useEffect(() => {
     const initDashboard = async () => {
+      // 1️⃣ Get user
       const { data: { user }, error } = await supabase.auth.getUser();
-
       if (error || !user) {
         router.push("/login");
         return;
       }
-
       setUser(user);
 
-      // Fetch user's organization from membership
-      const { data: membership } = await supabase
-        .from("organization_members")
+      // 2️⃣ Get membership
+      const { data: membershipData, error: membershipError } = await supabase
+        .from<Membership>("organization_members")
         .select("role, organization_id, organizations(id, name)")
         .eq("user_id", user.id)
         .single();
 
-      if (!membership) {
-        router.push("/setup"); // first-time signup
+      if (membershipError && membershipError.code !== "PGRST116") console.error(membershipError);
+
+      if (!membershipData || !membershipData.organizations) {
+        router.push("/setup");
         return;
       }
 
-      setOrganization(membership.organizations);
+      setMembership(membershipData);
+      setOrganization(membershipData.organizations);
 
-      // Fetch projects for this organization
+      // 3️⃣ Fetch projects for this org
       const { data: projectsData, error: projectsError } = await supabase
-        .from("projects")
-        .select("id, name, organization_id, created_at")
-        .eq("organization_id", membership.organization_id)
+        .from<Project>("projects")
+        .select("*")
+        .eq("organization_id", membershipData.organization_id)
         .order("created_at", { ascending: true });
 
-      if (projectsError) console.log("Projects fetch error:", projectsError);
+      if (projectsError) console.error(projectsError);
       else setProjects(projectsData || []);
 
-      setLoading(false);
+      setLoading(false); // ✅ Only stop loading after all essential data is ready
     };
 
     initDashboard();
-
-    // Auth listener
-    const { data: authListener } = supabase.auth.onAuthStateChange((_event, session) => {
-      if (!session) router.push("/dashboard");
-      else setUser(session.user);
-    });
-
-    return () => authListener.subscription.unsubscribe();
   }, [router]);
 
   // ======================
   // FETCH TASKS WHEN PROJECT SELECTED
   // ======================
   useEffect(() => {
-    if (selectedProjectId) fetchTasks(selectedProjectId);
-    else setTasks([]);
+    if (!selectedProjectId) return setTasks([]);
+
+    const fetchTasks = async () => {
+      const { data: tasksData, error } = await supabase
+        .from<Task>("tasks")
+        .select("*")
+        .eq("project_id", selectedProjectId)
+        .order("created_at", { ascending: false });
+
+      if (error) console.error("Error fetching tasks:", error);
+      else setTasks(tasksData || []);
+    };
+
+    fetchTasks();
   }, [selectedProjectId]);
-
-  const fetchTasks = async (projectId: string) => {
-    const { data, error } = await supabase
-      .from("tasks")
-      .select("id, title, project_id, organization_id, assigned_to, is_complete, created_at")
-      .eq("project_id", projectId)
-      .order("created_at", { ascending: false });
-
-    if (error) console.log("Error fetching tasks:", error);
-    else setTasks(data || []);
-  };
 
   // ======================
   // HANDLERS
@@ -96,24 +123,28 @@ export default function Dashboard() {
     if (!newProjectName || !organization) return;
 
     const { data, error } = await supabase
-      .from("projects")
+      .from<Project>("projects")
       .insert([{ name: newProjectName, organization_id: organization.id }])
-      .select("id, name, organization_id, created_at");
+      .select("*");
 
-    if (error) return console.log("Error adding project:", error);
+    if (error) return console.log(error);
 
-    setProjects([...projects, data[0]]);
-    setSelectedProjectId(data[0].id);
+    setProjects([...projects, data![0]]);
+    setSelectedProjectId(data![0].id);
     setNewProjectName("");
   };
 
   const deleteProject = async (projectId: string) => {
+    if (!confirm("Delete this project and all its tasks?")) return;
+
     const { error } = await supabase.from("projects").delete().eq("id", projectId);
-    if (error) return console.log("Error deleting project:", error);
+    if (error) return console.log(error);
 
     setProjects(projects.filter((p) => p.id !== projectId));
-    if (selectedProjectId === projectId) setSelectedProjectId(null);
-    setTasks([]);
+    if (selectedProjectId === projectId) {
+      setSelectedProjectId(null);
+      setTasks([]);
+    }
   };
 
   const handleAddTask = async (e: React.FormEvent) => {
@@ -121,13 +152,18 @@ export default function Dashboard() {
     if (!newTaskTitle || !selectedProjectId || !organization) return;
 
     const { data, error } = await supabase
-      .from("tasks")
-      .insert([{ title: newTaskTitle, project_id: selectedProjectId, organization_id: organization.id, is_complete: false }])
-      .select("id, title, project_id, organization_id, assigned_to, is_complete, created_at");
+      .from<Task>("tasks")
+      .insert([{
+        title: newTaskTitle,
+        project_id: selectedProjectId,
+        organization_id: organization.id,
+        is_complete: false
+      }])
+      .select("*");
 
-    if (error) return console.log("Error adding task:", error);
+    if (error) return console.log(error);
 
-    setTasks([...tasks, data[0]]);
+    setTasks([...tasks, data![0]]);
     setNewTaskTitle("");
   };
 
@@ -137,14 +173,16 @@ export default function Dashboard() {
       .update({ is_complete: !currentValue })
       .eq("id", taskId);
 
-    if (error) return console.log("Error updating task:", error);
+    if (error) return console.log(error);
 
-    setTasks(tasks.map((t) => (t.id === taskId ? { ...t, is_complete: !currentValue } : t)));
+    setTasks(tasks.map((t) => t.id === taskId ? { ...t, is_complete: !currentValue } : t));
   };
 
   const deleteTask = async (taskId: string) => {
+    if (!confirm("Delete this task?")) return;
+
     const { error } = await supabase.from("tasks").delete().eq("id", taskId);
-    if (error) return console.log("Error deleting task:", error);
+    if (error) return console.log(error);
 
     setTasks(tasks.filter((t) => t.id !== taskId));
   };
@@ -161,7 +199,6 @@ export default function Dashboard() {
         subtitle={`Welcome back, ${user?.user_metadata?.first_name || user?.email}!`}
         showButtons={false}
         heightClass="min-h-[22vh]"
-        
       />
 
       <main className="bg-gray-50 min-h-screen px-6 py-10">
@@ -217,9 +254,7 @@ export default function Dashboard() {
 
               {selectedProjectId && (
                 <button
-                  onClick={() => {
-                    if (confirm("Delete this project and all its tasks?")) deleteProject(selectedProjectId);
-                  }}
+                  onClick={() => deleteProject(selectedProjectId)}
                   className="mt-6 w-full bg-red-500 text-white py-2 rounded hover:bg-red-600 transition"
                 >
                   Delete Project
@@ -259,7 +294,7 @@ export default function Dashboard() {
                       <span className={task.is_complete ? "line-through text-gray-400" : ""}>{task.title}</span>
                     </div>
                     <button
-                      onClick={() => { if (confirm("Delete this task?")) deleteTask(task.id); }}
+                      onClick={() => deleteTask(task.id)}
                       className="text-red-500 hover:text-red-700 text-sm"
                     >
                       Delete

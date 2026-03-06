@@ -2,74 +2,92 @@
 
 import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
-import { supabase } from "@/lib/supabase";
+import { createClient } from "@/lib/supabase/client";
 import Hero from "@/components/Hero";
 
+const supabase = createClient();
 const roles = ["admin", "pm", "tech", "staff"];
 
+// ------------------ Types ------------------
+interface Organization {
+  id: string;
+  name: string;
+}
+
+interface Membership {
+  role: "admin" | "pm" | "tech" | "staff";
+  organizations: Organization;
+}
+
+interface Employee {
+  id: string;
+  user_id: string;
+  role: string;
+  users?: { email?: string };
+}
+
+// ------------------ Component ------------------
 export default function CompanyPage() {
   const router = useRouter();
   const [loading, setLoading] = useState(true);
   const [user, setUser] = useState<any>(null);
-  const [organization, setOrganization] = useState<any>(null);
-  const [employees, setEmployees] = useState<any[]>([]);
+  const [organization, setOrganization] = useState<Organization | null>(null);
+  const [employees, setEmployees] = useState<Employee[]>([]);
   const [newEmail, setNewEmail] = useState("");
   const [newRole, setNewRole] = useState("staff");
-  const [membership, setMembership] = useState<any>(null);
+  const [membership, setMembership] = useState<Membership | null>(null);
 
-  // Load user, membership, org, employees
-useEffect(() => {
-  const init = async () => {
-    const { data: { user } } = await supabase.auth.getUser();
-    if (!user) {
-      router.push("/login");
-      return;
-    }
-    setUser(user);
+  useEffect(() => {
+    const init = async () => {
+      const { data: { user } } = await supabase.auth.getUser();
+      if (!user) {
+        router.push("/login");
+        return;
+      }
+      setUser(user);
 
-    const { data: membershipData, error } = await supabase
-      .from("organization_members")
-      .select("role, organizations(id, name)")
-      .eq("user_id", user.id)
-      .single();
+      const { data: membershipData, error } = await supabase
+        .from<Membership>("organization_members")
+        .select("role, organizations(id, name)")
+        .eq("user_id", user.id)
+        .single();
 
-    if (error || !membershipData?.organizations?.length) {
-      router.push("/setup");
-      return;
-    }
+      if (error && error.code !== "PGRST116") console.error(error);
 
-    setMembership(membershipData);
+      if (!membershipData || !membershipData.organizations) {
+        router.push("/setup");
+        return;
+      }
 
-    if (membershipData.role !== "admin") {
-      router.push("/dashboard");
-      return;
-    }
+      if (membershipData.role !== "admin") {
+        router.push("/dashboard");
+        return;
+      }
 
-    const org = membershipData.organizations[0];
-    setOrganization(org);
+      setMembership(membershipData);
 
-    const { data: employeesData } = await supabase
-      .from("organization_members")
-      .select("id, user_id, role, users(email)")
-      .eq("organization_id", org.id)
-      .order("created_at", { ascending: true });
+      const org = membershipData.organizations;
+      setOrganization(org);
 
-    setEmployees(employeesData || []);
-    setLoading(false);
-  };
+      const { data: employeesData, error: employeesError } = await supabase
+        .from<Employee>("organization_members")
+        .select("id, user_id, role, users(email)")
+        .eq("organization_id", org.id)
+        .order("created_at", { ascending: true });
 
-  init();
-}, [router]);
+      if (employeesError) console.error(employeesError);
 
-  // Preserve partial setup info in localStorage
+      setEmployees(employeesData || []);
+      setLoading(false);
+    };
+
+    init();
+  }, [router]);
+
   const handleBackToSetup = () => {
-  if (organization) {
-    // Save current org info as draft
-    localStorage.setItem("draftOrganization", JSON.stringify(organization));
-  }
-  // Navigate to setup page
-  router.push("/setup");
-};
+    if (organization) localStorage.setItem("draftOrganization", JSON.stringify(organization));
+    router.push("/setup");
+  };
 
   const handleAddEmployee = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -78,9 +96,11 @@ useEffect(() => {
     const { data: inviteData, error: inviteError } = await supabase.auth.admin.inviteUserByEmail(newEmail);
     if (inviteError) return console.log("Error inviting user:", inviteError);
 
+    if (!inviteData.user?.id) return console.log("Invite did not return a user ID");
+
     const { data: memberData, error: memberError } = await supabase
-      .from("organization_members")
-      .insert([{ user_id: inviteData.user?.id, organization_id: organization.id, role: newRole }])
+      .from<Employee>("organization_members")
+      .insert([{ user_id: inviteData.user.id, organization_id: organization.id, role: newRole }])
       .select("id, user_id, role, users(email)")
       .single();
 
@@ -108,20 +128,18 @@ useEffect(() => {
         showButtons={false}
         heightClass="min-h-[22vh]"
       />
-	{/* Back Button for Admins */}
+
       {membership?.role === "admin" && (
         <div className="max-w-6xl mx-auto mb-6 flex items-center">
-          <button
-            onClick={handleBackToSetup}
-            className="bg-gray-200 text-gray-800 px-4 py-2 rounded hover:bg-gray-300"
-          >
+          <button onClick={handleBackToSetup} className="bg-gray-200 text-gray-800 px-4 py-2 rounded hover:bg-gray-300">
             ← Back to Setup
           </button>
         </div>
       )}
+
       <main className="bg-gray-50 min-h-screen px-6 py-10">
         <div className="max-w-6xl mx-auto">
-          {/* Add Employee Section */}
+          {/* Add Employee */}
           <div className="bg-white p-6 rounded-2xl shadow-sm mb-10">
             <h2 className="text-xl font-semibold mb-4">Add Employee</h2>
             <form onSubmit={handleAddEmployee} className="flex gap-2 flex-wrap">
@@ -138,9 +156,7 @@ useEffect(() => {
                   <option key={r} value={r}>{r}</option>
                 ))}
               </select>
-              <button type="submit" className="bg-green-600 text-white px-4 py-2 rounded hover:bg-green-700">
-                Add
-              </button>
+              <button type="submit" className="bg-green-600 text-white px-4 py-2 rounded hover:bg-green-700">Add</button>
             </form>
           </div>
 
@@ -170,7 +186,8 @@ useEffect(() => {
               </tbody>
             </table>
           </div>
-		  {/* Logout */}
+
+          {/* Logout */}
           <div className="flex justify-end mt-10">
             <button
               className="bg-red-600 text-white px-5 py-2 rounded hover:bg-red-700 transition"
