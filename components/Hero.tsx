@@ -24,13 +24,6 @@ interface Particle {
   duration: number;
 }
 
-interface Star {
-  startX: number;
-  startY: number;
-  duration: number;
-  delay: number;
-}
-
 interface ExplosionParticle {
   angle: number;
   distance: number;
@@ -80,7 +73,7 @@ export default function Hero({
     const height = window.innerHeight;
 
     // Floating particles
-    const generatedParticles: Particle[] = Array.from({ length: 40 }).map(() => ({
+    const generatedParticles: Particle[] = Array.from({ length: 20 }).map(() => ({
       size: Math.random() * 4 + 2,
       startX: Math.random() * width,
       startY: Math.random() * height,
@@ -93,7 +86,7 @@ export default function Hero({
     const generatedStars: Star[] = Array.from({ length: 20 }).map(() => ({
       startX: Math.random() * window.innerWidth,
       startY: Math.random() * window.innerHeight,
-      deltaX: (Math.random() - 4) * 1400, // moves left or right randomly
+      deltaX: (Math.random() - 40) * 1200, // moves left or right randomly
       deltaY: (Math.random() - 1) * 100, // moves up or down randomly
       duration: 3 + Math.random() * 3,      // varied speed
       delay: Math.random() * 5,
@@ -260,7 +253,7 @@ return (
         </div>
 
         {/* SHOOTING STARS */}
-        {/* ===== SHOOTING STARS ===== */}
+        
         <div className="absolute inset-0 z-0 overflow-x-hidden overflow-y-hidden">
         {shootingStars.map((s, i) => (
         <motion.div
