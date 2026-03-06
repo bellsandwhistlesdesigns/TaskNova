@@ -116,7 +116,8 @@ export default function Hero({
       >
         {/* ===== SUPERNOVA SUN ===== */}
         <div
-          className="absolute z-20 top-[5%] sm:top-[2.5%] right-[25%] sm:right-[15%] w-[180px] h-[180px] sm:w-[220px] sm:h-[220px] md:w-[320px] md:h-[320px]"        >
+          className="absolute z-0 top-[5%] right-[25%] sm:right-[15%] w-[180px] h-[180px] sm:w-[220px] sm:h-[220px] md:w-[320px] md:h-[320px]"  
+      >
           {/* OUTER GLOW + SUBTLE FLARES */}
       <motion.div
       className="absolute rounded-full"
