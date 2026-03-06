@@ -13,8 +13,8 @@ export default function MarketingPage() {
     <>
       <span className="text-yellow-400">Task</span>Nova
     </>
-  }
-/>
+    }
+    />
 
       {/* ===== FEATURES SECTION ===== */}
       <section
