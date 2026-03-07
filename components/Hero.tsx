@@ -54,8 +54,6 @@ export default function Hero({
     </>
   ),
   subSubtitle = "🚧 Becoming a Star 🚧",
-  primaryctaText = "Log In",
-  primaryctaLink = "/login",
   secondaryctaText = "Register",
   secondaryctaLink = "/register",
   showButtons = true,
@@ -93,11 +91,11 @@ export default function Hero({
     }));
 
     // Exploding particles
-    const generatedExplosions: ExplosionParticle[] = Array.from({ length: 15 }).map(() => {
+    const generatedExplosions: ExplosionParticle[] = Array.from({ length: 20 }).map(() => {
       const angle = Math.random() * Math.PI * 2;
       const flare = Math.random() < 0.18;
       const distance = flare ? 420 + Math.random() * 280 : 200 + Math.random() * 200;
-      const colors = ["#ffffff", "#ffe066", "#ff7a3c"];
+      const colors = ["#ffffff", "#ffe066", "#ffe072"];
       const color = colors[Math.floor(Math.random() * colors.length)];
       return {
         angle,
@@ -171,9 +169,9 @@ return (
         <motion.div
             className="absolute rounded-full overflow-hidden w-full h-full"
             style={{
-              top: "35%",
-              left: "65%",
-              transform: "translate(-65%, -35%)",
+              top: "50%",
+              left: "50%",
+              transform: "translate(-50%, -50%)",
               background: "radial-gradient(circle, #fff6c2 0%, #ffb347 25%, #ff5e3a 55%)",
               boxShadow: "0 0 70px rgba(255,140,60,0.9), 0 0 140px rgba(255,60,30,0.6)",
             }}
@@ -196,16 +194,16 @@ return (
                 
               }}
               animate={{
-                x: [0, Math.cos(p.angle) * p.distance],
-                y: [0, Math.sin(p.angle) * p.distance],
+                x: [0, Math.cos(p.angle) * p.distance * 0.6],
+                y: [0, Math.sin(p.angle) * p.distance * 0.6 ],
                 opacity: [1, 0],
                 scale: p.flare ? [1.8, 0.3] : [1, 0.4],
               }}
               transition={{
-                duration: p.duration,
+                duration: p.duration * 2.5,
                 repeat: Infinity,
-                delay: Math.random() * 4,
-                ease: "easeOut",
+                delay: Math.random() * 8,
+                ease: "easeInOut",
               }}
             />
           ))}
@@ -306,18 +304,6 @@ return (
 
           {showButtons && (
             <div className="flex flex-col md:flex-row gap-6 justify-center">
-              <a
-                href={primaryctaLink}
-                className="px-8 py-4 rounded-2xl font-semibold
-                  bg-yellow-500 text-black
-                  border-2 border-white
-                  hover:shadow-[0_0_35px_white]
-                  hover:scale-105
-                  transition-all duration-300"
-              >
-                {primaryctaText}
-              </a>
-
               <a
                 href={secondaryctaLink}
                 className="px-8 py-4 rounded-2xl font-semibold
