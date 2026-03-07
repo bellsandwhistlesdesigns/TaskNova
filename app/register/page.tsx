@@ -52,90 +52,101 @@ export default function RegisterPage() {
     }
   };
 
-  return (
-    <>
-      {/* Hero */}
-      <Hero
-        title="Join TaskNova"
-        subtitle="Start talking to an advisor about managing your projects effortlessly."
-        showButtons={false}// show buttons go here
-        heightClass="min-h-[30vh]"
-        
-      />
+return (
+  <main className="bg-black text white">
 
-      {/* Registration Card */}
-      <main className="flex flex-col items-center -mt-8 px-6 pb-20">
-        <div className="bg-white w-full max-w-md p-10 rounded-3xl shadow-xl">
-          <h1 className="text-3xl font-extrabold mb-6 text-center text-gray-800">
-            Request Information
-          </h1>
+    {/* HERO SECTION */}
+    <Hero
+      title={
+          <>
+            Join <span className="text-yellow-400">Task</span>Nova
+          </>
+          }
+      subtitle={
+        <>
+        <span className="text-white">Taking Your Productivity, </span>
+        <span className="text-yellow-400 font-semibold"> FURTHER</span>
+        </>
+      }
+      
+      subSubtitle=""
+      showButtons={false}
+      heightClass="min-h-[60vh]"
+    />
 
-          <form onSubmit={handleSubmit} className="flex flex-col gap-4">
-            <input
-              type="text"
-              placeholder="First Name"
-              value={firstName}
-              onChange={(e) => setFirstName(e.target.value)}
-              required
-              className="w-full border border-gray-300 p-4 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500 transition"
-            />
+    {/* FORM SECTION */}
+    <section className="flex justify-center px-6 pb-20 -mt-16 md:-mt-20">
+      <div
+        className="bg-white/95 backdrop-blur-sm p-10 rounded-3xl shadow-2xl 
+                   w-full max-w-md border border-gray-200"
+      >
+        <h1 className="text-3xl font-extrabold mb-6 text-center text-gray-800">
+          Request Information
+        </h1>
 
-            <input
-              type="text"
-              placeholder="Last Name"
-              value={lastName}
-              onChange={(e) => setLastName(e.target.value)}
-              className="w-full border border-gray-300 p-4 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500 transition"
-            />
+        <form onSubmit={handleSubmit} className="flex flex-col gap-5">
 
-            <input
-              type="email"
-              placeholder="Email"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-              required
-              className="w-full border border-gray-300 p-4 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500 transition"
-            />
+          <input
+            type="text"
+            placeholder="First Name"
+            value={firstName}
+            onChange={(e) => setFirstName(e.target.value)}
+            required
+            className="border border-gray-300 p-4 rounded-xl 
+                       focus:outline-none focus:ring-2 focus:ring-yellow-400 transition"
+          />
 
-            <button
-              type="submit"
-              disabled={isSubmitting}
-              className={`py-4 rounded-xl font-semibold transition shadow-md mt-2 ${
+          <input
+            type="text"
+            placeholder="Last Name"
+            value={lastName}
+            onChange={(e) => setLastName(e.target.value)}
+            className="border border-gray-300 p-4 rounded-xl 
+                       focus:outline-none focus:ring-2 focus:ring-yellow-400 transition"
+          />
+
+          <input
+            type="email"
+            placeholder="Email"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+            required
+            className="border border-gray-300 p-4 rounded-xl 
+                       focus:outline-none focus:ring-2 focus:ring-yellow-400 transition"
+          />
+
+          <button
+            type="submit"
+            disabled={isSubmitting}
+            className={`py-4 rounded-2xl font-semibold transition-all duration-300
+              ${
                 isSubmitting
                   ? "bg-gray-400 text-white cursor-not-allowed"
-                  : "bg-blue-600 text-white hover:bg-blue-700"
+                  : "bg-yellow-500 text-black hover:scale-105 hover:shadow-[0_0_25px_rgba(255,215,0,0.7)]"
               }`}
-            >
-              {isSubmitting ? "Submitting..." : "Request Info"}
-            </button>
-          </form>
-
-          {message && (
-            <p
-              className={`mt-6 text-center text-sm ${
-                isSuccess ? "text-green-600" : "text-red-500"
-              }`}
-            >
-              {message}
-            </p>
-          )}
-
-          
-        </div>
-
-        {/* Footer CTA */}
-        <div className="mt-12 text-center px-6">
-          <p className="text-gray-600 mb-4">
-            Learn more about TaskNova and see what we can do for your team.
-          </p>
-          <a
-            href="/#features"
-            className="inline-block bg-blue-600 text-white px-6 py-3 rounded-xl shadow hover:bg-blue-700 transition"
           >
-            Learn More
-          </a>
-        </div>
-      </main>
-    </>
+            {isSubmitting ? "Submitting..." : "Request Info"}
+          </button>
+        </form>
+
+        {message && (
+          <p
+            className={`mt-6 text-center text-sm ${
+              isSuccess ? "text-green-600" : "text-red-500"
+            }`}
+          >
+            {message}
+          </p>
+        )}
+      </div>
+    </section>
+
+    {/* FOOTER CTA */}
+    <section className="text-center pb-24 px-6">
+      <p className="text-gray-400 mb-6">
+        Contact <span className="text-yellow-400">Task</span>Nova and see what we can do for your team.
+      </p>
+    </section>
+  </main>
   );
 }

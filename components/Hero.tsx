@@ -53,12 +53,12 @@ export default function Hero({
       <span className="text-yellow-400"> FUTURE</span>
     </>
   ),
-  subSubtitle = "🚧 Currently in Development",
+  subSubtitle = "🚧 Becoming a Star 🚧",
   primaryctaText = "Log In",
   primaryctaLink = "/login",
-  secondaryctaText = "What we Are",
+  secondaryctaText = "Register",
   secondaryctaLink = "/register",
-  showButtons = false,
+  showButtons = true,
   heightClass = "min-h-screen",
 }: HeroProps) {
   const [mounted, setMounted] = useState(false);
@@ -290,7 +290,7 @@ return (
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 0.3 }}
-            className="text-xl sm:text-2xl md:text-3xl mb-6 text-yellow-400 max-w-2xl"
+            className="text-lg md:text-xl mb-6 max-w-2xl text-center mx-auto"
           >
             {subtitle}
           </motion.p>
@@ -299,7 +299,7 @@ return (
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 0.5 }}
-            className="text-md md:text-lg mb-10 text-gray-300 max-w-xl"
+            className="text-md md:text-lg mb-10 text-gray-300 text-center mx-auto"
           >
             {subSubtitle}
           </motion.p>

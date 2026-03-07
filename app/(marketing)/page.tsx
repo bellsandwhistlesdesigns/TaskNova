@@ -14,6 +14,13 @@ export default function MarketingPage() {
       <span className="text-yellow-400">Task</span>Nova
     </>
     }
+    subtitle={
+        <>
+        <span className="text-white">Taking Your Productivity, </span>
+        <span className="text-yellow-400 font-semibold"> FURTHER</span>
+        </>
+      }
+    showButtons={false}
     />
 
       {/* ===== FEATURES SECTION ===== */}

@@ -5,17 +5,28 @@ import Hero from "@/components/Hero";
 export default function CookiePolicyPage() {
     return (
         <main>
-          <Hero title="TaskNova"
-            subtitle="Our Cookie Policy"
-            heightClass="min-h-[22vh]"
-            showButtons={false}// show buttons go here
+          <Hero
+            title={
+            <>
+            <span className="text-yellow-400">Task</span>Nova
+            </>
+            }
+            subtitle={
+            <>
+            <span className="text-white">Our Cookies, </span>
+            <span className="text-yellow-400 font-semibold"> Better Design</span>
+            </>
+            }
+            
+            heightClass="min-h-[50vh]"
+            showButtons={false}
             
       />
     <section className="max-w-4xl mx-auto px-6 py-16">
       <h1 className="text-4xl font-bold mb-8">Cookie Policy</h1>
 
       <p className="mb-6 text-gray-600">
-        Effective Date: {new Date().getFullYear()}
+        Effective Date: March 1, {new Date().getFullYear()}
       </p>
 
       <section className="space-y-6 text-lg leading-relaxed">
@@ -95,17 +106,7 @@ export default function CookiePolicyPage() {
         </p>
       </section>
       </section>
-      {/* ===== CTA BANNER ===== */}
-      <section className="py-20 px-6 md:px-20 bg-blue-600 text-white text-center">
-        <h2 className="text-3xl md:text-4xl font-bold mb-6">Ready to simplify your workflow?</h2>
-        <p className="mb-8 max-w-xl mx-auto">Get touch with an advisor, and start organizing your projects today.</p>
-        <a
-          href="/register"
-          className="bg-white text-blue-600 px-8 py-4 rounded-lg shadow hover:bg-blue-50 transition font-semibold"
-        >
-          Register Now
-        </a>
-      </section>
+      
     </main>
   )
 }

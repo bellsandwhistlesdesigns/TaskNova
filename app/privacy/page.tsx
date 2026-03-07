@@ -6,12 +6,20 @@ export default function PrivacyPage() {
   return (
     <main>
       <Hero
-        title="TaskNova"
-        subtitle="Our Privacy Policy"
+        title={
+        <>
+        <span className="text-yellow-400">Task</span>Nova
+        </>
+        }
+        subtitle={
+        <>
+        <span className="text-white">Your Privacy, </span>
+        <span className="text-yellow-400 font-semibold"> FURTHER</span>
+        </>
+        }
         showButtons={false}//show button go here
-        heightClass="min-h-[22vh]"
-        
-      />
+        heightClass="min-h-[60vh]"
+        />
 
       <section className="max-w-3xl mx-auto py-16 px-6 space-y-8">
         <h1 className="text-3xl font-bold">Privacy Policy</h1>
