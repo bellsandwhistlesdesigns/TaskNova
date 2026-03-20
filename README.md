@@ -37,7 +37,7 @@ TaskNova began as an exploration into building modern web applications from the 
 
 Beyond its functionality as a project management tool, TaskNova represents a broader personal development journey into modern web architecture, user experience design, and SaaS development. Each iteration of the platform is an opportunity to refine both the product and the process behind building scalable web applications.
 
-Whether TaskNova ultimately evolves into a full SaaS product or becomes the foundation for a future web design and development studio, the guiding goal remains the same: to build thoughtful, well-crafted software designed for the next generation of the web.
+Whether TaskNova ultimately evolves into a full SaaS product, becomes the foundation for a future web design and development studio, or serves as a gateway to contributing within a modern full-stack team, the guiding goal remains the same: to build thoughtful, well-crafted software designed for the next generation of the web.
 
 ---
 

@@ -6,13 +6,14 @@ import { useEffect, useState } from "react";
 interface HeroProps {
   title?: React.ReactNode;
   subtitle?: React.ReactNode;
-  subSubtitle?: string;
+  subSubtitle?: React.ReactNode;
   primaryctaText?: string;
   primaryctaLink?: string;
   secondaryctaText?: string;
   secondaryctaLink?: string;
   showButtons?: boolean;
   heightClass?: string;
+  titleSize?: string;
 }
 
 interface Particle {
@@ -49,15 +50,23 @@ export default function Hero({
   ),
   subtitle = (
     <>
-      <span className="text-white">Taking Your Productivity Into The</span>
+      <span className="text-white">Micro-Saas Tools For The</span>
       <span className="text-yellow-400"> FUTURE</span>
     </>
   ),
-  subSubtitle = "🚧 Becoming a Star 🚧",
-  secondaryctaText = "Register",
+  subSubtitle = (
+    <>
+    <span className="text-white">"Is </span>
+    <span className="text-yellow-400">your small business website</span> ready to become a STAR?"
+    </>
+  ),
+  
+  secondaryctaText = "Find out More",
   secondaryctaLink = "/register",
   showButtons = true,
   heightClass = "min-h-screen",
+  titleSize = "",
+  
 }: HeroProps) {
   const [mounted, setMounted] = useState(false);
   const [particles, setParticles] = useState<Particle[]>([]);
@@ -279,7 +288,7 @@ return (
             initial={{ opacity: 0, y: -20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
-            className="text-6xl sm:text-7xl md:text-9xl font-extrabold mb-6 text-white"
+            className={`${titleSize || "text-6xl sm:text-7xl md:text-9xl"} font-extrabold mb-6 text-white`}
           >
             {title}
           </motion.h1>
@@ -304,6 +313,7 @@ return (
 
           {showButtons && (
             <div className="flex flex-col md:flex-row gap-6 justify-center">
+              
               <a
                 href={secondaryctaLink}
                 className="px-8 py-4 rounded-2xl font-semibold

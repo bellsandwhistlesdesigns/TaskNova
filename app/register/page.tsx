@@ -2,6 +2,8 @@
 
 import { useState } from "react";
 import Hero from "@/components/Hero";
+import NavBar from "@/components/NavBar";
+
 
 export default function RegisterPage() {
   const [firstName, setFirstName] = useState("");
@@ -53,25 +55,26 @@ export default function RegisterPage() {
   };
 
 return (
-  <main className="bg-black text white">
-
+  <main className="bg-black text-white">
+    <NavBar />
     {/* HERO SECTION */}
     <Hero
       title={
           <>
-            Join <span className="text-yellow-400">Task</span>Nova
+            Contact <span className="text-yellow-400">Task</span>Nova
           </>
           }
       subtitle={
         <>
-        <span className="text-white">Taking Your Productivity, </span>
-        <span className="text-yellow-400 font-semibold"> FURTHER</span>
+        <span className="text-white">Want to take Your Company's Website... </span>
+        <span className="text-yellow-400 font-semibold"> FURTHER?</span>
         </>
       }
       
       subSubtitle=""
       showButtons={false}
       heightClass="min-h-[60vh]"
+      titleSize="text-4xl sm:text-5xl md:text-6xl"
     />
 
     {/* FORM SECTION */}
@@ -84,7 +87,7 @@ return (
                
     >
     <h1 className="text-3xl font-extrabold mb-6 text-center text-white">
-      Request Information
+      What can we do for you?
     </h1>
 
     <form onSubmit={handleSubmit} className="flex flex-col gap-5">
@@ -157,7 +160,7 @@ return (
     {/* FOOTER CTA */}
     <section className="text-center pb-24 px-6">
       <p className="text-gray-400 mb-6">
-        Contact <span className="text-yellow-400">Task</span>Nova and see what we can do for your team.
+        Contact <span className="text-yellow-400">Task</span>Nova and see what we can do for your business.
       </p>
     </section>
   </main>
