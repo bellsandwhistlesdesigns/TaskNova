@@ -3,12 +3,6 @@
 import Hero from "@/components/Hero";
 import NavBar from "@/components/NavBar";
 
-export const metadata = {
-  title: "Websites for Pet Businesses | TaskNova",
-  description:
-    "Professional websites for pet groomers, trainers, and pet stores. Increase bookings, showcase your services, and grow your business with TaskNova.",
-};
-
 export default function PetServicesPage() {
   return (
     <main className="bg-black text-white">

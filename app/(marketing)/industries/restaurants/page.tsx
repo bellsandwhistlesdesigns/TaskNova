@@ -4,12 +4,6 @@ import Hero from "@/components/Hero";
 import NavBar from "@/components/NavBar";
 import Link from "next/link";
 
-export const metadata = {
-  title: "Websites for Restaurants, Social Houses and Pubs | TaskNova",
-  description:
-    "Modern restaurant websites that increase online traffic, book reservations, showcase menus, and keep customers coming back.",
-};
-
 export default function RestaurantsPage() {
   return (
     <main className="bg-black text-white">
