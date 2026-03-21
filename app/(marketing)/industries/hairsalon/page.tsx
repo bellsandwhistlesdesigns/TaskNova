@@ -4,6 +4,12 @@ import Hero from "@/components/Hero";
 import NavBar from "@/components/NavBar";
 import Link from "next/link";
 
+export const metadata = {
+  title: "Websites for Barbers and Hair Salons | TaskNova",
+  description:
+    "High-converting online stores designed to book and retain more customers. Grow your business with TaskNova.",
+};
+
 export default function SalonPage() {
   return (
     <main className="bg-black text-white">

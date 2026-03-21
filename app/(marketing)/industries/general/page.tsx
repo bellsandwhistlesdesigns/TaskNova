@@ -4,6 +4,12 @@ import Hero from "@/components/Hero";
 import NavBar from "@/components/NavBar";
 import Link from "next/link";
 
+export const metadata = {
+  title: "Websites for Small Businesses | TaskNova",
+  description:
+    "Professional websites for any small business. Increase customers, showcase your services, and grow your business with TaskNova.",
+};
+
 export default function GeneralBusinessPage() {
   return (
     <main className="bg-black text-white">
