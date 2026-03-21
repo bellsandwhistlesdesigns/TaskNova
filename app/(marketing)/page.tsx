@@ -21,7 +21,7 @@ export default function MarketingPage() {
         <span className="text-yellow-400 font-semibold">websites</span>
         </>
       }
-      heightClass="min-h-[50vh]"
+      heightClass="min-h-[70vh]"
       showButtons={true}
       />
       <WhoWeHelp />
