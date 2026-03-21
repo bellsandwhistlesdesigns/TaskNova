@@ -17,11 +17,11 @@ export default function MarketingPage() {
     }
     subtitle={
         <>
-        <span className="text-white">Building modern websites for your company's</span>
-        <span className="text-yellow-400 font-semibold"> FUTURE..</span>
+        <span className="text-white">Building modern </span>
+        <span className="text-yellow-400 font-semibold">websites</span>
         </>
       }
-      heightClass="min-h-[70vh]"
+      heightClass="min-h-[50vh]"
       showButtons={true}
       />
       <WhoWeHelp />

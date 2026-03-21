@@ -59,6 +59,7 @@ export default function ContactPage() {
         showButtons={false}
         heightClass="min-h-[70vh]"
         titleSize="text-4xl sm:text-5xl md:text-6xl"
+        sunPosition="left"
       />
 
       {/* Contact Form Section */}

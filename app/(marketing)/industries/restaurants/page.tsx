@@ -25,6 +25,7 @@ export default function RestaurantsPage() {
         heightClass="min-h-[70vh]"
         showButtons={false}
         titleSize="text-4xl sm:text-5xl md:text-6xl"
+        sunPosition="left"
       />
 
       {/* PAIN POINTS */}

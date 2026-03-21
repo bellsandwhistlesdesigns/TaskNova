@@ -14,6 +14,7 @@ interface HeroProps {
   showButtons?: boolean;
   heightClass?: string;
   titleSize?: string;
+  sunPosition?: "left" | "right" | "center";
 }
 
 interface Particle {
@@ -66,6 +67,7 @@ export default function Hero({
   showButtons = true,
   heightClass = "min-h-screen",
   titleSize = "",
+  sunPosition = "right",
   
 }: HeroProps) {
   const [mounted, setMounted] = useState(false);
@@ -115,23 +117,39 @@ export default function Hero({
         flare,
       };
     });
-
+    
     setParticles(generatedParticles);
     setShootingStars(generatedStars);
     setExplodingParticles(generatedExplosions);
   }, []);
 
+  
 if (!mounted) return null;
+
+const sunPositionClasses = {
+  right: "right-[25%] sm:right-[30%] md:right-[20%]",
+  left: "left-[0%] sm:left-[5%] md:left-[5%]",
+  center: "left-1/2 -translate-x-1/2",
+};
 
 return (
   <main>
     <section
-      className={`${heightClass} relative flex flex-col items-center justify-center text-center px-6 md:px-20 bg-black overflow-x-hidden overflow-y-hidden`}
+      className={`${heightClass} relative flex flex-col items-center justify-start text-center px-6 pt-28 sm:pt-32 md:pt-40 md:px-20 bg-black overflow-hidden`}
     >
       
       {/* ===== SUPERNOVA SUN ===== */}
       <div
-        className="absolute z-0 top-[5%] right-[25%] sm:right-[15%] w-[180px] h-[180px] sm:w-[220px] sm:h-[220px] md:w-[320px] md:h-[320px]"  
+        className={`
+        absolute z-0
+        top-[2%] sm:top-[5%] md:top-[10%]
+        ${sunPositionClasses[sunPosition]}
+        w-[100px] h-[100px]
+        sm:w-[180px] sm:h-[180px]
+        md:w-[320px] md:h-[320px]
+        opacity-80 sm:opacity-100
+        transition-all duration-500
+        `}
       >
       {/* OUTER GLOW + SUBTLE FLARES */}
       <motion.div
@@ -283,21 +301,22 @@ return (
         </div>
 
         {/* CONTENT */}
-        <div className="relative z-10">
+        <div className="relative z-10 max-w-3xl">
           <motion.h1
             initial={{ opacity: 0, y: -20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
-            className={`${titleSize || "text-6xl sm:text-7xl md:text-9xl"} font-extrabold mb-6 text-white`}
+            style={{ textShadow: "0 4px 20px rgba(0,0,0,0.6)" }}
+            className={`${titleSize || "text-4xl sm:text-6xl md:text-9xl"} font-extrabold mb-4 sm:mb-6 text-white leading-tight`}
           >
-            {title}
-          </motion.h1>
+          {title}
+        </motion.h1>
 
           <motion.p
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 0.3 }}
-            className="text-lg md:text-xl mb-6 max-w-2xl text-center mx-auto"
+            className="text-sm sm:text-lg md:text-xl mb-4 max-w-xl mx-auto text-white"
           >
             {subtitle}
           </motion.p>

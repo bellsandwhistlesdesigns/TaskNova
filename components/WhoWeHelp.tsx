@@ -28,7 +28,7 @@ export default function WhoWeHelp() {
                           hover:shadow-[0_0_25px_white] hover:scale-105
                           transition duration-300 cursor-pointer">
             <h3 className="text-xl font-semibold mb-3 text-yellow-400">
-              Restaurants & Social Houses 
+              Restaurants and Social Houses 
             </h3>
             <p className="text-gray-300">
               Menus, reservations, and mobile-first designs that bring in more customers.
@@ -41,23 +41,23 @@ export default function WhoWeHelp() {
                           hover:shadow-[0_0_25px_white] hover:scale-105
                           transition duration-300 cursor-pointer">
             <h3 className="text-xl font-semibold mb-3 text-yellow-400">
-              Barbers & Hair Salons
+              Barbers and Hair Salons
             </h3>
             <p className="text-gray-300">
-              Booking-ready websites that remind clients to keep coming back.
+              Booking-ready websites that keeps your clients coming back.
             </p>
           </div>
         </Link>
 
-        <Link href="/industries/pet-stores">
+        <Link href="/industries/pet-services">
           <div className="p-8 bg-gray-900 rounded-2xl border border-yellow-500/30
-                          hover:shadow-[0_0_25px_white] hover:scale-105
-                          transition duration-300 cursor-pointer">
+                  hover:shadow-[0_0_25px_white] hover:scale-105
+                  transition duration-300 cursor-pointer">
             <h3 className="text-xl font-semibold mb-3 text-yellow-400">
-              Animal Groomers
+              Pet Services
             </h3>
             <p className="text-gray-300">
-              Friendly, visually engaging sites that connect with pet owners and clubs that drive repeat visits.
+              Groomers, pet stores, and trainers. We help online customers find your company.
             </p>
           </div>
         </Link>

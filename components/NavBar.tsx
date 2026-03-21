@@ -79,12 +79,12 @@ export default function NavBar() {
                   <Link href="/industries/hairsalon" className="hover:text-yellow-400">
                     Barbers & Salons
                   </Link>
-
-                  <Link href="/industries/pet-stores" className="hover:text-yellow-400">
-                    Pet Stores
+                  
+                  <Link href="/industries/pet-services" className="hover:text-yellow-400">
+                    Pet Services
                   </Link>
 
-                </div>
+                  </div>
               </div>
             )}
           </div>
@@ -133,8 +133,8 @@ export default function NavBar() {
               <Link href="/industries/hairsalon" onClick={() => setIsOpen(false)}>
                 Barbers & Salons
               </Link>
-              <Link href="/industries/pet-stores" onClick={() => setIsOpen(false)}>
-                Pet Stores
+              <Link href="/industries/pet-services" onClick={() => setIsOpen(false)}>
+                Pet Services
               </Link>
               
             </div>
