@@ -1,11 +1,13 @@
 "use client";
 
 import Hero from "@/components/Hero";
+import NavBar from "@/components/NavBar";
+import Footer from "@/components/Footer";
 
 export default function TermsPage() {
   return (
     <main className="bg-black text-gray-300">
-
+      <NavBar />
       <Hero
         title={
         <>
@@ -18,7 +20,7 @@ export default function TermsPage() {
         </>
         }
         showButtons={false}
-        heightClass="min-h-[60vh]"
+        heightClass="min-h-[70vh]"
         />
 
       <section className="max-w-3xl mx-auto py-16 px-6 space-y-10">
@@ -164,11 +166,12 @@ export default function TermsPage() {
             If you have questions about these Terms, please contact us at:
           </p>
           <p className="text-yellow-400 font-medium">
-            support@tasknova.ca
+            tasknova2026@outlook.com
           </p>
         </section>
 
       </section>
+      <Footer />
     </main>
   );
 }

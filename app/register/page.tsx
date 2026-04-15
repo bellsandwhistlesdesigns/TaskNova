@@ -3,6 +3,8 @@
 import { useState } from "react";
 import Hero from "@/components/Hero";
 import NavBar from "@/components/NavBar";
+import Footer from "@/components/Footer";
+import { useSearchParams } from "next/navigation";
 
 
 export default function RegisterPage() {
@@ -12,6 +14,8 @@ export default function RegisterPage() {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [message, setMessage] = useState("");
   const [isSuccess, setIsSuccess] = useState(false);
+  const searchParams = useSearchParams();
+  const source = searchParams.get("source") || "register";
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -30,6 +34,7 @@ export default function RegisterPage() {
           firstName,
           lastName,
           email,
+          source,
         }),
       });
 
@@ -73,7 +78,7 @@ return (
       
       subSubtitle=""
       showButtons={false}
-      heightClass="min-h-[60vh]"
+      heightClass="min-h-[70vh]"
       titleSize="text-4xl sm:text-5xl md:text-6xl"
     />
 
@@ -163,6 +168,7 @@ return (
         Contact <span className="text-yellow-400">Task</span>Nova and see what we can do for your business.
       </p>
     </section>
+    <Footer />
   </main>
   );
 }

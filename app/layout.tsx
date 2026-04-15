@@ -1,7 +1,7 @@
 import './globals.css'
 import CookieBanner from '@/components/CookieBanner'
 import { cookies } from 'next/headers'
-import Footer from "@/components/Footer"
+
 
 export const metadata = {
   title: "TaskNova | Micro-SaaS Websites for Small Businesses",
@@ -33,7 +33,6 @@ export default async function RootLayout({
             {/* Analytics script will go here later */}
           </>
         )}
-        <Footer />
         <CookieBanner />
       </body>
     </html>

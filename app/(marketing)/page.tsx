@@ -1,8 +1,9 @@
 "use client";
 
 import Hero from "@/components/Hero";
-import NavBar from "@/components/NavBar"
+import NavBar from "@/components/NavBar";
 import WhoWeHelp from "@/components/WhoWeHelp";
+import Footer from "@/components/Footer";
 
 export default function MarketingPage() {
   return (
@@ -17,8 +18,8 @@ export default function MarketingPage() {
     }
     subtitle={
         <>
-        <span className="text-white">Building modern </span>
-        <span className="text-yellow-400 font-semibold">websites</span>
+        <span className="text-white">Building Modern Websites for </span>
+        <span className="text-yellow-400 font-semibold">Small Businesses</span>
         </>
       }
       heightClass="min-h-[70vh]"
@@ -103,7 +104,7 @@ export default function MarketingPage() {
         </p>
 
         <a
-          href="/register"
+          href="/register?source=landingpagefooter"
           className="inline-block px-10 py-4 rounded-2xl font-semibold
                      bg-yellow-500 text-black
                      border-2 border-white
@@ -114,7 +115,8 @@ export default function MarketingPage() {
           Find out More
         </a>
       </section>
-
+      <Footer />
     </main>
+    
   );
 }

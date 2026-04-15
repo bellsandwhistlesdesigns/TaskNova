@@ -2,12 +2,14 @@
 
 import Hero from "@/components/Hero";
 import NavBar from "@/components/NavBar";
+import Footer from "@/components/Footer";
 import { useState } from "react";
 
 export default function ContactPage() {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
-  const [message, setMessage] = useState("");
+  const [message, setMessage] = useState(""); // user message
+  const [statusMessage, setStatusMessage] = useState(""); // system message
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSuccess, setIsSuccess] = useState(false);
 
@@ -21,14 +23,14 @@ export default function ContactPage() {
       const res = await fetch("/api/register-interest", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ firstName: name, lastName: "", email }),
+        body: JSON.stringify({ firstName: name, lastName: "", email, message, source: "contact", })
       });
 
       const result = await res.json();
       if (!res.ok) throw new Error(result.error || "Something went wrong.");
 
       setIsSuccess(true);
-      setMessage("Thanks! We'll be in touch soon.");
+      setStatusMessage("Thanks! We'll be in touch soon.");
       setName("");
       setEmail("");
     } catch (err: any) {
@@ -59,7 +61,7 @@ export default function ContactPage() {
         showButtons={false}
         heightClass="min-h-[70vh]"
         titleSize="text-4xl sm:text-5xl md:text-6xl"
-        sunPosition="left"
+        sunPosition="right"
       />
 
       {/* Contact Form Section */}
@@ -105,13 +107,13 @@ export default function ContactPage() {
             </button>
           </form>
 
-          {message && (
+          {statusMessage && (
             <p
               className={`mt-6 text-center text-sm ${
                 isSuccess ? "text-green-600" : "text-red-500"
               }`}
             >
-              {isSuccess ? "Thanks! We'll be in touch soon." : message}
+              {statusMessage}
             </p>
           )}
 
@@ -124,6 +126,7 @@ export default function ContactPage() {
           </p>
         </div>
       </section>
+      <Footer />
     </main>
   );
 }

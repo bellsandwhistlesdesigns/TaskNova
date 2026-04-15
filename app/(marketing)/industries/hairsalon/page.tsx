@@ -2,6 +2,7 @@
 
 import Hero from "@/components/Hero";
 import NavBar from "@/components/NavBar";
+import Footer from "@/components/Footer";
 import Link from "next/link";
 
 export default function SalonPage() {
@@ -84,7 +85,7 @@ export default function SalonPage() {
         </p>
 
         <Link
-          href="/register"
+          href="/register?source=hairservices"
           className="px-10 py-4 rounded-2xl font-semibold
                      bg-yellow-500 text-black
                      hover:shadow-[0_0_25px_rgba(255,215,0,0.7)]
@@ -93,6 +94,7 @@ export default function SalonPage() {
           Get Started
         </Link>
       </section>
+      <Footer />
     </main>
   );
 }

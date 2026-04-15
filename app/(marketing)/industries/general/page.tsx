@@ -2,6 +2,7 @@
 
 import Hero from "@/components/Hero";
 import NavBar from "@/components/NavBar";
+import Footer from "@/components/Footer";
 import Link from "next/link";
 
 export default function GeneralBusinessPage() {
@@ -19,7 +20,7 @@ export default function GeneralBusinessPage() {
         subtitle={
           <>
             <span className="text-white">Professional websites that help you </span>
-            <span className="text-yellow-400 font-semibold">grow and stand out</span>
+            <span className="text-yellow-400 font-semibold">grow and stand out!</span>
           </>
         }
         heightClass="min-h-[70vh]"
@@ -30,7 +31,7 @@ export default function GeneralBusinessPage() {
       {/* WHO THIS IS FOR */}
       <section className="py-20 px-6 md:px-20 max-w-5xl mx-auto text-center">
         <h2 className="text-3xl font-bold mb-6">
-          Built for Businesses Like Yours
+          We Build Websites for Businesses Like Yours
         </h2>
 
         <p className="text-gray-400 leading-relaxed">
@@ -128,7 +129,7 @@ export default function GeneralBusinessPage() {
         </p>
 
         <Link
-          href="/register"
+          href="/register?=generalbusiness"
           className="px-10 py-4 rounded-2xl font-semibold
                      bg-yellow-500 text-black
                      hover:shadow-[0_0_25px_rgba(255,215,0,0.7)]
@@ -137,6 +138,7 @@ export default function GeneralBusinessPage() {
           Get Started
         </Link>
       </section>
+      <Footer />
     </main>
   );
 }

@@ -63,7 +63,7 @@ export default function Hero({
   ),
   
   secondaryctaText = "Find out More",
-  secondaryctaLink = "/register",
+  secondaryctaLink = "/register?source=landingPageHeader",
   showButtons = true,
   heightClass = "min-h-screen",
   titleSize = "",

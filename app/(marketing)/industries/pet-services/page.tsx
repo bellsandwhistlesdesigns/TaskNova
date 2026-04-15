@@ -2,6 +2,7 @@
 
 import Hero from "@/components/Hero";
 import NavBar from "@/components/NavBar";
+import Footer from "@/components/Footer";
 
 export default function PetServicesPage() {
   return (
@@ -10,7 +11,7 @@ export default function PetServicesPage() {
 
       {/* ===== HERO ===== */}
       <Hero
-        sunPosition="left"
+        sunPosition="right"
         title={
           <>
             Websites for <span className="text-yellow-400">Pet Businesses</span>
@@ -25,7 +26,7 @@ export default function PetServicesPage() {
         subSubtitle="Perfect for groomers, pet stores, trainers, and daycare services."
         showButtons={true}
         secondaryctaText="Get Started"
-        secondaryctaLink="/contact"
+        secondaryctaLink="/register?source=petservicesmain"
         heightClass="min-h-[80vh]"
       />
 
@@ -101,7 +102,7 @@ export default function PetServicesPage() {
         </p>
 
         <a
-          href="/contact"
+          href="/register?source=petservices"
           className="px-10 py-4 rounded-2xl font-semibold
                      bg-yellow-500 text-black
                      hover:scale-105 hover:shadow-[0_0_25px_rgba(255,215,0,0.7)]
@@ -110,6 +111,7 @@ export default function PetServicesPage() {
           Get Started
         </a>
       </section>
+      <Footer />
     </main>
   );
 }

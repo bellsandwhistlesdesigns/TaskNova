@@ -12,21 +12,21 @@ export default function Footer() {
         <div className="flex space-x-6">
           <Link
             href="/terms"
-            className="text-yellow-400 hover:text-black hover:shadow-[0_0_10px_white] transition-all duration-300"
+            className="text-yellow-400 relative after:absolute after:left-1/2 after:-translate-x-1/2 after:-bottom-1 after:h-[2px] after:w-0 after:bg-yellow-400 hover:after:w-full after:transition-all after:duration-300"
           >
             Terms of Service
           </Link>
 
           <Link
             href="/privacy"
-            className="text-yellow-400 hover:text-black hover:shadow-[0_0_10px_white] transition-all duration-300"
+            className="text-yellow-400 relative after:absolute after:left-1/2 after:-translate-x-1/2 after:-bottom-1 after:h-[2px] after:w-0 after:bg-yellow-400 hover:after:w-full after:transition-all after:duration-300"
           >
             Your Privacy
           </Link>
 
           <Link
             href="/cookie-policy"
-            className="text-yellow-400 hover:text-black hover:shadow-[0_0_10px_white] transition-all duration-300"
+            className="text-yellow-400 relative after:absolute after:left-1/2 after:-translate-x-1/2 after:-bottom-1 after:h-[2px] after:w-0 after:bg-yellow-400 hover:after:w-full after:transition-all after:duration-300"
           >
             Our Cookies
           </Link>

@@ -2,6 +2,7 @@
 
 import Hero from "@/components/Hero";
 import NavBar from "@/components/NavBar";
+import Footer from "@/components/Footer";
 import Link from "next/link";
 
 export default function RestaurantsPage() {
@@ -25,7 +26,7 @@ export default function RestaurantsPage() {
         heightClass="min-h-[70vh]"
         showButtons={false}
         titleSize="text-4xl sm:text-5xl md:text-6xl"
-        sunPosition="left"
+        sunPosition="right"
       />
 
       {/* PAIN POINTS */}
@@ -86,7 +87,7 @@ export default function RestaurantsPage() {
         </p>
 
         <Link
-          href="/register"
+          href="/register?source=restaurant"
           className="px-10 py-4 rounded-2xl font-semibold
                      bg-yellow-500 text-black
                      hover:shadow-[0_0_25px_rgba(255,215,0,0.7)]
@@ -95,6 +96,7 @@ export default function RestaurantsPage() {
           Get Started
         </Link>
       </section>
+      <Footer />
     </main>
   );
 }

@@ -1,45 +1,30 @@
-import { NextResponse } from "next/server";
-import nodemailer from "nodemailer";
+import { supabase } from "@/lib/supabase/client";
 
 export async function POST(req: Request) {
   try {
-    const { firstName, lastName, email } = await req.json();
+    const body = await req.json();
+    const { firstName, lastName, email, message, source } = body;
 
-    if (!firstName || !email) {
-      return NextResponse.json(
-        { error: "Missing required fields" },
-        { status: 400 }
-      );
+    console.log("Incoming submission:", body);
+
+    const { error } = await supabase.from("leads").insert([
+      {
+        first_name: firstName,
+        last_name: lastName,
+        email,
+        message,
+        source,
+      },
+    ]);
+
+    if (error) {
+      console.error("Supabase insert error:", error);
+      return Response.json({ error: "Database insert failed" }, { status: 500 });
     }
 
-    console.log("Incoming submission:", { firstName, lastName, email });
-
-    const transporter = nodemailer.createTransport({
-      host: "smtp.office365.com",
-      port: 587,
-      secure: false,
-      auth: {
-        user: process.env.OUTLOOK_USER,
-        pass: process.env.OUTLOOK_PASS,
-      },
-    });
-
-    await transporter.sendMail({
-      from: `"TaskNova Interest" <${process.env.OUTLOOK_USER}>`,
-      to: process.env.OUTLOOK_USER, // send to yourself
-      subject: "New TaskNova Interest Submission",
-      text: `New submission from TaskNova:
-
-Name: ${firstName} ${lastName}
-Email: ${email}`,
-    });
-
-    return NextResponse.json({ success: true });
-  } catch (error) {
-    console.error("Email sending failed:", error);
-    return NextResponse.json(
-      { error: "Email failed to send." },
-      { status: 500 }
-    );
+    return Response.json({ success: true });
+  } catch (err) {
+    console.error(err);
+    return Response.json({ error: "Server error" }, { status: 500 });
   }
 }

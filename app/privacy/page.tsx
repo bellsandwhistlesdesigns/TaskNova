@@ -1,10 +1,13 @@
 "use client";
 
 import Hero from "@/components/Hero";
+import NavBar from "@/components/NavBar";
+import Footer from "@/components/Footer";
 
 export default function PrivacyPage() {
   return (
-    <main>
+    <main className="bg-black text-gray-300">
+      <NavBar />
       <Hero
         title={
         <>
@@ -18,7 +21,7 @@ export default function PrivacyPage() {
         </>
         }
         showButtons={false}//show button go here
-        heightClass="min-h-[60vh]"
+        heightClass="min-h-[70vh]"
         />
 
       <section className="max-w-3xl mx-auto py-16 px-6 space-y-8">
@@ -167,10 +170,11 @@ export default function PrivacyPage() {
           <h2 className="text-xl font-semibold">12. Contact Information</h2>
           <p>
             If you have questions about this Privacy Policy, please contact us at:
-            support@tasknova.ca
+            tasknova2026@outlook.com
           </p>
         </section>
       </section>
+      <Footer />
     </main>
   );
 }

@@ -1,10 +1,13 @@
 "use client";
 
 import Hero from "@/components/Hero";
+import NavBar from "@/components/NavBar";
+import Footer from "@/components/Footer";
 
 export default function CookiePolicyPage() {
-    return (
-        <main>
+     return (
+        <main className="bg-black text-gray-300">
+          <NavBar />
           <Hero
             title={
             <>
@@ -18,7 +21,7 @@ export default function CookiePolicyPage() {
             </>
             }
             
-            heightClass="min-h-[50vh]"
+            heightClass="min-h-[70vh]"
             showButtons={false}
             
       />
@@ -102,11 +105,11 @@ export default function CookiePolicyPage() {
         </p>
 
         <p className="mt-4 font-medium">
-          support@tasknova.ca
+          tasknova2026@outlook.com
         </p>
       </section>
       </section>
-      
+    <Footer />
     </main>
   )
 }
