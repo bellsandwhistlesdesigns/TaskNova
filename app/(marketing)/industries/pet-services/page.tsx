@@ -27,7 +27,8 @@ export default function PetServicesPage() {
         showButtons={true}
         secondaryctaText="Get Started"
         secondaryctaLink="/register?source=petservicesmain"
-        heightClass="min-h-[80vh]"
+        titleSize="text-4xl sm:text-5xl md:text-6xl"
+        heightClass="min-h-[70vh]"
       />
 
       {/* ===== PROBLEMS ===== */}

@@ -14,7 +14,7 @@ export default function RestaurantsPage() {
       <Hero
         title={
           <>
-            Websites for <span className="text-yellow-400">Restaurants</span> & Pubs
+            Websites for <span className="text-yellow-400">Restaurants</span>, <span className="text-yellow-400">Pubs</span> and <span className="text-yellow-400">Social Houses</span>
           </>
         }
         subtitle={
@@ -24,7 +24,9 @@ export default function RestaurantsPage() {
           </>
         }
         heightClass="min-h-[70vh]"
-        showButtons={false}
+        showButtons={true}
+        secondaryctaText="Get Started"
+        secondaryctaLink="/register?source=restauranthero"
         titleSize="text-4xl sm:text-5xl md:text-6xl"
         sunPosition="right"
       />
@@ -76,6 +78,13 @@ export default function RestaurantsPage() {
         </div>
       </section>
 
+      {/* Center gold line */}
+		  <section>
+        <div className="relative z-10 flex justify-center">
+          <div className="w-24 h-1 bg-yellow-400 rounded-full shadow-[0_0_15px_#FFD700]"></div>
+        </div>
+      </section>
+
       {/* CTA */}
       <section className="py-24 text-center border-t border-yellow-500/20 px-6">
         <h2 className="text-3xl font-bold mb-6">
@@ -87,7 +96,7 @@ export default function RestaurantsPage() {
         </p>
 
         <Link
-          href="/register?source=restaurant"
+          href="/register?source=restaurantmain"
           className="px-10 py-4 rounded-2xl font-semibold
                      bg-yellow-500 text-black
                      hover:shadow-[0_0_25px_rgba(255,215,0,0.7)]

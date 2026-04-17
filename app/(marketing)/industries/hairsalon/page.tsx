@@ -24,8 +24,10 @@ export default function SalonPage() {
           </>
         }
         heightClass="min-h-[70vh]"
-        showButtons={false}
-        titleSize="text-4xl md:text-6xl"
+        showButtons={true}
+        secondaryctaText="Get Started"
+        secondaryctaLink="/register?source=salonhero"
+        titleSize="text-4xl sm:text-5xl md:text-6xl"
       />
 
       {/* PAIN POINTS */}
@@ -85,7 +87,7 @@ export default function SalonPage() {
         </p>
 
         <Link
-          href="/register?source=hairservices"
+          href="/register?source=salonmain"
           className="px-10 py-4 rounded-2xl font-semibold
                      bg-yellow-500 text-black
                      hover:shadow-[0_0_25px_rgba(255,215,0,0.7)]

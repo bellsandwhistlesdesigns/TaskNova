@@ -24,6 +24,7 @@ export default function MarketingPage() {
       }
       heightClass="min-h-[70vh]"
       showButtons={true}
+      
       />
       <WhoWeHelp />
       {/* ===== FEATURES SECTION ===== */}

@@ -24,8 +24,10 @@ export default function GeneralBusinessPage() {
           </>
         }
         heightClass="min-h-[70vh]"
-        showButtons={false}
-        titleSize="text-4xl md:text-5xl"
+        showButtons={true}
+        secondaryctaText="Get Started"
+        secondaryctaLink="/register?source=generalbusinesshero"
+        titleSize="text-4xl sm:text-5xl md:text-6xl"
       />
 
       {/* WHO THIS IS FOR */}
@@ -118,6 +120,13 @@ export default function GeneralBusinessPage() {
         </div>
       </section>
 
+      {/* Center gold line */}
+		  <section>
+        <div className="relative z-10 flex justify-center">
+          <div className="w-24 h-1 bg-yellow-400 rounded-full shadow-[0_0_15px_#FFD700]"></div>
+        </div>
+      </section>
+
       {/* CTA */}
       <section className="py-24 text-center border-t border-yellow-500/20 px-6">
         <h2 className="text-3xl font-bold mb-6">
@@ -129,7 +138,7 @@ export default function GeneralBusinessPage() {
         </p>
 
         <Link
-          href="/register?=generalbusiness"
+          href="/register?=generalbusinessmain"
           className="px-10 py-4 rounded-2xl font-semibold
                      bg-yellow-500 text-black
                      hover:shadow-[0_0_25px_rgba(255,215,0,0.7)]
@@ -138,7 +147,9 @@ export default function GeneralBusinessPage() {
           Get Started
         </Link>
       </section>
+      
       <Footer />
+      
     </main>
   );
 }
