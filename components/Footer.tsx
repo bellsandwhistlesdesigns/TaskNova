@@ -1,4 +1,5 @@
 import Link from "next/link";
+import SocialLinks from "@/components/SocialLinks";
 
 export default function Footer() {
   return (
@@ -6,8 +7,11 @@ export default function Footer() {
       <div className="max-w-6xl mx-auto px-6 flex flex-col md:flex-row justify-between items-center gap-4">
         
         {/* COPYRIGHT */}
-        <p>© 2026 TaskNova. All rights reserved.</p>
+        <p className="text-yellow-300/80 tracking-wide">
+        © 2026 TaskNova. All rights reserved.
+        </p>
         
+        <SocialLinks />
         {/* LINKS */}
         <div className="flex space-x-6">
           <Link

@@ -4,6 +4,7 @@ import Hero from "@/components/Hero";
 import NavBar from "@/components/NavBar";
 import WhoWeHelp from "@/components/WhoWeHelp";
 import Footer from "@/components/Footer";
+import SocialLinks from "@/components/SocialLinks";
 
 export default function MarketingPage() {
   return (
@@ -97,11 +98,11 @@ export default function MarketingPage() {
       {/* ===== CTA BANNER ===== */}
       <section className="py-24 px-6 md:px-20 bg-black text-center border-t border-yellow-500/20">
         <h2 className="text-3xl md:text-4xl font-bold mb-6">
-          Ready for a new Website?
+          <span className="text-yellow-400 font-semibold">Ready</span> for a new Website?
         </h2>
 
         <p className="mb-10 max-w-xl mx-auto bg-black text-gray-300">
-          Get in touch with an advisor and start gaining new customers today.
+          Get in touch with an advisor and <span className="text-yellow-400 font-semibold">start gaining</span> new customers today.
         </p>
 
         <a
@@ -117,6 +118,7 @@ export default function MarketingPage() {
         </a>
       </section>
       <Footer />
+      
     </main>
     
   );

@@ -8,10 +8,11 @@ export const metadata = {
   description:
     "TaskNova builds high-converting, modern websites for small businesses. Increase bookings, improve visibility, and grow your brand online.",
   keywords: [
-    "web design",
-    "small business websites",
-    "micro saas",
-    "local SEO",
+    "web design Vancouver",
+    "Coquitlam web design",
+    "small business websites BC",
+    "micro SaaS websites Canada",
+    "local SEO Vancouver",
     "TaskNova",
   ],
 };
