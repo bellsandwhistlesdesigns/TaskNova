@@ -10,6 +10,8 @@ export default function ContactPage() {
   const [email, setEmail] = useState("");
   const [message, setUserMessage] = useState(""); // user message
   const [statusMessage, setStatusMessage] = useState(""); // system message
+  const [businessType, setBusinessType] = useState("");
+  const [challenge, setChallenge] = useState("");
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSuccess, setIsSuccess] = useState(false);
 
@@ -28,6 +30,8 @@ export default function ContactPage() {
           lastName: "",
           email,
           message,
+          businessType,
+          challenge,
           source: "contact",
         }),
       });
@@ -60,24 +64,40 @@ export default function ContactPage() {
 
       {/* Hero Section */}
       <Hero
-        title={
-          <>
-            Contact <span className="text-yellow-400">Task</span>Nova
-          </>
-        }
-        subtitle={
-          <>
-            Have an idea, project, or problem to solve? Tell us what you're
-            working on.{" "}
-            <span className="text-yellow-400 font-semibold">
-              We typically respond within 24 hours.
-            </span>
-          </>
-        }
-        showButtons={false}
-        heightClass="min-h-[65vh]"
-        sunPosition="right"
-      />
+  title={
+    <>
+      Start Your{" "}
+      <span className="text-yellow-400">
+        AI Automation
+      </span>{" "}
+      Journey
+    </>
+  }
+  subtitle={
+    <>
+      <span className="text-white">
+        Tell us about your business, workflow challenges,
+        or customer experience goals.
+      </span>{" "}
+      <span className="text-yellow-400 font-semibold">
+        We’ll help identify automation opportunities that can
+        save time and improve operations.
+      </span>
+    </>
+  }
+  subSubtitle={
+    <>
+      <span className="text-white">
+        From AI lead handling to automated booking systems,
+        TaskNova builds modern AI-powered workflows for
+        small businesses.
+      </span>
+    </>
+  }
+  showButtons={false}
+  heightClass="min-h-[65vh]"
+  sunPosition="right"
+/>
 
       {/* Contact Form Section */}
       <section className="flex justify-center px-6 py-20">
@@ -109,7 +129,20 @@ export default function ContactPage() {
               required
               className="bg-black/50 text-white border border-yellow-400/40 p-4 rounded-xl placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-yellow-400 transition"
             />
-
+            <input
+              type="text"
+              placeholder="Business Type (Restaurant, Salon, Contractor...)"
+              value={businessType}
+              onChange={(e) => setBusinessType(e.target.value)}
+              className="bg-black/50 text-white border border-yellow-400/40 p-4 rounded-xl placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-yellow-400 transition"
+            />
+            <input
+            type="text"
+            placeholder="Biggest Challenge (Bookings, Leads, Scheduling...)"
+            value={challenge}
+            onChange={(e) => setChallenge(e.target.value)}
+            className="bg-black/50 text-white border border-yellow-400/40 p-4 rounded-xl placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-yellow-400 transition"
+            />
             <textarea
               placeholder="Your Message (optional, but recommended)"
               value={message}
