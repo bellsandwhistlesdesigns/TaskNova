@@ -14,18 +14,32 @@ export default function GeneralBusinessPage() {
       <Hero
         title={
           <>
-            Websites for <span className="text-yellow-400">Small Businesses</span>
+            AI Automation for{" "}
+            <span className="text-yellow-400">Small Businesses</span>
           </>
         }
         subtitle={
           <>
-            <span className="text-white">Professional websites that help you </span>
-            <span className="text-yellow-400 font-semibold">grow and stand out!</span>
+            <span className="text-white">
+              Smart websites and AI-powered systems designed to help your
+              business respond faster, save time, and grow smarter.
+            </span>
           </>
         }
-        heightClass="min-h-[70vh]"
+        subSubtitle={
+          <>
+            <span className="text-white">
+              Instantly respond to leads, automate repetitive tasks,
+              and turn your website into a
+            </span>
+            <span className="text-yellow-400">
+              {" "}24/7 business assistant.
+            </span>
+          </>
+        }
+        heightClass="min-h-[80vh]"
         showButtons={true}
-        secondaryctaText="Get Started"
+        secondaryctaText="See AI in Action"
         secondaryctaLink="/register?source=generalbusinesshero"
         titleSize="text-4xl sm:text-5xl md:text-6xl"
       />
@@ -33,13 +47,15 @@ export default function GeneralBusinessPage() {
       {/* WHO THIS IS FOR */}
       <section className="py-20 px-6 md:px-20 max-w-5xl mx-auto text-center">
         <h2 className="text-3xl font-bold mb-6">
-          We Build Websites for Businesses Like Yours
+          AI Systems Built for Real Businesses
         </h2>
 
         <p className="text-gray-400 leading-relaxed">
-          Whether you're running a local shop, service business, or growing brand,
-          your website should work as hard as you do. We build modern, reliable
-          websites that help customers find you, trust you, and choose you.
+          Whether you run a local shop, service business, or growing company,
+          your website should do more than just exist online. We build
+          AI-powered websites and automation systems that help businesses
+          capture leads, streamline operations, and create better customer
+          experiences.
         </p>
       </section>
 
@@ -52,7 +68,8 @@ export default function GeneralBusinessPage() {
               Local Shops & Retail
             </h3>
             <p className="text-gray-300">
-              Bring customers through your doors with a strong online presence.
+              Turn visitors into customers with AI-powered engagement and
+              modern online experiences.
             </p>
           </div>
 
@@ -61,7 +78,8 @@ export default function GeneralBusinessPage() {
               Service-Based Businesses
             </h3>
             <p className="text-gray-300">
-              Showcase your services clearly and convert visitors into clients.
+              Automate inquiries, follow-ups, and client communication so you
+              can focus on delivering your services.
             </p>
           </div>
 
@@ -70,16 +88,18 @@ export default function GeneralBusinessPage() {
               Contractors & Trades
             </h3>
             <p className="text-gray-300">
-              Build trust with professional design and clear contact options.
+              Never miss another lead with instant responses, streamlined
+              booking requests, and smarter workflows.
             </p>
           </div>
 
           <div className="p-6 bg-gray-900 rounded-2xl border border-yellow-500/30">
             <h3 className="text-lg text-yellow-400 font-semibold mb-2">
-              Startups & New Ventures
+              Startups & Growing Brands
             </h3>
             <p className="text-gray-300">
-              Launch with confidence using a modern, scalable foundation.
+              Launch with scalable technology designed to support future growth
+              and automation from day one.
             </p>
           </div>
 
@@ -90,30 +110,33 @@ export default function GeneralBusinessPage() {
       <section className="py-20 px-6 md:px-20">
         <div className="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
 
-          <div className="p-8 bg-gray-900 rounded-2xl border border-yellow-500/30">
-            <h3 className="text-xl text-yellow-400 font-semibold mb-3">
-              Professional Design
+          <div className="p-8 bg-gray-900 rounded-2xl border border-yellow-500/30 hover:shadow-[0_0_25px_white] transition duration-300">
+            <h3 className="text-xl font-semibold mb-3 text-yellow-400">
+              AI Lead Automation
             </h3>
             <p className="text-gray-300">
-              Make a strong first impression with a clean, modern website.
+              Automatically respond to customer inquiries and capture leads
+              faster than ever before.
             </p>
           </div>
 
-          <div className="p-8 bg-gray-900 rounded-2xl border border-yellow-500/30">
-            <h3 className="text-xl text-yellow-400 font-semibold mb-3">
-              Mobile Optimization
+          <div className="p-8 bg-gray-900 rounded-2xl border border-yellow-500/30 hover:shadow-[0_0_25px_white] transition duration-300">
+            <h3 className="text-xl font-semibold mb-3 text-yellow-400">
+              Smart Customer Workflows
             </h3>
             <p className="text-gray-300">
-              Ensure your site looks and works perfectly on all devices.
+              Streamline repetitive business tasks with intelligent automation
+              systems tailored to your business.
             </p>
           </div>
 
-          <div className="p-8 bg-gray-900 rounded-2xl border border-yellow-500/30">
-            <h3 className="text-xl text-yellow-400 font-semibold mb-3">
-              SEO Foundations
+          <div className="p-8 bg-gray-900 rounded-2xl border border-yellow-500/30 hover:shadow-[0_0_25px_white] transition duration-300">
+            <h3 className="text-xl font-semibold mb-3 text-yellow-400">
+              Modern AI-Powered Websites
             </h3>
             <p className="text-gray-300">
-              Help customers find your business through search engines.
+              Build trust and stand out online with a modern website designed
+              for speed, performance, and growth.
             </p>
           </div>
 
@@ -121,7 +144,7 @@ export default function GeneralBusinessPage() {
       </section>
 
       {/* Center gold line */}
-		  <section>
+      <section>
         <div className="relative z-10 flex justify-center">
           <div className="w-24 h-1 bg-yellow-400 rounded-full shadow-[0_0_15px_#FFD700]"></div>
         </div>
@@ -130,11 +153,12 @@ export default function GeneralBusinessPage() {
       {/* CTA */}
       <section className="py-24 text-center border-t border-yellow-500/20 px-6">
         <h2 className="text-3xl font-bold mb-6">
-          Ready to Grow Your Business Online?
+          Ready to Automate Your Business?
         </h2>
 
         <p className="text-gray-400 mb-10">
-          Let’s build a website that supports your goals and drives results.
+          Let’s build an AI-powered system that helps your business save time,
+          capture more leads, and grow faster.
         </p>
 
         <Link
@@ -144,12 +168,11 @@ export default function GeneralBusinessPage() {
                      hover:shadow-[0_0_25px_rgba(255,215,0,0.7)]
                      transition"
         >
-          Get Started
+          Book a Free Demo
         </Link>
       </section>
-      
+
       <Footer />
-      
     </main>
   );
 }

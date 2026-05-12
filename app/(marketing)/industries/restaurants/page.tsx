@@ -14,18 +14,42 @@ export default function RestaurantsPage() {
       <Hero
         title={
           <>
-            Websites for <span className="text-yellow-400">Restaurants</span>, <span className="text-yellow-400">Pubs</span> and <span className="text-yellow-400">Social Houses</span>
+            AI Automation for{" "}
+            <span className="text-yellow-400">
+              Restaurants
+            </span>,{" "}
+            <span className="text-yellow-400">
+              Pubs
+            </span>{" "}
+            &{" "}
+            <span className="text-yellow-400">
+              Social Houses
+            </span>
           </>
         }
         subtitle={
           <>
-            <span className="text-white">Turn your online visitors into </span>
-            <span className="text-yellow-400 font-semibold">paying customers</span>
+            <span className="text-white">
+              Modern AI-powered websites and automation systems
+              designed to help restaurants respond faster,
+              streamline bookings, and increase customer engagement.
+            </span>
+          </>
+        }
+        subSubtitle={
+          <>
+            <span className="text-white">
+              Automate reservations, customer inquiries,
+              menu access, and follow-ups with a
+            </span>
+            <span className="text-yellow-400">
+              {" "}24/7 AI-powered experience.
+            </span>
           </>
         }
         heightClass="min-h-[70vh]"
         showButtons={true}
-        secondaryctaText="Get Started"
+        secondaryctaText="See AI in Action"
         secondaryctaLink="/register?source=restauranthero"
         titleSize="text-4xl sm:text-5xl md:text-6xl"
         sunPosition="right"
@@ -34,13 +58,15 @@ export default function RestaurantsPage() {
       {/* PAIN POINTS */}
       <section className="py-20 px-6 md:px-20 max-w-5xl mx-auto text-center">
         <h2 className="text-3xl font-bold mb-6">
-          Struggling to Stand Out Online?
+          Your Website Should Help Run Your Restaurant
         </h2>
 
         <p className="text-gray-400 leading-relaxed">
-          Many restaurants lose customers before they ever walk through the door.
-          Slow websites, hard-to-find menus, and no clear way to book or reserve a table.
-          In todays world, your website is your first impression.
+          Many restaurants lose customers before they ever step through the
+          door. Missed calls, slow websites, confusing menus, and outdated
+          booking systems create friction that drives customers elsewhere.
+          TaskNova helps restaurants automate customer interactions and create
+          modern digital experiences that work around the clock.
         </p>
       </section>
 
@@ -48,30 +74,33 @@ export default function RestaurantsPage() {
       <section className="py-20 px-6 md:px-20">
         <div className="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
 
-          <div className="p-8 bg-gray-900 rounded-2xl border border-yellow-500/30">
-            <h3 className="text-xl text-yellow-400 font-semibold mb-3">
-              Mobile-First Menus
+          <div className="p-8 bg-gray-900 rounded-2xl border border-yellow-500/30 hover:shadow-[0_0_25px_white] transition duration-300">
+            <h3 className="text-xl font-semibold mb-3 text-yellow-400">
+              AI Reservation Automation
             </h3>
             <p className="text-gray-300">
-              Clean, fast-loading menus that customers can access instantly on any device.
+              Reduce missed bookings with automated reservation requests,
+              confirmations, and customer follow-ups.
             </p>
           </div>
 
-          <div className="p-8 bg-gray-900 rounded-2xl border border-yellow-500/30">
-            <h3 className="text-xl text-yellow-400 font-semibold mb-3">
-              Online Reservations
+          <div className="p-8 bg-gray-900 rounded-2xl border border-yellow-500/30 hover:shadow-[0_0_25px_white] transition duration-300">
+            <h3 className="text-xl font-semibold mb-3 text-yellow-400">
+              Smart Customer Responses
             </h3>
             <p className="text-gray-300">
-              Let customers book your tables easily, no more missed calls or lost business.
+              Instantly respond to customer inquiries about menus, hours,
+              reservations, and events using AI-powered workflows.
             </p>
           </div>
 
-          <div className="p-8 bg-gray-900 rounded-2xl border border-yellow-500/30">
-            <h3 className="text-xl text-yellow-400 font-semibold mb-3">
-              Local SEO Optimization
+          <div className="p-8 bg-gray-900 rounded-2xl border border-yellow-500/30 hover:shadow-[0_0_25px_white] transition duration-300">
+            <h3 className="text-xl font-semibold mb-3 text-yellow-400">
+              Mobile-Optimized Experiences
             </h3>
             <p className="text-gray-300">
-              We can get you to show up when people search for places to eat in your area.
+              Deliver fast-loading menus, booking systems, and modern website
+              experiences designed for mobile-first customers.
             </p>
           </div>
 
@@ -79,7 +108,7 @@ export default function RestaurantsPage() {
       </section>
 
       {/* Center gold line */}
-		  <section>
+      <section>
         <div className="relative z-10 flex justify-center">
           <div className="w-24 h-1 bg-yellow-400 rounded-full shadow-[0_0_15px_#FFD700]"></div>
         </div>
@@ -88,23 +117,25 @@ export default function RestaurantsPage() {
       {/* CTA */}
       <section className="py-24 text-center border-t border-yellow-500/20 px-6">
         <h2 className="text-3xl font-bold mb-6">
-          Ready to Bring in More Customers?
+          Ready to Modernize Your Restaurant?
         </h2>
 
         <p className="text-gray-400 mb-10">
-          Let’s build a website that works as hard as you do.
+          Let’s build an AI-powered restaurant system that helps you automate
+          bookings, engage customers, and grow your business.
         </p>
 
         <Link
-          href="/register?source=restaurantmain"
+          href="/register?source=restaurantcta"
           className="px-10 py-4 rounded-2xl font-semibold
                      bg-yellow-500 text-black
                      hover:shadow-[0_0_25px_rgba(255,215,0,0.7)]
                      transition"
         >
-          Get Started
+          Book a Free Demo
         </Link>
       </section>
+
       <Footer />
     </main>
   );

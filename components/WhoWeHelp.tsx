@@ -5,7 +5,7 @@ export default function WhoWeHelp() {
     <section className="py-24 px-6 md:px-20 bg-black">
       
       <h2 className="text-4xl font-bold text-center mb-16">
-        Who <span className="text-yellow-400">Task</span>Nova Helps
+        Who <span className="text-yellow-400">Task</span>Nova Automates
       </h2>
 
       <div className="grid md:grid-cols-4 gap-8 max-w-6xl mx-auto">

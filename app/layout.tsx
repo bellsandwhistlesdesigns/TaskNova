@@ -4,15 +4,22 @@ import { cookies } from 'next/headers'
 
 
 export const metadata = {
-  title: "TaskNova | Micro-SaaS Websites for Small Businesses",
+  title: "TaskNova | AI Automation & Smart Websites for Small Businesses",
+
   description:
-    "TaskNova builds high-converting, modern websites for small businesses. Increase bookings, improve visibility, and grow your brand online.",
+    "TaskNova builds AI-powered websites and automation systems for small businesses. Automate lead responses, streamline customer workflows, and grow your business with modern AI solutions.",
+
   keywords: [
-    "web design Vancouver",
-    "Coquitlam web design",
-    "small business websites BC",
-    "micro SaaS websites Canada",
-    "local SEO Vancouver",
+    "AI automation for small businesses",
+    "AI business automation Canada",
+    "AI lead generation websites",
+    "AI-powered websites",
+    "small business automation",
+    "customer workflow automation",
+    "AI websites Vancouver",
+    "AI automation Coquitlam",
+    "small business AI solutions BC",
+    "lead automation systems",
     "TaskNova",
   ],
 };

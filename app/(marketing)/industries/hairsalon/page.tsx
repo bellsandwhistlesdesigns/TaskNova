@@ -14,18 +14,34 @@ export default function SalonPage() {
       <Hero
         title={
           <>
-            Websites for <span className="text-yellow-400">Hair Salons</span> & <span className="text-yellow-400">Barbers</span>
+            AI Automation for{" "}
+            <span className="text-yellow-400">Hair Salons</span> &{" "}
+            <span className="text-yellow-400">Barbers</span>
           </>
         }
         subtitle={
           <>
-            <span className="text-white">Turn your online visitors into </span>
-            <span className="text-yellow-400 font-semibold">booked appointments</span>
+            <span className="text-white">
+              Modern AI-powered websites and booking systems designed to help
+              salons streamline appointments, reduce missed calls, and keep
+              schedules full.
+            </span>
+          </>
+        }
+        subSubtitle={
+          <>
+            <span className="text-white">
+              Automate bookings, client inquiries, reminders, and follow-ups
+              with a
+            </span>
+            <span className="text-yellow-400">
+              {" "}24/7 AI-powered salon experience.
+            </span>
           </>
         }
         heightClass="min-h-[70vh]"
         showButtons={true}
-        secondaryctaText="Get Started"
+        secondaryctaText="See AI in Action"
         secondaryctaLink="/register?source=salonhero"
         titleSize="text-4xl sm:text-5xl md:text-6xl"
       />
@@ -33,12 +49,15 @@ export default function SalonPage() {
       {/* PAIN POINTS */}
       <section className="py-20 px-6 md:px-20 max-w-5xl mx-auto text-center">
         <h2 className="text-3xl font-bold mb-6">
-          Tired of Missed Calls & Empty Time Slots?
+          Your Salon Should Be Booking Clients Even After Hours
         </h2>
 
         <p className="text-gray-400 leading-relaxed">
-          Clients do not want to call or wait. In todays world clients want to book instantly.
-          Without a proper online presence, <span className="text-yellow-400">are you losing appointments</span> to competitors who are making it easier? 
+          Clients expect instant booking experiences and fast responses.
+          Missed calls, outdated websites, and manual scheduling can cost your
+          salon valuable appointments every week. TaskNova helps salons and
+          barbers automate customer interactions and create modern digital
+          experiences that keep chairs full.
         </p>
       </section>
 
@@ -46,44 +65,55 @@ export default function SalonPage() {
       <section className="py-20 px-6 md:px-20">
         <div className="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
 
-          <div className="p-8 bg-gray-900 rounded-2xl border border-yellow-500/30">
-            <h3 className="text-xl text-yellow-400 font-semibold mb-3">
-              Online Booking System
+          <div className="p-8 bg-gray-900 rounded-2xl border border-yellow-500/30 hover:shadow-[0_0_25px_white] transition duration-300">
+            <h3 className="text-xl font-semibold mb-3 text-yellow-400">
+              AI Booking Automation
             </h3>
             <p className="text-gray-300">
-              Let clients book appointments anytime! No more missed calls, no friction, no lost business.
+              Let clients book appointments instantly with automated scheduling,
+              confirmations, reminders, and follow-ups.
             </p>
           </div>
 
-          <div className="p-8 bg-gray-900 rounded-2xl border border-yellow-500/30">
-            <h3 className="text-xl text-yellow-400 font-semibold mb-3">
-              The Ability to Showcase Your Work
+          <div className="p-8 bg-gray-900 rounded-2xl border border-yellow-500/30 hover:shadow-[0_0_25px_white] transition duration-300">
+            <h3 className="text-xl font-semibold mb-3 text-yellow-400">
+              Smart Client Communication
             </h3>
             <p className="text-gray-300">
-              Highlight your styles, cuts, and transformations with a clean, modern gallery.
+              Instantly respond to appointment requests, service inquiries,
+              pricing questions, and client messages using AI-powered workflows.
             </p>
           </div>
 
-          <div className="p-8 bg-gray-900 rounded-2xl border border-yellow-500/30">
-            <h3 className="text-xl text-yellow-400 font-semibold mb-3">
-              Local SEO Presence
+          <div className="p-8 bg-gray-900 rounded-2xl border border-yellow-500/30 hover:shadow-[0_0_25px_white] transition duration-300">
+            <h3 className="text-xl font-semibold mb-3 text-yellow-400">
+              Modern Mobile Experiences
             </h3>
             <p className="text-gray-300">
-              Get discovered by people searching for salons and barbers in your area.
+              Showcase your work, services, and transformations with a
+              modern mobile-first website built to attract new clients.
             </p>
           </div>
 
         </div>
       </section>
 
+      {/* Center gold line */}
+      <section>
+        <div className="relative z-10 flex justify-center">
+          <div className="w-24 h-1 bg-yellow-400 rounded-full shadow-[0_0_15px_#FFD700]"></div>
+        </div>
+      </section>
+
       {/* CTA */}
       <section className="py-24 text-center border-t border-yellow-500/20 px-6">
         <h2 className="text-3xl font-bold mb-6">
-          Ready to Fill Your Schedule?
+          Ready to Modernize Your Salon?
         </h2>
 
         <p className="text-gray-400 mb-10">
-          Let’s build a site that keeps your chairs full and your business growing.
+          Let’s build an AI-powered salon system that helps automate bookings,
+          improve customer experiences, and grow your business.
         </p>
 
         <Link
@@ -93,9 +123,10 @@ export default function SalonPage() {
                      hover:shadow-[0_0_25px_rgba(255,215,0,0.7)]
                      transition"
         >
-          Get Started
+          Book a Free Demo
         </Link>
       </section>
+
       <Footer />
     </main>
   );

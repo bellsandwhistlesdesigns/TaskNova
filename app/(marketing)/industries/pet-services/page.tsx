@@ -14,18 +14,32 @@ export default function PetServicesPage() {
         sunPosition="right"
         title={
           <>
-            Websites for <span className="text-yellow-400">Pet Businesses</span>
+            AI Automation for{" "}
+            <span className="text-yellow-400">Pet Businesses</span>
           </>
         }
         subtitle={
           <>
-            Turn visitors into loyal customers with a site that builds trust and
-            drives <span className="text-yellow-400">bookings</span>.
+            <span className="text-white">
+              Modern AI-powered websites and automation systems designed to help
+              pet businesses increase bookings, streamline customer communication,
+              and build lasting trust with pet owners.
+            </span>
           </>
         }
-        subSubtitle="Perfect for groomers, pet stores, trainers, and daycare services."
+        subSubtitle={
+          <>
+            <span className="text-white">
+              Automate bookings, appointment reminders, customer inquiries,
+              and follow-ups with a
+            </span>
+            <span className="text-yellow-400">
+              {" "}24/7 AI-powered experience.
+            </span>
+          </>
+        }
         showButtons={true}
-        secondaryctaText="Get Started"
+        secondaryctaText="See AI in Action"
         secondaryctaLink="/register?source=petservicesmain"
         titleSize="text-4xl sm:text-5xl md:text-6xl"
         heightClass="min-h-[70vh]"
@@ -34,50 +48,62 @@ export default function PetServicesPage() {
       {/* ===== PROBLEMS ===== */}
       <section className="px-6 md:px-20 py-20 max-w-6xl mx-auto">
         <h2 className="text-3xl md:text-5xl font-extrabold mb-10 text-center">
-          Is Your Website Holding You Back?
+          Your Website Should Help Grow Your Business
         </h2>
 
         <div className="grid md:grid-cols-3 gap-8 text-gray-300">
+
           <div className="p-6 bg-gray-900 rounded-2xl border border-yellow-500/20">
-            Customers can’t easily book appointments or contact you.
+            Missed calls and outdated booking systems can cost valuable
+            appointments and repeat customers.
           </div>
+
           <div className="p-6 bg-gray-900 rounded-2xl border border-yellow-500/20">
-            Your services and pricing aren’t clearly shown.
+            Customers expect fast responses, easy scheduling, and clear
+            information about your services.
           </div>
+
           <div className="p-6 bg-gray-900 rounded-2xl border border-yellow-500/20">
-            You’re not standing out from other local pet businesses.
+            Without a modern online presence, it’s difficult to stand out
+            from other local pet businesses.
           </div>
+
         </div>
       </section>
 
       {/* ===== SOLUTIONS ===== */}
       <section className="px-6 md:px-20 py-20 bg-black/60">
         <h2 className="text-3xl md:text-5xl font-extrabold mb-12 text-center">
-          What We Build for You
+          AI Systems Built for Pet Businesses
         </h2>
 
         <div className="grid md:grid-cols-2 gap-10 max-w-5xl mx-auto text-gray-300">
+
           <div className="p-6 bg-gray-900 rounded-2xl border border-yellow-500/20">
-            Online booking integration to make scheduling effortless
+            AI-powered appointment booking and automated scheduling workflows
           </div>
+
           <div className="p-6 bg-gray-900 rounded-2xl border border-yellow-500/20">
-            Photo galleries to showcase your work and happy pets
+            Smart customer responses for service inquiries, pricing, and bookings
           </div>
+
           <div className="p-6 bg-gray-900 rounded-2xl border border-yellow-500/20">
-            Mobile-first design for customers on the go
+            Mobile-first websites designed to build trust and increase conversions
           </div>
+
           <div className="p-6 bg-gray-900 rounded-2xl border border-yellow-500/20">
-            Local SEO setup so customers can find you easily
+            Local SEO optimization to help nearby pet owners discover your business
           </div>
+
         </div>
       </section>
 
       {/* Center gold line */}
-	    <section>
+      <section>
         <div className="relative z-10 flex justify-center">
           <div className="w-24 h-1 bg-yellow-400 rounded-full shadow-[0_0_15px_#FFD700]"></div>
         </div>
-        </section>
+      </section>
 
       {/* ===== RESULTS ===== */}
       <section className="px-6 md:px-20 py-20 max-w-5xl mx-auto text-center">
@@ -86,20 +112,21 @@ export default function PetServicesPage() {
         </h2>
 
         <div className="text-gray-300 space-y-4 text-lg">
-          <p>More bookings and appointments</p>
-          <p>Stronger trust with new customers</p>
-          <p>A professional online presence that stands out</p>
+          <p>More appointments and recurring customers</p>
+          <p>Faster communication and improved customer experiences</p>
+          <p>A modern AI-powered business that stands out online</p>
         </div>
       </section>
 
       {/* ===== CTA ===== */}
       <section className="px-6 py-24 text-center">
         <h2 className="text-3xl md:text-5xl font-extrabold mb-6">
-          Ready to Grow Your Pet Business?
+          Ready to Modernize Your Pet Business?
         </h2>
 
         <p className="text-gray-400 mb-10">
-          Let’s build you a website that brings in more customers.
+          Let’s build an AI-powered system that helps automate bookings,
+          improve customer experiences, and grow your business.
         </p>
 
         <a
@@ -109,9 +136,10 @@ export default function PetServicesPage() {
                      hover:scale-105 hover:shadow-[0_0_25px_rgba(255,215,0,0.7)]
                      transition-all duration-300"
         >
-          Get Started
+          Book a Free Demo
         </a>
       </section>
+
       <Footer />
     </main>
   );

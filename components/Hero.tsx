@@ -51,14 +51,14 @@ export default function Hero({
   ),
   subtitle = (
     <>
-      <span className="text-white">Micro-Saas Tools For The</span>
-      <span className="text-yellow-400"> FUTURE</span>
+      <span className="text-white">AI Automation for </span>
+      <span className="text-yellow-400">Small Businesses</span>
     </>
   ),
   subSubtitle = (
     <>
-    <span className="text-white">"Is </span>
-    <span className="text-yellow-400">your small business website</span> ready to become a STAR?"
+    <span className="text-white">"Instant Lead Responses, </span>
+    <span className="text-yellow-400">smart follow-ups, </span>and automated workflows that save hours every week. 
     </>
   ),
   

@@ -4,7 +4,7 @@ import Hero from "@/components/Hero";
 import NavBar from "@/components/NavBar";
 import WhoWeHelp from "@/components/WhoWeHelp";
 import Footer from "@/components/Footer";
-import SocialLinks from "@/components/SocialLinks";
+
 
 export default function MarketingPage() {
   return (
@@ -19,13 +19,21 @@ export default function MarketingPage() {
     }
     subtitle={
         <>
-        <span className="text-white">Building Modern Websites for </span>
+        <span className="text-white">AI Automation for </span>
         <span className="text-yellow-400 font-semibold">Small Businesses</span>
+
         </>
       }
+    subSubtitle={
+      <>
+      <span className="text-yellow-400">Smart follow-ups </span>and automated workflows that save hours every week. 
+      </>
+    }
+      
       heightClass="min-h-[70vh]"
       showButtons={true}
-      
+      secondaryctaText = "Automate My Bsuiness"
+      secondaryctaLink = "/register?source=landingPageHeader"
       />
       <WhoWeHelp />
       {/* ===== FEATURES SECTION ===== */}
@@ -34,7 +42,7 @@ export default function MarketingPage() {
   className="py-24 px-6 md:px-20 bg-black"
 >
   <h2 className="text-4xl font-bold text-center mb-16">
-    How <span className="text-yellow-400">Task</span>Nova Builds for the Future
+    How <span className="text-yellow-400">Task</span>Nova Builds for your Future
   </h2>
 
   <div className="grid md:grid-cols-4 gap-8 max-w-6xl mx-auto">
@@ -114,7 +122,7 @@ export default function MarketingPage() {
                      hover:scale-105
                      transition-all duration-300"
         >
-          Find out More
+          Book Free Demo
         </a>
       </section>
       <Footer />
