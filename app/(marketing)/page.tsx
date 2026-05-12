@@ -32,7 +32,7 @@ export default function MarketingPage() {
       
       heightClass="min-h-[70vh]"
       showButtons={true}
-      secondaryctaText = "Automate My Bsuiness"
+      secondaryctaText = "Automate My Business!"
       secondaryctaLink = "/register?source=landingPageHeader"
       />
       <WhoWeHelp />
