@@ -19,45 +19,52 @@ export async function POST(req: Request) {
     console.log("Incoming submission:", body);
 
     // AI Analysis
-    const completion = await openai.chat.completions.create({
-      model: "gpt-4o-mini",
-      response_format: {type: "json_object" },
-      messages: [
+    let aiData = {
+    category: "unknown",
+    urgency: "unknown",
+    recommended_solution: "",
+    response: "",
+    };
+
+    try {
+      const completion = await openai.chat.completions.create({
+        model: "gpt-4o-mini",
+        response_format: { type: "json_object" },
+        messages: [
         {
-          role: "system",
+         role: "system",
           content: `
-You are an AI assistant for TaskNova.
+          You are an AI assistant for TaskNova.
 
-Analyze incoming business leads.
+          Return ONLY valid JSON:
+        {
+          "category": "",
+          "urgency": "",
+          "recommended_solution": "",
+          "response": ""
+        }
+        `,
+      },
+      {
+        role: "user",
+        content: `
+          Business Type: ${businessType}
+          Challenge: ${challenge}
+          Message: ${message}
+        `,
+      },
+    ],
+  });
 
-Return ONLY valid JSON in this exact format:
+  aiData = JSON.parse(completion.choices[0].message.content || "{}");
+} catch (err: any) {
+  console.error("OpenAI failed:", err);
 
-{
-  "category": "",
-  "urgency": "",
-  "recommended_solution": "",
-  "response": ""
+  // IMPORTANT: do NOT crash the request
+  if (err?.code === "insufficient_quota") {
+    console.warn("OpenAI quota exceeded — skipping AI analysis");
+  }
 }
-
-Do not include markdown.
-Do not explain anything.
-`,
-        },
-        {
-          role: "user",
-          content: `
-Business Type: ${businessType}
-Challenge: ${challenge}
-Message: ${message}
-`,
-        },
-      ],
-    });
-
-    const aiData = JSON.parse(
-    completion.choices[0].message.content || "{}"
-    );
-    console.log("AI Analysis:", aiData);
 
     // Store lead in Supabase
     const { error } = await supabaseAdmin.from("leads").insert([
