@@ -41,7 +41,7 @@ export default function SalonPage() {
         }
         heightClass="min-h-[70vh]"
         showButtons={true}
-        secondaryctaText="Streamline My Workflow"
+        secondaryctaText="Streamline My Business"
         secondaryctaLink="/contact?source=hairsalonhero"
         titleSize="text-4xl sm:text-5xl md:text-6xl"
       />

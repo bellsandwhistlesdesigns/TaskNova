@@ -50,7 +50,7 @@ export default function RestaurantsPage() {
         }
         heightClass="min-h-[70vh]"
         showButtons={true}
-        secondaryctaText="Never Miss Another Booking"
+        secondaryctaText="Upgrade my Restaurant"
         secondaryctaLink="/contact?source=restauranthero"
         titleSize="text-4xl sm:text-5xl md:text-6xl"
         sunPosition="right"
