@@ -5,6 +5,7 @@ import NavBar from "@/components/NavBar";
 import Footer from "@/components/Footer";
 import Link from "next/link";
 
+
 export default function RestaurantsPage() {
   return (
     <main className="bg-black text-white">

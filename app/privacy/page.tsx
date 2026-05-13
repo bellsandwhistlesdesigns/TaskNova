@@ -20,7 +20,7 @@ export default function PrivacyPage() {
         <span className="text-yellow-400 font-semibold"> FURTHER</span>
         </>
         }
-        showButtons={false}//show button go here
+        showButtons={false}
         heightClass="min-h-[70vh]"
         />
 

@@ -4,6 +4,8 @@ import Hero from "@/components/Hero";
 import NavBar from "@/components/NavBar";
 import Footer from "@/components/Footer";
 
+
+
 export default function PetServicesPage() {
   return (
     <main className="bg-black text-white">

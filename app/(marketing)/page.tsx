@@ -122,7 +122,7 @@ export default function MarketingPage() {
                      hover:scale-105
                      transition-all duration-300"
         >
-          Book Free Demo
+          Find out more
         </a>
       </section>
       <Footer />

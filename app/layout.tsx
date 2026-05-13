@@ -7,7 +7,7 @@ export const metadata = {
   title: "TaskNova | AI Automation & Smart Websites for Small Businesses",
 
   description:
-    "TaskNova builds AI-powered websites and automation systems for small businesses. Automate lead responses, streamline customer workflows, and grow your business with modern AI solutions.",
+    "TaskNova builds AI-powered websites and automation systems for small businesses. Automate lead responses, streamline customer workflows, and grow with modern AI solutions.",
 
   keywords: [
     "AI automation for small businesses",

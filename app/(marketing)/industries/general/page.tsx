@@ -5,6 +5,7 @@ import NavBar from "@/components/NavBar";
 import Footer from "@/components/Footer";
 import Link from "next/link";
 
+
 export default function GeneralBusinessPage() {
   return (
     <main className="bg-black text-white">
@@ -37,7 +38,7 @@ export default function GeneralBusinessPage() {
             </span>
           </>
         }
-        heightClass="min-h-[80vh]"
+        heightClass="min-h-[70vh]"
         showButtons={true}
         secondaryctaText="Modernize My Operations"
         secondaryctaLink="/contact?source=generalbusinesshero"
