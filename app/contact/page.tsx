@@ -178,7 +178,7 @@ export default function ContactPage() {
           <p className="mt-6 text-center text-gray-400 text-sm">
             Prefer email? Reach us at{" "}
             <span className="text-yellow-400 font-semibold">
-              tasknova2026@outlook.com
+              hello@tasknova.ca
             </span>
           </p>
 

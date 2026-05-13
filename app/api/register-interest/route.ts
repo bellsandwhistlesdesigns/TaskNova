@@ -1,5 +1,6 @@
 import { supabaseAdmin } from "@/lib/supabase/server";
 import { openai } from "@/lib/openai/openai";
+import { SENDERS, INTERNAL_EMAIL } from "@/lib/email/senders";
 
 import { Resend } from "resend";
 
@@ -98,18 +99,25 @@ export async function POST(req: Request) {
     }
     try {
     await resend.emails.send({
-    from: "notify@tasknova.ca",
-    to: "tasknova2026@outlook.com",
-    replyTo: email,
-    subject: `New TaskNova Lead: ${firstName} ${lastName}`,
-    html: `
-      <h2>New Lead Submitted</h2>
-      <p>${message}</p>
-    `,
-    });
-    } catch (emailErr) {
-    console.error("Email failed:", emailErr);
-    }
+      from: SENDERS.general,
+      to: INTERNAL_EMAIL,
+      replyTo: email,
+      subject: `New TaskNova Lead: ${firstName} ${lastName}`,
+      html: `
+        <h2>New Lead Submitted</h2>
+
+        <p><strong>Name:</strong> ${firstName} ${lastName}</p>
+        <p><strong>Email:</strong> ${email}</p>
+        <p><strong>Business Type:</strong> ${businessType}</p>
+
+        <hr />
+
+        <p>${message}</p>
+      `,
+  });
+} catch (emailErr) {
+  console.error("Email failed:", emailErr);
+}
     return Response.json({
       success: true,
       aiAnalysis: aiData,

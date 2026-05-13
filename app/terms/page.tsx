@@ -166,7 +166,7 @@ export default function TermsPage() {
             If you have questions about these Terms, please contact us at:
           </p>
           <p className="text-yellow-400 font-medium">
-            tasknova2026@outlook.com
+            hello@tasknova.ca
           </p>
         </section>
 

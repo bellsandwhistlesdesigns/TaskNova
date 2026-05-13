@@ -170,7 +170,7 @@ export default function PrivacyPage() {
           <h2 className="text-xl font-semibold">12. Contact Information</h2>
           <p>
             If you have questions about this Privacy Policy, please contact us at:
-            tasknova2026@outlook.com
+            hello@tasknova.ca
           </p>
         </section>
       </section>

@@ -105,7 +105,7 @@ export default function CookiePolicyPage() {
         </p>
 
         <p className="mt-4 font-medium">
-          tasknova2026@outlook.com
+          hello@tasknova.ca
         </p>
       </section>
       </section>
