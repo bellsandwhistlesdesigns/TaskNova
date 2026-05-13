@@ -188,7 +188,7 @@ export default function ContactPage() {
 
           {/* Extra reassurance */}
           <p className="mt-3 text-center text-gray-500 text-xs">
-            Based in Coquitlam BC, Canada, working with clients anywhere.
+            Based in Coquitlam BC, Canada, working with clients Worldwide!
           </p>
         </div>
       </section>
