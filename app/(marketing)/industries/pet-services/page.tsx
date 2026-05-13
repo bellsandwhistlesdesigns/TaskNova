@@ -40,7 +40,7 @@ export default function PetServicesPage() {
         }
         showButtons={true}
         secondaryctaText="See AI in Action"
-        secondaryctaLink="/register?source=petservicesmain"
+        secondaryctaLink="/contact?source=petserviceshero"
         titleSize="text-4xl sm:text-5xl md:text-6xl"
         heightClass="min-h-[70vh]"
       />
@@ -130,13 +130,13 @@ export default function PetServicesPage() {
         </p>
 
         <a
-          href="/register?source=petservices"
+          href="/contact?source=petservicescta"
           className="px-10 py-4 rounded-2xl font-semibold
                      bg-yellow-500 text-black
                      hover:scale-105 hover:shadow-[0_0_25px_rgba(255,215,0,0.7)]
                      transition-all duration-300"
         >
-          Book a Free Demo
+          Transform My Business
         </a>
       </section>
 

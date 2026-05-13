@@ -49,8 +49,8 @@ export default function RestaurantsPage() {
         }
         heightClass="min-h-[70vh]"
         showButtons={true}
-        secondaryctaText="See AI in Action"
-        secondaryctaLink="/register?source=restauranthero"
+        secondaryctaText="Never Miss Another Booking"
+        secondaryctaLink="/contact?source=restauranthero"
         titleSize="text-4xl sm:text-5xl md:text-6xl"
         sunPosition="right"
       />
@@ -126,13 +126,13 @@ export default function RestaurantsPage() {
         </p>
 
         <Link
-          href="/register?source=restaurantcta"
+          href="/contact?source=restaurantcta"
           className="px-10 py-4 rounded-2xl font-semibold
                      bg-yellow-500 text-black
                      hover:shadow-[0_0_25px_rgba(255,215,0,0.7)]
                      transition"
         >
-          Book a Free Demo
+          Handle More Orders With AI
         </Link>
       </section>
 

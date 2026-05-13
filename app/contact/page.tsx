@@ -4,6 +4,7 @@ import Hero from "@/components/Hero";
 import NavBar from "@/components/NavBar";
 import Footer from "@/components/Footer";
 import { useState } from "react";
+import { useSearchParams } from "next/navigation";
 
 export default function ContactPage() {
   const [name, setName] = useState("");
@@ -14,6 +15,8 @@ export default function ContactPage() {
   const [challenge, setChallenge] = useState("");
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSuccess, setIsSuccess] = useState(false);
+  const searchParams = useSearchParams();
+  const source = searchParams.get("source") || "contact";
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -32,7 +35,7 @@ export default function ContactPage() {
           message,
           businessType,
           challenge,
-          source: "contact",
+          source,
         }),
       });
 
@@ -95,8 +98,9 @@ export default function ContactPage() {
     </>
   }
   showButtons={false}
-  heightClass="min-h-[65vh]"
+  heightClass="min-h-[70vh]"
   sunPosition="right"
+  titleSize="text-4xl sm:text-5xl md:text-6xl"
 />
 
       {/* Contact Form Section */}
@@ -138,13 +142,13 @@ export default function ContactPage() {
             />
             <input
             type="text"
-            placeholder="Biggest Challenge (Bookings, Leads, Scheduling...)"
+            placeholder="Your Challenge? (Bookings, Leads, Scheduling..)"
             value={challenge}
             onChange={(e) => setChallenge(e.target.value)}
             className="bg-black/50 text-white border border-yellow-400/40 p-4 rounded-xl placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-yellow-400 transition"
             />
             <textarea
-              placeholder="Your Message (optional, but recommended)"
+              placeholder="Your Message (optional, but recommended!)"
               value={message}
               onChange={(e) => setUserMessage(e.target.value)}
               rows={4}
@@ -160,7 +164,7 @@ export default function ContactPage() {
                   : "bg-yellow-500 text-black hover:scale-105 hover:shadow-[0_0_25px_rgba(255,215,0,0.7)]"
               }`}
             >
-              {isSubmitting ? "Sending..." : "Send Message"}
+              {isSubmitting ? "Sending..." : "Start your AI Journey"}
             </button>
           </form>
 

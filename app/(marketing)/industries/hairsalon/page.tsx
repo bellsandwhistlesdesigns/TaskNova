@@ -41,8 +41,8 @@ export default function SalonPage() {
         }
         heightClass="min-h-[70vh]"
         showButtons={true}
-        secondaryctaText="See AI in Action"
-        secondaryctaLink="/register?source=salonhero"
+        secondaryctaText="Streamline My Workflow"
+        secondaryctaLink="/contact?source=hairsalonhero"
         titleSize="text-4xl sm:text-5xl md:text-6xl"
       />
 
@@ -117,13 +117,13 @@ export default function SalonPage() {
         </p>
 
         <Link
-          href="/register?source=salonmain"
+          href="/contact?source=hairsaloncta"
           className="px-10 py-4 rounded-2xl font-semibold
                      bg-yellow-500 text-black
                      hover:shadow-[0_0_25px_rgba(255,215,0,0.7)]
                      transition"
         >
-          Book a Free Demo
+          Unlock Smarter Workflows
         </Link>
       </section>
 

@@ -32,8 +32,8 @@ export default function MarketingPage() {
       
       heightClass="min-h-[70vh]"
       showButtons={true}
-      secondaryctaText = "Automate My Business!"
-      secondaryctaLink = "/register?source=landingPageHeader"
+      secondaryctaText = "See What's Possible..."
+      secondaryctaLink = "/contact?source=landingPageHeader"
       />
       <WhoWeHelp />
       {/* ===== FEATURES SECTION ===== */}
@@ -114,7 +114,7 @@ export default function MarketingPage() {
         </p>
 
         <a
-          href="/register?source=landingpagefooter"
+          href="/contact?source=landingpagecta"
           className="inline-block px-10 py-4 rounded-2xl font-semibold
                      bg-yellow-500 text-black
                      border-2 border-white

@@ -39,8 +39,8 @@ export default function GeneralBusinessPage() {
         }
         heightClass="min-h-[80vh]"
         showButtons={true}
-        secondaryctaText="See AI in Action"
-        secondaryctaLink="/register?source=generalbusinesshero"
+        secondaryctaText="Modernize My Operations"
+        secondaryctaLink="/contact?source=generalbusinesshero"
         titleSize="text-4xl sm:text-5xl md:text-6xl"
       />
 
@@ -162,13 +162,13 @@ export default function GeneralBusinessPage() {
         </p>
 
         <Link
-          href="/register?=generalbusinessmain"
+          href="/contact?=generalbusinesscta"
           className="px-10 py-4 rounded-2xl font-semibold
                      bg-yellow-500 text-black
                      hover:shadow-[0_0_25px_rgba(255,215,0,0.7)]
                      transition"
         >
-          Book a Free Demo
+          Imagine Your Business Automated
         </Link>
       </section>
 
