@@ -1,6 +1,9 @@
 import { supabaseAdmin } from "@/lib/supabase/server";
 import { openai } from "@/lib/openai/openai";
 
+import { Resend } from "resend";
+
+const resend = new Resend(process.env.RESEND_API_KEY);
 
 export async function POST(req: Request) {
   try {
@@ -93,7 +96,20 @@ export async function POST(req: Request) {
         { status: 500 }
       );
     }
-
+    try {
+    await resend.emails.send({
+    from: "notify@tasknova.ca",
+    to: "tasknova2026@outlook.com",
+    replyTo: email,
+    subject: `New TaskNova Lead: ${firstName} ${lastName}`,
+    html: `
+      <h2>New Lead Submitted</h2>
+      <p>${message}</p>
+    `,
+    });
+    } catch (emailErr) {
+    console.error("Email failed:", emailErr);
+    }
     return Response.json({
       success: true,
       aiAnalysis: aiData,
