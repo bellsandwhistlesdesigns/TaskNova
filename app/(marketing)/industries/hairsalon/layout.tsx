@@ -34,3 +34,11 @@ export const metadata = {
     type: "website",
   },
 };
+
+export default function HairSalonLayout({
+  children,
+}: {
+  children: React.ReactNode;
+}) {
+  return children;
+}

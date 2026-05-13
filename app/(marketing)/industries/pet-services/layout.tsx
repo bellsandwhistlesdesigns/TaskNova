@@ -34,3 +34,11 @@ export const metadata = {
     type: "website",
   },
 };
+
+export default function PetServicesLayout({
+  children,
+}: {
+  children: React.ReactNode;
+}) {
+  return children;
+}

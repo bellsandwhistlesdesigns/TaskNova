@@ -28,3 +28,11 @@ export const metadata = {
     type: "website",
   },
 };
+
+export default function RestaurantsLayout({
+  children,
+}: {
+  children: React.ReactNode;
+}) {
+  return children;
+}
