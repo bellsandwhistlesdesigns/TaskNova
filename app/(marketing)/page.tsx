@@ -4,6 +4,7 @@ import Hero from "@/components/Hero";
 import NavBar from "@/components/NavBar";
 import WhoWeHelp from "@/components/WhoWeHelp";
 import Footer from "@/components/Footer";
+import Link from "next/link";
 
 
 export default function MarketingPage() {
@@ -20,15 +21,15 @@ export default function MarketingPage() {
     subtitle={
         <>
         <span className="text-white text-lg md:text-2xl font-bold tracking-wide">
-        Building <span className="text-yellow-400">AI-powered websites </span>and automation systems for small businesses</span>
+        Building <span className="text-yellow-400">AI-powered websites </span>and <span className="text-yellow-400">Automation Systems </span>for small businesses</span>
         </>
       }
     subSubtitle={
       <>
-      <span className="text-yellow-400">
-        Automate lead capture, follow-ups, bookings, and customer communications</span>
+      <span className="mb-10 max-w-xl mx-auto bg-black text-gray-300">
+        <span className="text-yellow-400">Automate</span> lead capture, follow-ups, bookings, <span className="text-yellow-400">and </span>customer communications
         <span className="text-white">
-        {" "}with modern AI workflows that save time and help grow your business.
+        {" "}with modern AI workflows that save time and help <span className="text-yellow-400"> grow your business.</span></span>
         </span>
       </>
     }
@@ -115,29 +116,20 @@ export default function MarketingPage() {
     </div>
 
   </div>
-</section>
-      
-                    
-      {/* Gold Bar */}
-		  <section>
-        <div className="relative z-10 flex justify-center">
-          <div className="w-24 h-1 bg-yellow-400 rounded-full shadow-[0_0_15px_#FFD700]"></div>
-        </div>
-      </section>
-      
+  </section>
       {/* ===== CTA BANNER ===== */}
       <section className="py-24 px-6 md:px-20 bg-black text-center border-t border-yellow-500/20">
         <h2 className="text-3xl md:text-4xl font-bold mb-6">
-          Is Your Business <span className="text-yellow-400 font-bold">Ready</span> for AI Power?
+          Is Your Business <span className="text-yellow-400 font-semibold">Ready</span> for AI Power?
         </h2>
 
         <p className="mb-10 max-w-xl mx-auto bg-black text-gray-300">
-          Get in touch with an advisor and <span className="text-yellow-400 font-semibold">start gaining</span> new customers today.
+          Get in touch with an advisor and <span className="text-yellow-400 font-semibold">start gaining new customers</span> today.
         </p>
 
-        <a
+        <Link
           href="/contact?source=landingpagecta"
-          className="inline-block px-8 py-4 rounded-2xl font-semibold
+          className="px-10 py-4 rounded-2xl font-semibold
                      bg-yellow-500 text-black
                      border-2 border-yellow-500
                      hover:bg-transparent hover:text-white
@@ -146,12 +138,9 @@ export default function MarketingPage() {
                      transition-all duration-300"
         >
           See AI in Action
-        </a>
+        </Link>
       </section>
-      
       <Footer />
-      
     </main>
-    
   );
 }

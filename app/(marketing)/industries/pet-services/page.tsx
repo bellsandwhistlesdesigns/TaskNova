@@ -3,6 +3,7 @@
 import Hero from "@/components/Hero";
 import NavBar from "@/components/NavBar";
 import Footer from "@/components/Footer";
+import Link from "next/link";
 
 
 
@@ -23,8 +24,8 @@ export default function PetServicesPage() {
         subtitle={
           <>
             <span className="text-white">
-              Modern AI-powered websites and automation systems designed to help
-              pet businesses increase bookings, streamline customer communication,
+              Modern AI-powered websites and automation systems <span className="text-yellow-400">designed to help
+              pet businesses </span>increase bookings, streamline customer communication,
               and build lasting trust with pet owners.
             </span>
           </>
@@ -128,17 +129,17 @@ export default function PetServicesPage() {
       
       <section className="py-24 px-6 md:px-20 bg-black text-center border-t border-yellow-500/20">
         <h2 className="text-3xl md:text-4xl font-bold mb-6">
-          <span className="text-yellow-400 font-semibold">Ready to Modernize</span> Your Pet Business?
+          Ready to <span className="text-yellow-400 font-semibold">Modernize</span> Your Pet Business?
         </h2>
 
         <p className="mb-10 max-w-xl mx-auto bg-black text-gray-300">
-          Let’s build an AI-powered system that helps <span className="text-yellow-400 font-semibold">automate bookings,
-          improve customer experiences, </span>and grow your business.
+          Let’s build an <span className="text-yellow-400 font-semibold">AI-powered system</span> that helps automate bookings,
+          improve customer experiences, and <span className="text-yellow-400 font-semibold">grow your business.</span>
         </p>
 
-        <a
+        <Link
           href="/contact?source=petservicescta"
-          className="inline-block px-8 py-4 rounded-2xl font-semibold
+          className="px-10 py-4 rounded-2xl font-semibold
                      bg-yellow-500 text-black
                      border-2 border-yellow-500
                      hover:bg-transparent hover:text-white
@@ -147,9 +148,8 @@ export default function PetServicesPage() {
                      transition-all duration-300"
         >
           Transform My Business
-        </a>
+        </Link>
       </section>
-      
       <Footer />
     </main>
   );

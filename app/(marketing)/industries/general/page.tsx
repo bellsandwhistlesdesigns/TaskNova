@@ -44,7 +44,23 @@ export default function GeneralBusinessPage() {
         titleSize="text-4xl sm:text-5xl md:text-6xl"
       />
 
-      
+      {/* PAIN POINTS */}
+      <section className="py-20 px-6 md:px-20 max-w-5xl mx-auto text-center">
+      <h2 className="text-3xl md:text-5xl font-extrabold mb-10 text-center">
+      Your Website Should{" "}
+        <span className="text-yellow-400">Help Run</span> Your Business
+      </h2>
+
+      <p className="text-gray-300 text-lg leading-relaxed">
+      Many small businesses lose valuable leads because of outdated websites,
+      missed inquiries, slow follow-ups, and disconnected customer experiences.
+      Today’s customers expect fast communication, modern design, and seamless
+      online interactions.
+      <span className="text-yellow-400"> Task</span>Nova helps businesses
+      automate customer workflows, improve responsiveness, and create modern
+      AI-powered digital experiences that work around the clock.
+    </p>
+    </section>  
 
       {/* BUSINESS TYPES */}
       <section className="py-20 px-6 md:px-20">
@@ -89,7 +105,12 @@ export default function GeneralBusinessPage() {
 
         </div>
       </section>
-
+      {/* Center gold line */}
+      <section>
+        <div className="relative z-10 flex justify-center">
+          <div className="w-24 h-1 bg-yellow-400 rounded-full shadow-[0_0_15px_#FFD700]"></div>
+        </div>
+      </section>
       {/* CORE BENEFITS */}
       <section className="py-20 px-6 md:px-20">
         <div className="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
@@ -98,7 +119,7 @@ export default function GeneralBusinessPage() {
             <h3 className="text-lg text-yellow-400 font-semibold mb-2">
               AI Lead Automation
             </h3>
-            <p className="text-gray-300">
+            <p className="text-gray-300 text-lg leading-relaxed">
               Automatically respond to customer inquiries and capture leads
               faster than ever before.
             </p>
@@ -108,7 +129,7 @@ export default function GeneralBusinessPage() {
             <h3 className="text-lg text-yellow-400 font-semibold mb-2">
               Smart Customer Workflows
             </h3>
-            <p className="text-gray-300">
+            <p className="text-gray-300 text-lg leading-relaxed">
               Streamline repetitive business tasks with intelligent automation
               systems tailored to your business.
             </p>
@@ -118,7 +139,7 @@ export default function GeneralBusinessPage() {
             <h3 className="text-lg text-yellow-400 font-semibold mb-2">
               Modern AI-Powered Websites
             </h3>
-            <p className="text-gray-300">
+            <p className="text-gray-300 text-lg leading-relaxed">
               Build trust and stand out online with a modern website designed
               for speed, performance, and growth.
             </p>
@@ -127,27 +148,22 @@ export default function GeneralBusinessPage() {
         </div>
       </section>
 
-      {/* Center gold line */}
-      <section>
-        <div className="relative z-10 flex justify-center">
-          <div className="w-24 h-1 bg-yellow-400 rounded-full shadow-[0_0_15px_#FFD700]"></div>
-        </div>
-      </section>
+      
 
       {/* CTA */}
-      <section className="py-24 text-center border-t border-yellow-500/20 px-6">
-        <h2 className="text-3xl font-bold mb-6">
-          Ready to <span className="text-yellow-400">Automate</span> Your Business?
+      <section className="py-24 px-6 md:px-20 bg-black text-center border-t border-yellow-500/20">
+        <h2 className="text-3xl md:text-4xl font-bold mb-6">
+          Ready to <span className="text-yellow-400 font-semibold">Automate</span> Your Business?
         </h2>
 
-        <p className="text-gray-400 mb-10">
-          Let’s build an <span className="text-yellow-400">Intelligent Customer Workflow</span> that <span className="text-yellow-400">helps your business</span> save time,
-          capture more leads, and <span className="text-yellow-400">grow faster.</span>
+        <p className="mb-10 max-w-xl mx-auto bg-black text-gray-300">
+          Let’s build an <span className="text-yellow-400 font-semibold">Intelligent Customer Workflow</span> that <span className="text-yellow-400">helps your business</span> save time,
+          capture more leads, and <span className="text-yellow-400 font-semibold">grow faster.</span>
         </p>
 
         <Link
           href="/contact?=generalbusinesscta"
-          className="inline-block px-8 py-4 rounded-2xl font-semibold
+          className="px-10 py-4 rounded-2xl font-semibold
                      bg-yellow-500 text-black
                      border-2 border-yellow-500
                      hover:bg-transparent hover:text-white

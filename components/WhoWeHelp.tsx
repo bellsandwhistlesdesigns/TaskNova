@@ -17,7 +17,7 @@ export default function WhoWeHelp() {
             <h3 className="text-xl font-semibold mb-3 text-yellow-400">
               Small Businesses Owners
             </h3>
-            <p className="text-gray-300">
+            <p className="text-gray-300 text-lg leading-relaxed">
               Professional websites that build trust and help you stand out locally.
             </p>
           </div>
@@ -30,8 +30,8 @@ export default function WhoWeHelp() {
             <h3 className="text-xl font-semibold mb-3 text-yellow-400">
               Restaurants and Social Houses 
             </h3>
-            <p className="text-gray-300">
-              Menus, reservations, and mobile-first designs that bring in more customers.
+            <p className="text-gray-300 text-lg leading-relaxed">
+              Menus, reservations, and mobile-first designs that bring in customers.
             </p>
           </div>
         </Link>
@@ -43,7 +43,7 @@ export default function WhoWeHelp() {
             <h3 className="text-xl font-semibold mb-3 text-yellow-400">
               Barbers and Hair Salons
             </h3>
-            <p className="text-gray-300">
+            <p className="text-gray-300 text-lg leading-relaxed">
               Booking-ready websites that keeps your clients coming back.
             </p>
           </div>
@@ -56,7 +56,7 @@ export default function WhoWeHelp() {
             <h3 className="text-xl font-semibold mb-3 text-yellow-400">
               Pet Services
             </h3>
-            <p className="text-gray-300">
+            <p className="text-gray-300 text-lg leading-relaxed">
               Groomers, pet stores, and trainers. We help online customers find your company.
             </p>
           </div>

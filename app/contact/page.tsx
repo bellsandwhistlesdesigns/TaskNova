@@ -82,7 +82,7 @@ export default function ContactPage() {
         Tell us about your business, workflow challenges,
         or customer experience goals.
       </span>{" "}
-      <span className="text-yellow-400 font-semibold">
+      <span className="text-yellow-400">
         We’ll help identify automation opportunities that can
         save time and improve operations.
       </span>
@@ -92,7 +92,7 @@ export default function ContactPage() {
     <>
       <span className="text-white">
         From AI lead handling to automated booking systems,
-        TaskNova builds modern AI-powered workflows for
+        <span className="text-yellow-400">Task</span>Nova builds modern AI-powered workflows for
         small businesses.
       </span>
     </>

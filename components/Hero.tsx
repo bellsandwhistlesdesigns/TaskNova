@@ -57,7 +57,7 @@ export default function Hero({
   ),
   subSubtitle = (
     <>
-    <span className="text-white">"Instant Lead Responses, </span>
+    <span className="mb-10 max-w-xl mx-auto bg-black text-gray-300">"Instant Lead Responses, </span>
     <span className="text-yellow-400">smart follow-ups, </span>and automated workflows that save hours every week. 
     </>
   ),

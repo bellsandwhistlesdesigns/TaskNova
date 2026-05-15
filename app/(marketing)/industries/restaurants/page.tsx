@@ -17,8 +17,8 @@ export default function RestaurantsPage() {
           <>
             AI Automation for{" "}
             <span className="text-yellow-400">
-              Restaurants
-            </span>,{" "}
+              Restaurants,
+            </span>{" "}
             <span className="text-yellow-400">
               Pubs
             </span>{" "}
@@ -32,7 +32,7 @@ export default function RestaurantsPage() {
           <>
             <span className="text-white">
               Modern AI-powered websites and automation systems
-              designed to help restaurants respond faster,
+              <span className="text-yellow-400"> designed to help restaurants</span> respond faster,
               streamline bookings, and increase customer engagement.
             </span>
           </>
@@ -58,17 +58,24 @@ export default function RestaurantsPage() {
 
       {/* PAIN POINTS */}
       <section className="py-20 px-6 md:px-20 max-w-5xl mx-auto text-center">
-        <h2 className="text-3xl font-bold mb-6">
-          Your Website Should Help Run Your Restaurant
+        <h2 className="text-3xl md:text-5xl font-extrabold mb-10 text-center">
+          Your Website Should <span className="text-yellow-400">Help Run</span> Your Restaurant
         </h2>
 
-        <p className="text-gray-400 leading-relaxed">
+        <p className="text-gray-300 text-lg leading-relaxed">
           Many restaurants lose customers before they ever step through the
           door. Missed calls, slow websites, confusing menus, and outdated
           booking systems create friction that drives customers elsewhere.
-          TaskNova helps restaurants automate customer interactions and create
+          <span className="text-yellow-400">Task</span>Nova <span className="text-yellow-400">helps restaurants automate</span> customer interactions and create
           modern digital experiences that work around the clock.
         </p>
+      </section>
+      
+      {/* Center gold line */}
+      <section>
+        <div className="relative z-10 flex justify-center">
+          <div className="w-24 h-1 bg-yellow-400 rounded-full shadow-[0_0_15px_#FFD700]"></div>
+        </div>
       </section>
 
       {/* SOLUTIONS */}
@@ -108,27 +115,21 @@ export default function RestaurantsPage() {
         </div>
       </section>
 
-      {/* Center gold line */}
-      <section>
-        <div className="relative z-10 flex justify-center">
-          <div className="w-24 h-1 bg-yellow-400 rounded-full shadow-[0_0_15px_#FFD700]"></div>
-        </div>
-      </section>
 
       {/* CTA */}
-      <section className="py-24 text-center border-t border-yellow-500/20 px-6">
-        <h2 className="text-3xl font-bold mb-6">
-          Ready to Modernize Your Restaurant?
+      <section className="py-24 px-6 md:px-20 bg-black text-center border-t border-yellow-500/20">
+        <h2 className="text-3xl md:text-4xl font-bold mb-6">
+          Ready to <span className="text-yellow-400 font-semibold">Modernize</span> Your Restaurant?
         </h2>
 
-        <p className="text-gray-400 mb-10">
-          Let’s build an AI-powered restaurant system that helps you automate
-          bookings, engage customers, and grow your business.
+        <p className="mb-10 max-w-xl mx-auto bg-black text-gray-300">
+          Let’s build an <span className="text-yellow-400 font-semibold">AI-powered restaurant system that helps you</span> automate
+          bookings, engage customers, and <span className="text-yellow-400 font-semibold">grow your business.</span>
         </p>
 
         <Link
-          href="/contact?source=restaurantcta"
-          className="inline-block px-8 py-4 rounded-2xl font-semibold
+          href="/contact?source=restaurantscta"
+          className="px-10 py-4 rounded-2xl font-semibold
                      bg-yellow-500 text-black
                      border-2 border-yellow-500
                      hover:bg-transparent hover:text-white
@@ -139,7 +140,6 @@ export default function RestaurantsPage() {
           Handle More Orders With AI
         </Link>
       </section>
-
       <Footer />
     </main>
   );
