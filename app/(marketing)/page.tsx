@@ -19,8 +19,8 @@ export default function MarketingPage() {
     }
     subtitle={
         <>
-        <span className="text-white">
-        Building AI-powered websites and automation systems for small businesses</span>
+        <span className="text-white text-lg md:text-2xl font-bold tracking-wide">
+        Building <span className="text-yellow-400">AI-powered websites </span>and automation systems for small businesses</span>
         </>
       }
     subSubtitle={

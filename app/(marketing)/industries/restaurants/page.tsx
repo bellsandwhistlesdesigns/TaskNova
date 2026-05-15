@@ -128,10 +128,13 @@ export default function RestaurantsPage() {
 
         <Link
           href="/contact?source=restaurantcta"
-          className="px-10 py-4 rounded-2xl font-semibold
+          className="inline-block px-8 py-4 rounded-2xl font-semibold
                      bg-yellow-500 text-black
-                     hover:shadow-[0_0_25px_rgba(255,215,0,0.7)]
-                     transition"
+                     border-2 border-yellow-500
+                     hover:bg-transparent hover:text-white
+                     hover:shadow-[0_0_30px_white]
+                     hover:scale-105
+                     transition-all duration-300"
         >
           Handle More Orders With AI
         </Link>

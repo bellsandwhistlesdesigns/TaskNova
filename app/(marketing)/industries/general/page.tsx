@@ -21,20 +21,19 @@ export default function GeneralBusinessPage() {
         }
         subtitle={
           <>
-            <span className="text-white">
-              Smart websites and AI-powered systems designed to help your
-              business respond faster, save time, and grow smarter.
+            <span className="text-white text-lg md:text-2xl font-bold tracking-wide">
+              Here at <span className="text-yellow-400">Task</span>Nova we build Smart Websites and AI-powered systems designed to <span className="text-yellow-400">help your
+              business</span> respond faster, save time, and <span className="text-yellow-400">grow smarter.</span>
             </span>
           </>
         }
         subSubtitle={
           <>
             <span className="text-white">
-              Instantly respond to leads, automate repetitive tasks,
-              and turn your website into a
+              Save time, respond faster, and turn your website into a 
             </span>
             <span className="text-yellow-400">
-              {" "}24/7 business assistant.
+              {" "}24/7 business asset..
             </span>
           </>
         }
@@ -45,37 +44,23 @@ export default function GeneralBusinessPage() {
         titleSize="text-4xl sm:text-5xl md:text-6xl"
       />
 
-      {/* WHO THIS IS FOR */}
-      <section className="py-20 px-6 md:px-20 max-w-5xl mx-auto text-center">
-        <h2 className="text-3xl font-bold mb-6">
-          AI Systems Built for Real Businesses
-        </h2>
-
-        <p className="text-gray-400 leading-relaxed">
-          Whether you run a local shop, service business, or growing company,
-          your website should do more than just exist online. We build
-          AI-powered websites and automation systems that help businesses
-          capture leads, streamline operations, and create better customer
-          experiences.
-        </p>
-      </section>
+      
 
       {/* BUSINESS TYPES */}
       <section className="py-20 px-6 md:px-20">
         <div className="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto">
 
-          <div className="p-6 bg-gray-900 rounded-2xl border border-yellow-500/30">
-            <h3 className="text-lg text-yellow-400 font-semibold mb-2">
+          <div className="p-8 bg-gray-900 rounded-2xl border border-yellow-500/30 hover:shadow-[0_0_25px_white] transition duration-300">
+            <h3 className="text-xl font-semibold mb-3 text-yellow-400">
               Local Shops & Retail
             </h3>
             <p className="text-gray-300">
-              Turn visitors into customers with AI-powered engagement and
-              modern online experiences.
+              Create a modern digital experience that keeps customers engaged before they ever walk through the door.
             </p>
           </div>
 
-          <div className="p-6 bg-gray-900 rounded-2xl border border-yellow-500/30">
-            <h3 className="text-lg text-yellow-400 font-semibold mb-2">
+          <div className="p-8 bg-gray-900 rounded-2xl border border-yellow-500/30 hover:shadow-[0_0_25px_white] transition duration-300">
+            <h3 className="text-xl font-semibold mb-3 text-yellow-400">
               Service-Based Businesses
             </h3>
             <p className="text-gray-300">
@@ -84,23 +69,21 @@ export default function GeneralBusinessPage() {
             </p>
           </div>
 
-          <div className="p-6 bg-gray-900 rounded-2xl border border-yellow-500/30">
-            <h3 className="text-lg text-yellow-400 font-semibold mb-2">
+          <div className="p-8 bg-gray-900 rounded-2xl border border-yellow-500/30 hover:shadow-[0_0_25px_white] transition duration-300">
+            <h3 className="text-xl font-semibold mb-3 text-yellow-400">
               Contractors & Trades
             </h3>
             <p className="text-gray-300">
-              Never miss another lead with instant responses, streamlined
-              booking requests, and smarter workflows.
+              Keep job requests organized, respond faster, and simplify scheduling without extra admin work.
             </p>
           </div>
 
-          <div className="p-6 bg-gray-900 rounded-2xl border border-yellow-500/30">
-            <h3 className="text-lg text-yellow-400 font-semibold mb-2">
+          <div className="p-8 bg-gray-900 rounded-2xl border border-yellow-500/30 hover:shadow-[0_0_25px_white] transition duration-300">
+            <h3 className="text-xl font-semibold mb-3 text-yellow-400">
               Startups & Growing Brands
             </h3>
             <p className="text-gray-300">
-              Launch with scalable technology designed to support future growth
-              and automation from day one.
+              Launch with scalable systems designed to support growth, customer engagement, and operational efficiency.
             </p>
           </div>
 
@@ -111,8 +94,8 @@ export default function GeneralBusinessPage() {
       <section className="py-20 px-6 md:px-20">
         <div className="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
 
-          <div className="p-8 bg-gray-900 rounded-2xl border border-yellow-500/30 hover:shadow-[0_0_25px_white] transition duration-300">
-            <h3 className="text-xl font-semibold mb-3 text-yellow-400">
+          <div className="p-6 bg-gray-900 rounded-2xl border border-yellow-500/30">
+            <h3 className="text-lg text-yellow-400 font-semibold mb-2">
               AI Lead Automation
             </h3>
             <p className="text-gray-300">
@@ -121,8 +104,8 @@ export default function GeneralBusinessPage() {
             </p>
           </div>
 
-          <div className="p-8 bg-gray-900 rounded-2xl border border-yellow-500/30 hover:shadow-[0_0_25px_white] transition duration-300">
-            <h3 className="text-xl font-semibold mb-3 text-yellow-400">
+          <div className="p-6 bg-gray-900 rounded-2xl border border-yellow-500/30">
+            <h3 className="text-lg text-yellow-400 font-semibold mb-2">
               Smart Customer Workflows
             </h3>
             <p className="text-gray-300">
@@ -131,8 +114,8 @@ export default function GeneralBusinessPage() {
             </p>
           </div>
 
-          <div className="p-8 bg-gray-900 rounded-2xl border border-yellow-500/30 hover:shadow-[0_0_25px_white] transition duration-300">
-            <h3 className="text-xl font-semibold mb-3 text-yellow-400">
+          <div className="p-6 bg-gray-900 rounded-2xl border border-yellow-500/30">
+            <h3 className="text-lg text-yellow-400 font-semibold mb-2">
               Modern AI-Powered Websites
             </h3>
             <p className="text-gray-300">
@@ -154,20 +137,23 @@ export default function GeneralBusinessPage() {
       {/* CTA */}
       <section className="py-24 text-center border-t border-yellow-500/20 px-6">
         <h2 className="text-3xl font-bold mb-6">
-          Ready to Automate Your Business?
+          Ready to <span className="text-yellow-400">Automate</span> Your Business?
         </h2>
 
         <p className="text-gray-400 mb-10">
-          Let’s build an AI-powered system that helps your business save time,
-          capture more leads, and grow faster.
+          Let’s build an <span className="text-yellow-400">Intelligent Customer Workflow</span> that <span className="text-yellow-400">helps your business</span> save time,
+          capture more leads, and <span className="text-yellow-400">grow faster.</span>
         </p>
 
         <Link
           href="/contact?=generalbusinesscta"
-          className="px-10 py-4 rounded-2xl font-semibold
+          className="inline-block px-8 py-4 rounded-2xl font-semibold
                      bg-yellow-500 text-black
-                     hover:shadow-[0_0_25px_rgba(255,215,0,0.7)]
-                     transition"
+                     border-2 border-yellow-500
+                     hover:bg-transparent hover:text-white
+                     hover:shadow-[0_0_30px_white]
+                     hover:scale-105
+                     transition-all duration-300"
         >
           Imagine Your Business Automated
         </Link>
