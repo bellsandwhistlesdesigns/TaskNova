@@ -51,7 +51,7 @@ export default function Hero({
   ),
   subtitle = (
     <>
-      <span className="text-white">AI Automation for </span>
+      <span className="text-white">AI Automations for </span>
       <span className="text-yellow-400">Small Businesses</span>
     </>
   ),

@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 
 export const metadata: Metadata = {
   title:
-    "AI Automation for Small Businesses | TaskNova",
+    "TaskNova | AI Automation for Small Businesses",
 
   description:
     "TaskNova builds AI-powered websites and automation systems for small businesses. Automate customer workflows, lead responses, scheduling, and business operations.",

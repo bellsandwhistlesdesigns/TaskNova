@@ -19,14 +19,17 @@ export default function MarketingPage() {
     }
     subtitle={
         <>
-        <span className="text-white">AI Automation for </span>
-        <span className="text-yellow-400 font-semibold">Small Businesses</span>
-
+        <span className="text-white">
+        Building AI-powered websites and automation systems for small businesses</span>
         </>
       }
     subSubtitle={
       <>
-      <span className="text-yellow-400">Smart follow-ups </span>and automated workflows that save hours every week. 
+      <span className="text-yellow-400">
+        Automate lead capture, follow-ups, bookings, and customer communications</span>
+        <span className="text-white">
+        {" "}with modern AI workflows that save time and help grow your business.
+        </span>
       </>
     }
       
@@ -36,67 +39,86 @@ export default function MarketingPage() {
       secondaryctaLink = "/contact?source=landingPageHeader"
       />
       <WhoWeHelp />
+      {/* Gold Bar */}
+		  <section>
+        <div className="relative z-10 flex justify-center">
+          <div className="w-24 h-1 bg-yellow-400 rounded-full shadow-[0_0_15px_#FFD700]"></div>
+        </div>
+      </section>
+
       {/* ===== FEATURES SECTION ===== */}
 <section
-  id="features"
-  className="py-24 px-6 md:px-20 bg-black"
->
+   id="features"
+    className="py-24 px-6 md:px-20 bg-black"
+  >
   <h2 className="text-4xl font-bold text-center mb-16">
-    How <span className="text-yellow-400">Task</span>Nova Builds for your Future
+    AI Automation Built for{" "}
+    <span className="text-yellow-400">Modern Businesses</span>
   </h2>
 
   <div className="grid md:grid-cols-4 gap-8 max-w-6xl mx-auto">
-    
-    <div className="p-8 bg-gray-900 rounded-2xl border border-yellow-500/30 
-                    hover:shadow-[0_0_25px_white] transition duration-300">
+
+    <div
+      className="p-8 bg-gray-900 rounded-2xl border border-yellow-500/30
+                 hover:shadow-[0_0_25px_white] transition duration-300"
+    >
       <h3 className="text-xl font-semibold mb-3 text-yellow-400">
-        Modern Frontend Architecture
+        AI Lead Capture
       </h3>
+
       <p className="text-gray-300">
-        Built with cutting-edge frameworks for speed, responsiveness, and seamless user experiences across all devices.
+        Automatically collect, organize, and analyze customer inquiries so no
+        potential lead gets missed.
       </p>
     </div>
 
-    <div className="p-8 bg-gray-900 rounded-2xl border border-yellow-500/30 
-                    hover:shadow-[0_0_25px_white] transition duration-300">
+    <div
+      className="p-8 bg-gray-900 rounded-2xl border border-yellow-500/30
+                 hover:shadow-[0_0_25px_white] transition duration-300"
+    >
       <h3 className="text-xl font-semibold mb-3 text-yellow-400">
-        Performance & Optimization
+        Automated Customer Follow-Ups
       </h3>
+
       <p className="text-gray-300">
-        Fast load times, optimized assets, and scalable infrastructure designed to keep your site running at peak performance.
+        Streamline communication with intelligent follow-ups, appointment
+        reminders, and automated responses.
       </p>
     </div>
 
-    <div className="p-8 bg-gray-900 rounded-2xl border border-yellow-500/30 
-                    hover:shadow-[0_0_25px_white] transition duration-300">
+    <div
+      className="p-8 bg-gray-900 rounded-2xl border border-yellow-500/30
+                 hover:shadow-[0_0_25px_white] transition duration-300"
+    >
       <h3 className="text-xl font-semibold mb-3 text-yellow-400">
-        Collaborative Development
+        Smart Website Systems
       </h3>
+
       <p className="text-gray-300">
-        Clear communication, agile workflows, and tight feedback loops ensure your vision is delivered without friction.
+        Modern responsive websites designed to help businesses build trust,
+        improve conversions, and operate more efficiently.
       </p>
     </div>
 
-    <div className="p-8 bg-gray-900 rounded-2xl border border-yellow-500/30 
-                    hover:shadow-[0_0_25px_white] transition duration-300">
+    <div
+      className="p-8 bg-gray-900 rounded-2xl border border-yellow-500/30
+                 hover:shadow-[0_0_25px_white] transition duration-300"
+    >
       <h3 className="text-xl font-semibold mb-3 text-yellow-400">
-        SEO-Driven Foundations
+        AI-Powered Workflows
       </h3>
+
       <p className="text-gray-300">
-        From semantic structure to performance tuning, every build is optimized to improve visibility and long-term search rankings.
+        Reduce repetitive manual work with intelligent automation systems built
+        to save time and support business growth.
       </p>
     </div>
 
   </div>
 </section>
       
-      <section>
-        <div className="relative z-10 flex justify-center">
-          <div className="w-24 h-1 bg-yellow-400 rounded-full shadow-[0_0_15px_#FFD700]"></div>
-        </div>
-      </section>
-                  
-      {/* Center gold line */}
+                    
+      {/* Gold Bar */}
 		  <section>
         <div className="relative z-10 flex justify-center">
           <div className="w-24 h-1 bg-yellow-400 rounded-full shadow-[0_0_15px_#FFD700]"></div>
@@ -106,7 +128,7 @@ export default function MarketingPage() {
       {/* ===== CTA BANNER ===== */}
       <section className="py-24 px-6 md:px-20 bg-black text-center border-t border-yellow-500/20">
         <h2 className="text-3xl md:text-4xl font-bold mb-6">
-          <span className="text-yellow-400 font-semibold">Ready</span> for a new Website?
+          Is Your Business <span className="text-yellow-400 font-bold">Ready</span> for AI Power?
         </h2>
 
         <p className="mb-10 max-w-xl mx-auto bg-black text-gray-300">
@@ -115,16 +137,18 @@ export default function MarketingPage() {
 
         <a
           href="/contact?source=landingpagecta"
-          className="inline-block px-10 py-4 rounded-2xl font-semibold
+          className="inline-block px-8 py-4 rounded-2xl font-semibold
                      bg-yellow-500 text-black
-                     border-2 border-white
+                     border-2 border-yellow-500
+                     hover:bg-transparent hover:text-white
                      hover:shadow-[0_0_30px_white]
                      hover:scale-105
                      transition-all duration-300"
         >
-          We Solve Problems
+          See AI in Action
         </a>
       </section>
+      
       <Footer />
       
     </main>

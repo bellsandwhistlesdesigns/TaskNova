@@ -13,7 +13,7 @@ export default function PetServicesPage() {
 
       {/* ===== HERO ===== */}
       <Hero
-        sunPosition="right"
+        
         title={
           <>
             AI Automation for{" "}
@@ -45,27 +45,31 @@ export default function PetServicesPage() {
         secondaryctaLink="/contact?source=petserviceshero"
         titleSize="text-4xl sm:text-5xl md:text-6xl"
         heightClass="min-h-[70vh]"
+        sunPosition="right"
       />
 
       {/* ===== PROBLEMS ===== */}
       <section className="px-6 md:px-20 py-20 max-w-6xl mx-auto">
         <h2 className="text-3xl md:text-5xl font-extrabold mb-10 text-center">
-          Your Website Should Help Grow Your Business
+          Your Website Should Help <span className="text-yellow-400 font-extrabold">Grow Your Business</span>
         </h2>
 
         <div className="grid md:grid-cols-3 gap-8 text-gray-300">
 
-          <div className="p-6 bg-gray-900 rounded-2xl border border-yellow-500/20">
+          <div className="p-6 bg-gray-900 rounded-2xl border border-yellow-500/30
+                          hover:shadow-[0_0_25px_white] transition duration-300">
             Missed calls and outdated booking systems can cost valuable
             appointments and repeat customers.
           </div>
 
-          <div className="p-6 bg-gray-900 rounded-2xl border border-yellow-500/20">
+          <div className="p-6 bg-gray-900 rounded-2xl border border-yellow-500/30
+                          hover:shadow-[0_0_25px_white] transition duration-300">
             Customers expect fast responses, easy scheduling, and clear
             information about your services.
           </div>
 
-          <div className="p-6 bg-gray-900 rounded-2xl border border-yellow-500/20">
+          <div className="p-6 bg-gray-900 rounded-2xl border border-yellow-500/30
+                          hover:shadow-[0_0_25px_white] transition duration-300">
             Without a modern online presence, it’s difficult to stand out
             from other local pet businesses.
           </div>
@@ -76,7 +80,7 @@ export default function PetServicesPage() {
       {/* ===== SOLUTIONS ===== */}
       <section className="px-6 md:px-20 py-20 bg-black/60">
         <h2 className="text-3xl md:text-5xl font-extrabold mb-12 text-center">
-          AI Systems Built for Pet Businesses
+          AI Systems Built for <span className="text-yellow-400 font-extrabold">Pet Businesses</span>
         </h2>
 
         <div className="grid md:grid-cols-2 gap-10 max-w-5xl mx-auto text-gray-300">
@@ -121,27 +125,31 @@ export default function PetServicesPage() {
       </section>
 
       {/* ===== CTA ===== */}
-      <section className="px-6 py-24 text-center">
-        <h2 className="text-3xl md:text-5xl font-extrabold mb-6">
-          Ready to Modernize Your Pet Business?
+      
+      <section className="py-24 px-6 md:px-20 bg-black text-center border-t border-yellow-500/20">
+        <h2 className="text-3xl md:text-4xl font-bold mb-6">
+          <span className="text-yellow-400 font-semibold">Ready to Modernize</span> Your Pet Business?
         </h2>
 
-        <p className="text-gray-400 mb-10">
-          Let’s build an AI-powered system that helps automate bookings,
-          improve customer experiences, and grow your business.
+        <p className="mb-10 max-w-xl mx-auto bg-black text-gray-300">
+          Let’s build an AI-powered system that helps <span className="text-yellow-400 font-semibold">automate bookings,
+          improve customer experiences, </span>and grow your business.
         </p>
 
         <a
           href="/contact?source=petservicescta"
-          className="px-10 py-4 rounded-2xl font-semibold
+          className="inline-block px-8 py-4 rounded-2xl font-semibold
                      bg-yellow-500 text-black
-                     hover:scale-105 hover:shadow-[0_0_25px_rgba(255,215,0,0.7)]
+                     border-2 border-yellow-500
+                     hover:bg-transparent hover:text-white
+                     hover:shadow-[0_0_30px_white]
+                     hover:scale-105
                      transition-all duration-300"
         >
           Transform My Business
         </a>
       </section>
-
+      
       <Footer />
     </main>
   );

@@ -1,140 +1,194 @@
 # TaskNova
 
 ![Next.js](https://img.shields.io/badge/Next.js-Framework-black?logo=nextdotjs)
+![TypeScript](https://img.shields.io/badge/TypeScript-Language-blue?logo=typescript)
 ![Supabase](https://img.shields.io/badge/Supabase-Database-green?logo=supabase)
+![OpenAI](https://img.shields.io/badge/OpenAI-AI-black?logo=openai)
+![Resend](https://img.shields.io/badge/Resend-Email-black?logo=resend)
 ![PostgreSQL](https://img.shields.io/badge/PostgreSQL-Database-blue?logo=postgresql)
 ![Vercel](https://img.shields.io/badge/Vercel-Deployment-black?logo=vercel)
 ![Status](https://img.shields.io/badge/Status-Active%20Development-orange)
 
-I am building a modern Project Management Platform — one iteration at a time.
+# AI Automation & Smart Websites for Small Businesses
 
-TaskNova is an evolving web application designed to help project managers organize projects and tasks of employees efficiently.
+TaskNova is a modern AI-powered web platform focused on helping small businesses improve their online presence, automate workflows, and streamline customer interactions through intelligent web solutions.
 
-This project is being developed publicly as an iterative SaaS experiment. Where design, functionality, and architecture are continuously refined as new ideas are tested and improved.
+The platform combines:
+- modern website development
+- AI-assisted business workflows
+- automation systems
+- lead intake infrastructure
+- modern frontend experiences
 
-The application is currently live and under active development:
+TaskNova is being developed publicly through continuous iteration, experimentation, and real-world implementation.
 
-**https://www.tasknova.ca**
+Live Project:
+
+**https://www.tasknova.ca**  
 **https://tasknova.ca**
 
 ---
 
-## Project Philosophy
+# Project Philosophy
 
-TaskNova is being built with a core principle:
+TaskNova is built around a simple idea:
 
-> Iteration drives progress.
+> Modern businesses deserve modern systems.
 
-Features are implemented, tested, improved, and sometimes rebuilt entirely as the product evolves. This repository reflects that ongoing process of experimentation and refinement while building a modern SaaS platform.
+Many small businesses still rely on outdated websites, manual processes, missed leads, and disconnected customer experiences.
 
-The goal is not only to create a very useful project management tool, but also to personally explore more modern web technologies and user experience patterns that can power my future web applications.
+TaskNova aims to bridge that gap by combining:
+- high-quality frontend experiences
+- AI-enhanced workflows
+- automation systems
+- scalable modern architecture
 
----
-
-## Product Vision
-
-TaskNova began as an exploration into building modern web applications from the ground up. The long-term vision is to develop a powerful yet intuitive platform that helps individuals and teams organize projects, track tasks, and maintain momentum in their work.
-
-Beyond its functionality as a project management tool, TaskNova represents a broader personal development journey into modern web architecture, user experience design, and SaaS development. Each iteration of the platform is an opportunity to refine both the product and the process behind building scalable web applications.
-
-Whether TaskNova ultimately evolves into a full SaaS product, becomes the foundation for a future web design and development studio, or serves as a gateway to contributing within a modern full-stack team, the guiding goal remains the same: to build thoughtful, well-crafted software designed for the next generation of the web.
+The project evolves iteratively:
+features are designed, tested, rebuilt, and improved continuously as new ideas and workflows emerge.
 
 ---
 
-## Community Impact
+# Current Direction
 
-Feedback, discussion, and professional connections are always welcome.
-Actively seeking opportunities to contribute to modern frontend and full-stack teams.
+TaskNova has evolved from an experimental SaaS productivity platform into:
 
---- 
+# An AI Automation & Smart Website Platform
 
-## Current Features
+Now focused on:
+- Small business websites
+- AI-powered lead intake
+- Workflow automation
+- Intelligent customer interactions
+- Scalable business infrastructure
 
-* Visually engaging landing page experience
-* Supabase-powered authentication system (implemented and now currently being redesigned)
-* Project creation and task organization 
-* Real-time dashboard structure
-* Secure sign-out flow
-
-
----
-
-## Technologies Used
-
-**Frontend**
-
-* Next.js
-
-**Backend / Data**
-
-* Supabase Authentication
-* Supabase PostgreSQL
-
-**Infrastructure**
-
-* Vercel (hosting and CI/CD)
-
-**Version Control**
-
-* GitHub
+Industries currently being explored include:
+- Restaurants & pubs
+- Salons & barbers
+- Pet businesses
+- Contractors & local services
+- General small businesses
 
 ---
 
-## Architecture Overview
+# Current Features
 
-TaskNova is being built using a modern serverless SaaS architecture designed for scalability and rapid iteration.
+## Frontend Experience
+- Custom animated cinematic landing pages
+- Responsive modern UI/UX
+- Framer Motion powered animation systems
+- Mobile-first design architecture
+- Industry-specific service pages
 
+## AI Workflow Infrastructure
+- AI-powered contact form processing
+- OpenAI lead analysis integration
+- Intelligent lead categorization
+- Automation opportunity detection
+- Structured AI business analysis storage
+
+## Backend Systems
+- Secure API route architecture
+- Supabase PostgreSQL integration
+- Server-side secure database workflows
+- Row Level Security (RLS)
+- Structured lead management pipeline
+
+## Infrastructure
+- Vercel deployment & CI/CD
+- GitHub version control
+- Environment-based secret management
+
+---
+
+# Technologies Used
+
+## Frontend
+- Next.js
+- React
+- TypeScript
+- Tailwind CSS
+- Framer Motion
+
+## Backend & AI
+- Supabase
+- PostgreSQL
+- OpenAI API
+- Resend
+- Serverless API Routes
+
+## Infrastructure
+- Vercel
+- GitHub
+
+---
+
+# Architecture Overview
+
+TaskNova uses a modern serverless architecture designed for rapid iteration, scalability, and AI workflow integration.
+
+
+
+---```mermaid
 graph TD
 
-User[Users] --> Browser[Web Browser]
+User[Business Owner] --> Browser[Web Browser]
 
 Browser --> NextJS[Next.js Frontend]
 
-NextJS --> SupabaseAuth[Supabase Authentication]
-NextJS --> SupabaseDB[Supabase PostgreSQL Database]
+NextJS --> APIRoutes[Secure API Routes]
 
-NextJS --> Vercel[Vercel Hosting & Deployment]
+APIRoutes --> OpenAI[OpenAI API]
+APIRoutes --> SupabaseDB[Supabase PostgreSQL]
 
-SupabaseAuth --> SupabaseDB
+SupabaseDB --> Storage[Lead & Workflow Data]
 
-Flow Summary
-
-Users access the application through their web browser.
-
-The Next.js frontend handles UI rendering and user interactions.
-
-Supabase Authentication manages user login and session security.
-
-Supabase PostgreSQL stores project and task data.
-
-Vercel handles hosting, deployment, and serverless infrastructure.
-
-This architecture allows me to scale TaskNova efficiently while maintaining a fast development workflow through serverless infrastructure.
+NextJS --> Vercel[Vercel Hosting]
 
 ---
 
-## Development Status
+# Development Status
 
-TaskNova is currently under **active development**.
+TaskNova is currently under active development.
 
-Core systems such as authentication, project management workflows, and dashboard functionality are being rebuilt and refined as the architecture matures.
+Current areas of focus include:
 
-This iterative process allows the project to grow toward one of two long-term goals:
+- AI workflow automation
+- Intelligent lead processing
+- Smart website systems
+- Scalable backend infrastructure
+- Automation integrations
+- Enhanced customer onboarding flows
 
-* A fully realized SaaS platform for project management
-* A foundation for a modern web design and development studio focused on building future-ready applications
+The platform is evolving toward becoming:
+
+- a modern AI automation agency platform
+- a scalable smart website business
+- a foundation for future SaaS automation tools
 
 ---
 
-## Roadmap
+# Roadmap
 
-Planned areas of continued development include:
+## AI & Automation
 
-* Rebuilding authentication and onboarding flows
-* Expanded project and task management tools
-* Improved dashboard UX
-* Enhanced visual design and motion systems
-* Scalable architecture for SaaS growth
+- Automated AI email responses
+- AI-generated customer proposals
+- Workflow recommendation systems
+- CRM-style lead dashboards
+- Appointment automation
+
+## Business Websites
+- Industry-specific templates
+- Smart onboarding flows
+- SEO optimization systems
+- Performance optimization
+- Analytics integrations
+
+## Platform Growth
+- Admin dashboard systems
+- Customer management tools
+- Scalable automation pipelines
+- Expanded AI integrations
 
 ---
 

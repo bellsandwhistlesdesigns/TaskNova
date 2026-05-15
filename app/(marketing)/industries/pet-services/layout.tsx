@@ -1,6 +1,6 @@
 export const metadata = {
   title:
-    "AI Automation & Websites for Pet Services | TaskNova",
+    "TaskNova | AI Automation & Websites for Pet Services",
 
   description:
     "TaskNova creates AI-powered websites and automation systems for pet groomers, dog walkers, pet daycare businesses, and animal care services. Streamline bookings, customer communication, and scheduling.",

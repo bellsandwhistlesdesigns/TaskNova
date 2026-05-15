@@ -1,6 +1,6 @@
 export const metadata = {
   title:
-    "AI Automation & Websites for Hair Salons and Barbers | TaskNova",
+    "TaskNova | AI Automation & Websites for Hair Salons and Barbers",
 
   description:
     "TaskNova builds modern AI-powered websites and automation systems for hair salons and barbershops. Automate bookings, reduce no-shows, improve customer communication, and grow your business.",

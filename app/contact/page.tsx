@@ -73,7 +73,7 @@ export default function ContactPage() {
       <span className="text-yellow-400">
         AI Automation
       </span>{" "}
-      Journey
+      Journey with <span className="text-yellow-400">Task</span>Nova
     </>
   }
   subtitle={

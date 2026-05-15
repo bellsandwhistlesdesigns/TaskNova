@@ -1,6 +1,6 @@
 export const metadata = {
   title:
-    "AI Automation for Restaurants | TaskNova",
+    "TaskNova | AI Automation for Restaurants",
 
   description:
     "TaskNova helps restaurants automate reservations, customer inquiries, bookings, and follow-ups with modern AI-powered systems and smart websites.",
