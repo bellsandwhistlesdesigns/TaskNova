@@ -172,7 +172,6 @@ export default function GeneralBusinessPage() {
                      transition-all duration-300"
         >
           Automate My Business
-
         </Link>
       </section>
 
