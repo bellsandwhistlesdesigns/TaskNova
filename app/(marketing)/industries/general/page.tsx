@@ -171,7 +171,8 @@ export default function GeneralBusinessPage() {
                      hover:scale-105
                      transition-all duration-300"
         >
-          Imagine Your Business Automated
+          Automate My Business
+
         </Link>
       </section>
 
